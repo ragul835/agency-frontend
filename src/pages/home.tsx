@@ -12,6 +12,7 @@ import {
   SiHtml5, SiJavascript, SiStripe
 } from "react-icons/si";
 import { FaAws, FaJava } from "react-icons/fa";
+import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
@@ -125,69 +126,94 @@ function HeroSection() {
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,hsl(var(--foreground)/0.2)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.2)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_80%,transparent_100%)]" />
 
-        {/* Floating Icons */}
-        <div
+        {/* Floating Icons with Motion */}
+        <motion.div
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-[15%] left-[5%] md:left-[15%] text-primary/20 blur-[2px]"
         >
           <SiReact className="w-16 h-16 md:w-24 md:h-24" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-[20%] right-[5%] md:right-[15%] text-blue-500/20 blur-[2px]"
         >
           <SiNextdotjs className="w-20 h-20 md:w-32 md:h-32" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
           className="absolute top-[35%] right-[10%] md:right-[20%] text-indigo-500/20 blur-[1px]"
         >
           <SiTypescript className="w-12 h-12 md:w-20 md:h-20" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
           className="absolute bottom-[25%] left-[10%] md:left-[25%] text-purple-500/20 blur-[1px]"
         >
           <SiTailwindcss className="w-14 h-14 md:w-20 md:h-20" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -20, 0], x: [0, -5, 0] }}
+          transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="absolute top-[10%] right-[35%] text-red-500/15 blur-[2px]"
         >
           <FaJava className="w-16 h-16 md:w-24 md:h-24" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
           className="absolute bottom-[10%] right-[40%] text-green-500/15 blur-[2px]"
         >
           <SiSpringboot className="w-20 h-20 md:w-28 md:h-28" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -12, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
           className="absolute top-[40%] left-[30%] text-blue-400/15 blur-[3px]"
         >
           <SiPostgresql className="w-16 h-16 md:w-24 md:h-24" />
-        </div>
+        </motion.div>
         
         {/* Additional Hero Icons */}
-        <div
+        <motion.div
+          animate={{ y: [0, 15, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.7 }}
           className="absolute top-[25%] left-[45%] text-green-600/15 blur-[2px]"
         >
           <SiNodedotjs className="w-14 h-14 md:w-20 md:h-20" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -18, 0], rotate: [0, -5, 0] }}
+          transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
           className="absolute bottom-[35%] right-[25%] text-blue-500/15 blur-[1px]"
         >
           <SiPython className="w-16 h-16 md:w-24 md:h-24" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 2.1 }}
           className="absolute top-[5%] left-[25%] text-blue-600/15 blur-[2px]"
         >
           <SiMysql className="w-12 h-12 md:w-20 md:h-20" />
-        </div>
-        <div
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
           className="absolute bottom-[5%] left-[40%] text-pink-500/15 blur-[3px]"
         >
           <SiFigma className="w-16 h-16 md:w-24 md:h-24" />
-        </div>
+        </motion.div>
       </div>
 
       <Container className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center">
         {/* Top Badge */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
           className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest backdrop-blur-sm shadow-[0_0_20px_hsl(var(--primary)/0.15)]"
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_hsl(var(--primary))]" />
@@ -195,7 +221,10 @@ function HeroSection() {
         </div>
 
         {/* Headline */}
-        <h1
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
           className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground text-center"
         >
           <span className="relative">
@@ -210,23 +239,29 @@ function HeroSection() {
           <span className="relative bg-gradient-to-r from-muted-foreground to-foreground bg-clip-text text-transparent block mt-1">
             the Overhead
           </span>
-        </h1>
+        </motion.h1>
 
         {/* Subtitle */}
-        <p
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl mb-12"
         >
           NexCore is a dedicated senior dev team ready to act as your end-to-end Engineering Partner. We build bulletproof digital products with zero technical debt.
-        </p>
+        </motion.p>
 
         {/* Action Buttons */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
         >
-          <GradientButton href="/contact#contact-form" className="px-10 py-4 text-base font-semibold shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] transition-all">
+          <GradientButton href="/contact#contact-form" className="px-10 py-4 text-base font-semibold shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] transition-all hover:-translate-y-1">
             Get a Free Project Estimate <ArrowRight className="w-5 h-5 ml-2 inline-block" />
           </GradientButton>
-        </div>
+        </motion.div>
 
 
       </Container>
@@ -375,60 +410,80 @@ function ContactCTASection() {
         style={{ background: "radial-gradient(circle, hsl(217 91% 60%) 0%, transparent 70%)" }}
       />
 
-      {/* Floating Icons */}
-      <div
+      {/* Floating Icons with Motion */}
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-20 left-[10%] text-primary/30 blur-[1px]"
       >
         <Code2 className="w-16 h-16" />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, 15, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         className="absolute bottom-20 right-[15%] text-secondary/30 blur-[1px]"
       >
         <Zap className="w-20 h-20" />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
         className="absolute top-40 right-[25%] text-primary/20 blur-[2px]"
       >
         <Cpu className="w-12 h-12" />
-      </div>
+      </motion.div>
 
-      <div
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         className="absolute top-32 left-[25%] text-orange-500/20 blur-[1px]"
       >
         <FaAws className="w-16 h-16" />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, -20, 0] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
         className="absolute bottom-32 left-[15%] text-blue-400/20 blur-[2px]"
       >
         <SiGooglecloud className="w-20 h-20" />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, 15, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
         className="absolute top-20 right-[15%] text-blue-600/20 blur-[1px]"
       >
         <SiDocker className="w-16 h-16" />
-      </div>
+      </motion.div>
 
       {/* Additional CTA Icons */}
-      <div
+      <motion.div
+        animate={{ y: [0, -12, 0] }}
+        transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
         className="absolute bottom-10 right-[35%] text-red-600/20 blur-[2px]"
       >
         <SiNestjs className="w-14 h-14" />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, 18, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
         className="absolute top-10 left-[40%] text-teal-500/20 blur-[2px]"
       >
         <SiFastapi className="w-16 h-16" />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
         className="absolute bottom-40 left-[5%] text-slate-500/20 blur-[1px]"
       >
         <SiGithub className="w-20 h-20" />
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, 20, 0] }}
+        transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.8 }}
         className="absolute top-32 right-[5%] text-white/20 blur-[2px]"
       >
         <SiVercel className="w-16 h-16" />
-      </div>
+      </motion.div>
 
       <Container className="relative z-10 text-center">
         <AnimateOnScroll>
