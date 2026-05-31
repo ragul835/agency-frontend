@@ -217,7 +217,8 @@ export default function AboutPage() {
                 const Icon = card.icon;
                 return (
                   <AnimatedItem key={card.title}>
-                    <div
+                    <motion.div
+                      whileHover={{ scale: 1.03, y: -5 }}
                       data-testid={`card-philosophy-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
                       className="p-8 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm"
                     >
@@ -230,7 +231,7 @@ export default function AboutPage() {
                       <p className="text-muted-foreground text-sm leading-relaxed">
                         {card.description}
                       </p>
-                    </div>
+                    </motion.div>
                   </AnimatedItem>
                 );
               })}

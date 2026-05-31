@@ -207,14 +207,17 @@ export default function SolutionsPage() {
               }
             ].map((industry) => (
               <AnimateOnScroll key={industry.name}>
-                <div className="p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-colors group h-full">
+                <motion.div 
+                  whileHover={{ scale: 1.03, y: -5 }}
+                  className="p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-colors group h-full"
+                >
                   <h3 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {industry.name}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {industry.description}
                   </p>
-                </div>
+                </motion.div>
               </AnimateOnScroll>
             ))}
           </div>

@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
 import { GradientButton } from "../shared/GradientButton";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -35,7 +36,10 @@ export function Navbar() {
 
   return (
     <>
-      <header
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className={cn(
           "sticky top-0 z-50 w-full transition-all duration-300 bg-background/60 backdrop-blur-2xl border-b border-transparent",
           isScrolled && "shadow-[0_4px_30px_rgba(0,0,0,0.03)] border-border/40 bg-background/80 backdrop-blur-3xl"
@@ -113,7 +117,7 @@ export function Navbar() {
           </div>
         </div>
       </Container>
-    </header>
+    </motion.header>
     </>
   );
 }

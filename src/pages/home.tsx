@@ -308,7 +308,8 @@ function ServicesSection() {
               const Icon = service.icon;
               return (
                 <AnimatedItem key={service.title}>
-                  <div
+                  <motion.div
+                    whileHover={{ scale: 1.03, y: -5 }}
                     data-testid={`card-service-${service.title.toLowerCase().replace(/\s+/g, "-")}`}
                     className="group p-8 rounded-2xl border border-border/40 bg-card/30 backdrop-blur-2xl relative overflow-hidden cursor-default h-full"
                   >
@@ -324,7 +325,7 @@ function ServicesSection() {
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {service.description}
                     </p>
-                  </div>
+                  </motion.div>
                 </AnimatedItem>
               );
             })}
@@ -372,7 +373,9 @@ function TechStackSection() {
                   {cat.items.map((tech) => {
                     const TechIcon = tech.Icon;
                     return (
-                      <div
+                      <motion.div
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
                         key={tech.name}
                         data-testid={`badge-tech-${tech.name.toLowerCase().replace(/\s+/g, "-")}`}
                         className="flex items-center gap-3 px-6 py-3.5 rounded-xl border border-border/50 bg-card/40 backdrop-blur-md hover:border-primary/50 hover:bg-primary/10 hover:shadow-[0_8px_30px_-4px_hsl(var(--primary)/0.3)] transition-colors group cursor-default relative overflow-hidden"
@@ -380,7 +383,7 @@ function TechStackSection() {
                         <div className="absolute inset-0 bg-gradient-to-tr from-primary/0 via-primary/0 to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
                         <TechIcon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors relative z-10" />
                         <span className="text-sm font-medium text-foreground relative z-10">{tech.name}</span>
-                      </div>
+                      </motion.div>
                     );
                   })}
                 </div>
