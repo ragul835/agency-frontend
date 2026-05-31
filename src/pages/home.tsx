@@ -218,7 +218,7 @@ function HeroSection() {
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_hsl(var(--primary))]" />
           Elite Engineering
-        </div>
+        </motion.div>
 
         {/* Headline */}
         <motion.h1
