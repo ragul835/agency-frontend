@@ -45,7 +45,7 @@ export default function SolutionsPage() {
   return (
     <main>
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-24 overflow-hidden border-b border-border/30">
+      <section className="relative pt-24 lg:pt-32 pb-16 lg:pb-24 overflow-hidden border-b border-border/30 px-4 sm:px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-transparent to-background" />
         
         {/* Premium Grid Overlay */}
@@ -75,7 +75,7 @@ export default function SolutionsPage() {
               <span>Solutions</span>
             </div>
             <div className="max-w-4xl">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.1] mb-6 md:mb-8 text-foreground">
                 Our <span className="text-transparent bg-clip-text bg-gradient-to-br from-secondary via-primary/80 to-primary relative">
                   Capabilities
                   <span className="absolute -inset-x-4 -inset-y-2 bg-secondary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
@@ -141,7 +141,7 @@ export default function SolutionsPage() {
                   <div className={`w-full md:w-1/2 flex justify-center relative order-1 ${isEven ? 'md:justify-start md:order-2' : 'md:justify-end'}`}>
                     <div className="relative">
                       {/* Massive background number */}
-                      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12rem] md:text-[16rem] font-black text-primary/5 select-none pointer-events-none font-heading">
+                      <span className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10rem] lg:text-[14rem] font-black text-primary/5 select-none pointer-events-none font-heading">
                         {step.step}
                       </span>
                       
@@ -188,7 +188,7 @@ export default function SolutionsPage() {
               <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
                 Domain Expertise
               </span>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
                 Industries We Serve
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -256,9 +256,9 @@ export default function SolutionsPage() {
             <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
               Ready to start?
             </span>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
               Let's Build Your Next{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="block sm:inline bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Success Story
               </span>
             </h2>

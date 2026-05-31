@@ -111,7 +111,7 @@ const techCategories = [
 
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-28 lg:pt-36 pb-16 lg:pb-24 flex flex-col items-center text-center">
+    <section className="relative overflow-hidden pt-24 lg:pt-36 pb-16 lg:pb-24 flex flex-col items-center text-center px-4 sm:px-6">
       {/* Dynamic Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
         {/* Massive glow */}
@@ -136,19 +136,19 @@ function HeroSection() {
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-[15%] left-[5%] md:left-[15%] text-primary/20 blur-[2px]"
         >
-          <SiReact className="w-16 h-16 md:w-24 md:h-24" />
+          <SiReact className="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24" />
         </motion.div>
         <motion.div
           animate={{ y: [0, 15, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-[20%] right-[5%] md:right-[15%] text-blue-500/20 blur-[2px]"
         >
-          <SiNextdotjs className="w-20 h-20 md:w-32 md:h-32" />
+          <SiNextdotjs className="w-16 h-16 sm:w-20 sm:h-20 md:w-32 md:h-32" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute top-[35%] right-[10%] md:right-[20%] text-indigo-500/20 blur-[1px]"
+          className="hidden md:block absolute top-[35%] right-[10%] md:right-[20%] text-indigo-500/20 blur-[1px]"
         >
           <SiTypescript className="w-12 h-12 md:w-20 md:h-20" />
         </motion.div>
@@ -157,26 +157,26 @@ function HeroSection() {
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
           className="absolute bottom-[25%] left-[10%] md:left-[25%] text-purple-500/20 blur-[1px]"
         >
-          <SiTailwindcss className="w-14 h-14 md:w-20 md:h-20" />
+          <SiTailwindcss className="w-12 h-12 sm:w-14 sm:h-14 md:w-20 md:h-20" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0], x: [0, -5, 0] }}
           transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-[10%] right-[35%] text-red-500/15 blur-[2px]"
+          className="hidden lg:block absolute top-[10%] right-[35%] text-red-500/15 blur-[2px]"
         >
           <FaJava className="w-16 h-16 md:w-24 md:h-24" />
         </motion.div>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-          className="absolute bottom-[10%] right-[40%] text-green-500/15 blur-[2px]"
+          className="hidden sm:block absolute bottom-[10%] right-[40%] text-green-500/15 blur-[2px]"
         >
-          <SiSpringboot className="w-20 h-20 md:w-28 md:h-28" />
+          <SiSpringboot className="w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -12, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-          className="absolute top-[40%] left-[30%] text-blue-400/15 blur-[3px]"
+          className="hidden lg:block absolute top-[40%] left-[30%] text-blue-400/15 blur-[3px]"
         >
           <SiPostgresql className="w-16 h-16 md:w-24 md:h-24" />
         </motion.div>
@@ -185,30 +185,30 @@ function HeroSection() {
         <motion.div
           animate={{ y: [0, 15, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.7 }}
-          className="absolute top-[25%] left-[45%] text-green-600/15 blur-[2px]"
+          className="hidden md:block absolute top-[25%] left-[45%] text-green-600/15 blur-[2px]"
         >
           <SiNodedotjs className="w-14 h-14 md:w-20 md:h-20" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -18, 0], rotate: [0, -5, 0] }}
           transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-          className="absolute bottom-[35%] right-[25%] text-blue-500/15 blur-[1px]"
+          className="hidden lg:block absolute bottom-[35%] right-[25%] text-blue-500/15 blur-[1px]"
         >
           <SiPython className="w-16 h-16 md:w-24 md:h-24" />
         </motion.div>
         <motion.div
           animate={{ y: [0, 12, 0] }}
           transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 2.1 }}
-          className="absolute top-[5%] left-[25%] text-blue-600/15 blur-[2px]"
+          className="hidden md:block absolute top-[5%] left-[25%] text-blue-600/15 blur-[2px]"
         >
           <SiMysql className="w-12 h-12 md:w-20 md:h-20" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.9 }}
-          className="absolute bottom-[5%] left-[40%] text-pink-500/15 blur-[3px]"
+          className="hidden sm:block absolute bottom-[5%] left-[40%] text-pink-500/15 blur-[3px]"
         >
-          <SiFigma className="w-16 h-16 md:w-24 md:h-24" />
+          <SiFigma className="w-14 h-14 sm:w-16 sm:h-16 md:w-24 md:h-24" />
         </motion.div>
       </div>
 
@@ -229,7 +229,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground text-center"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.1] mb-6 md:mb-8 text-foreground text-center"
         >
           <span className="relative">
             We Build <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary/90 to-secondary relative">
@@ -278,15 +278,15 @@ function PartnersSection() {
     <section className="py-12 border-y border-border/40 bg-card/10">
       <Container>
         <AnimateOnScroll>
-          <p className="text-center text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-8">
+          <p className="text-center text-xs md:text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-8">
             Built On Industry-Leading Infrastructure
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-70 grayscale transition-all duration-500">
-            <FaAws className="w-10 h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-[#FF9900] transition-colors cursor-pointer" title="AWS" />
-            <SiVercel className="w-10 h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-black dark:hover:text-white transition-colors cursor-pointer" title="Vercel" />
-            <SiNextdotjs className="w-10 h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-black dark:hover:text-white transition-colors cursor-pointer" title="Next.js" />
-            <SiPostgresql className="w-10 h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-[#4169E1] transition-colors cursor-pointer" title="PostgreSQL" />
-            <SiStripe className="w-10 h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-[#008CDD] transition-colors cursor-pointer" title="Stripe" />
+          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 md:gap-20 opacity-70 grayscale transition-all duration-500">
+            <FaAws className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-[#FF9900] transition-colors cursor-pointer" title="AWS" />
+            <SiVercel className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-black dark:hover:text-white transition-colors cursor-pointer" title="Vercel" />
+            <SiNextdotjs className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-black dark:hover:text-white transition-colors cursor-pointer" title="Next.js" />
+            <SiPostgresql className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-[#4169E1] transition-colors cursor-pointer" title="PostgreSQL" />
+            <SiStripe className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 hover:grayscale-0 hover:text-[#008CDD] transition-colors cursor-pointer" title="Stripe" />
           </div>
         </AnimateOnScroll>
       </Container>
@@ -499,7 +499,7 @@ function ContactCTASection() {
           <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
             Let's work together
           </span>
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
             Ready to Build Something{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               Great?

@@ -120,7 +120,7 @@ export default function ServicesPage() {
   return (
     <main>
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-24 overflow-hidden border-b border-border/30">
+      <section className="relative pt-24 lg:pt-36 pb-16 lg:pb-24 overflow-hidden border-b border-border/30 px-4 sm:px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
         
         {/* Premium Grid Overlay */}
@@ -148,7 +148,7 @@ export default function ServicesPage() {
               <span>Services</span>
             </div>
             <div className="max-w-4xl">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.1] mb-6 md:mb-8 text-foreground">
                 Our <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary/80 to-secondary relative">
                   Services
                   <span className="absolute -inset-x-4 -inset-y-2 bg-primary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
@@ -183,7 +183,7 @@ export default function ServicesPage() {
                       <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
                         <Icon className="w-7 h-7 text-primary" />
                       </div>
-                      <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4 tracking-tight">
+                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
                         {service.title}
                       </h2>
                       <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
@@ -251,10 +251,16 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <section className="py-20 relative overflow-hidden border-t border-border/30">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10" />
-        <Container className="relative z-10 text-center">
+        <Container className="relative z-10 text-center px-4">
           <AnimateOnScroll>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-5 tracking-tight">
-              Have a project in mind?
+            <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+              Let's get started
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
+              Ready to Build Something{" "}
+              <span className="block sm:inline bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Great?
+              </span>
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-lg mx-auto">
               Let's talk. We'll help you figure out the right approach and give you an honest estimate.

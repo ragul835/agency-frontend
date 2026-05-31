@@ -98,7 +98,7 @@ export function Navbar() {
                         key={link.href}
                         href={link.href}
                         className={cn(
-                          "text-2xl font-heading font-semibold transition-colors",
+                          "text-xl sm:text-2xl font-heading font-semibold transition-colors",
                           isActive ? "text-primary" : "text-foreground hover:text-primary"
                         )}
                       >

@@ -49,7 +49,7 @@ export default function AboutPage() {
   return (
     <main>
       {/* Hero Banner */}
-      <section className="relative pt-32 pb-24 overflow-hidden border-b border-border/30">
+      <section className="relative pt-24 lg:pt-36 pb-16 lg:pb-24 overflow-hidden border-b border-border/30 px-4 sm:px-6">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
         
         {/* Premium Grid Overlay */}
@@ -79,7 +79,7 @@ export default function AboutPage() {
               <span>About Us</span>
             </div>
             <div className="max-w-4xl">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.1] mb-6 md:mb-8 text-foreground">
                 About <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary/80 to-secondary relative">
                   Us
                   <span className="absolute -inset-x-4 -inset-y-2 bg-primary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
@@ -121,7 +121,7 @@ export default function AboutPage() {
 
             <AnimateOnScroll delay={0.2}>
               {/* Premium Floating Architecture Visual */}
-              <div className="relative h-96 lg:h-[500px] w-full flex items-center justify-center">
+              <div className="relative h-80 sm:h-96 lg:h-[500px] w-full flex items-center justify-center mt-10 lg:mt-0">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-secondary/10 rounded-full blur-3xl opacity-50" />
                 
                 {/* Main Central Card */}
@@ -168,7 +168,7 @@ export default function AboutPage() {
                 <motion.div 
                   animate={{ y: [0, 15, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute left-0 lg:left-4 z-10 w-48 h-56 rounded-2xl bg-card/60 backdrop-blur-md border border-border/40 shadow-xl p-5"
+                  className="hidden md:block absolute left-0 lg:left-4 z-10 w-48 h-56 rounded-2xl bg-card/60 backdrop-blur-md border border-border/40 shadow-xl p-5"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
@@ -187,7 +187,7 @@ export default function AboutPage() {
                 <motion.div 
                   animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                  className="absolute right-0 lg:right-4 z-30 w-52 h-48 rounded-2xl bg-card/60 backdrop-blur-md border border-border/40 shadow-xl p-5"
+                  className="hidden md:block absolute right-0 lg:right-4 z-30 w-52 h-48 rounded-2xl bg-card/60 backdrop-blur-md border border-border/40 shadow-xl p-5"
                 >
                   <div className="w-full h-24 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/10 mb-4 flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, hsl(217 91% 60% / 0.4) 1px, transparent 1px)", backgroundSize: "10px 10px" }} />
@@ -268,9 +268,9 @@ export default function AboutPage() {
 
         <Container className="relative z-10">
           <AnimateOnScroll>
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-foreground tracking-tight">
-                Ready to build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">extraordinary?</span>
+            <div className="max-w-3xl mx-auto text-center px-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-foreground tracking-tight leading-[1.15]">
+                Ready to build something <span className="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">extraordinary?</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
                 Let's discuss how our engineering team can help bring your vision to life. No strings attached, just an honest conversation about your product.
