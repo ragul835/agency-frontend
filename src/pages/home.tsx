@@ -115,11 +115,15 @@ function HeroSection() {
       {/* Dynamic Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
         {/* Massive glow */}
-        <div
+        <motion.div
+          animate={{ x: [0, 50, -50, 0], y: [0, -30, 30, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
           className="absolute top-[10%] w-[800px] h-[800px] rounded-full opacity-[0.15] blur-3xl"
           style={{ background: "radial-gradient(circle, hsl(217 91% 60%) 0%, transparent 60%)" }}
         />
-        <div
+        <motion.div
+          animate={{ x: [0, -60, 60, 0], y: [0, 40, -40, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           className="absolute bottom-0 w-[1000px] h-[400px] rounded-[100%] opacity-10 blur-3xl"
           style={{ background: "radial-gradient(ellipse at bottom, hsl(270 81% 60%) 0%, transparent 70%)" }}
         />
@@ -408,8 +412,10 @@ function ContactCTASection() {
           backgroundSize: "40px 40px",
         }}
       />
-      <div
-        className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full opacity-20"
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.3, 0.2] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full"
         style={{ background: "radial-gradient(circle, hsl(217 91% 60%) 0%, transparent 70%)" }}
       />
 

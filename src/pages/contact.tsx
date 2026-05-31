@@ -285,11 +285,15 @@ export default function ContactPage() {
         
         {/* Massive Glowing Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div
+          <motion.div
+            animate={{ x: [0, -30, 30, 0], y: [0, 20, -20, 0] }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full opacity-20 blur-3xl"
             style={{ background: "radial-gradient(circle, hsl(217 91% 60%) 0%, transparent 70%)" }}
           />
-          <div
+          <motion.div
+            animate={{ x: [0, 40, -40, 0], y: [0, -20, 20, 0] }}
+            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
             className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl"
             style={{ background: "radial-gradient(circle, hsl(221 83% 53%) 0%, transparent 70%)" }}
           />
@@ -351,7 +355,11 @@ export default function ContactPage() {
             {/* Contact Form */}
             <AnimateOnScroll className="lg:col-span-3">
               <div className="relative p-8 md:p-10 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-xl shadow-2xl overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
+                <motion.div 
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" 
+                />
                 <div className="relative z-10">
                   <h2 className="text-3xl font-heading font-extrabold text-foreground mb-3 tracking-tight">Send us a message</h2>
                   <p className="text-muted-foreground text-base mb-10 leading-relaxed max-w-md">

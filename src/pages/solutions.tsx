@@ -59,8 +59,10 @@ export default function SolutionsPage() {
 
         {/* Animated Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div
-            className="absolute top-[-20%] left-[10%] w-[500px] h-[500px] rounded-full opacity-20 blur-[100px]"
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[-20%] left-[10%] w-[500px] h-[500px] rounded-full blur-[100px]"
             style={{ background: "radial-gradient(circle, hsl(270 81% 60%) 0%, transparent 70%)" }}
           />
         </div>
@@ -92,8 +94,16 @@ export default function SolutionsPage() {
       {/* Process Section - Premium Redesign */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
-        <div className="absolute -left-40 top-40 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-60" />
-        <div className="absolute -right-40 bottom-40 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none opacity-60" />
+        <motion.div 
+          animate={{ x: [0, 40, -40, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -left-40 top-40 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-60" 
+        />
+        <motion.div 
+          animate={{ x: [0, -40, 40, 0] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute -right-40 bottom-40 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none opacity-60" 
+        />
         
         {/* Subtle grid pattern */}
         <div 
@@ -234,8 +244,10 @@ export default function SolutionsPage() {
             backgroundSize: "40px 40px",
           }}
         />
-        <div
-          className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full opacity-20"
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.3, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full"
           style={{ background: "radial-gradient(circle, hsl(217 91% 60%) 0%, transparent 70%)" }}
         />
 
