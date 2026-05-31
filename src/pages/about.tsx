@@ -123,7 +123,9 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-secondary/10 rounded-full blur-3xl opacity-50" />
                 
                 {/* Main Central Card */}
-                <div 
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="relative z-20 w-64 h-80 rounded-2xl bg-card/80 backdrop-blur-xl border border-border/60 shadow-2xl p-6 flex flex-col justify-between overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-2xl -mr-10 -mt-10" />
@@ -158,10 +160,12 @@ export default function AboutPage() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Floating Left Card */}
-                <div 
+                <motion.div 
+                  animate={{ y: [0, 15, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                   className="absolute left-0 lg:left-4 z-10 w-48 h-56 rounded-2xl bg-card/60 backdrop-blur-md border border-border/40 shadow-xl p-5"
                 >
                   <div className="flex items-center gap-3 mb-4">
@@ -175,10 +179,12 @@ export default function AboutPage() {
                       <div key={i} className={`h-1.5 rounded-full ${i % 2 === 0 ? 'bg-secondary/40 w-full' : 'bg-border/40 w-4/5'}`} />
                     ))}
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Floating Right Card */}
-                <div 
+                <motion.div 
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
                   className="absolute right-0 lg:right-4 z-30 w-52 h-48 rounded-2xl bg-card/60 backdrop-blur-md border border-border/40 shadow-xl p-5"
                 >
                   <div className="w-full h-24 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/10 mb-4 flex items-center justify-center relative overflow-hidden">
@@ -186,7 +192,7 @@ export default function AboutPage() {
                     <Target className="w-8 h-8 text-primary relative z-10" />
                   </div>
                   <div className="h-2 w-24 bg-border/60 rounded-full mx-auto" />
-                </div>
+                </motion.div>
                 
               </div>
             </AnimateOnScroll>

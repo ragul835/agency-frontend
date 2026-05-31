@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import {
   Mail, Phone, MapPin, Github, Linkedin, Twitter, ChevronRight, Send, Info, Plus, Minus
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -315,7 +316,9 @@ export default function ContactPage() {
               
               <div className="hidden lg:flex justify-end">
                 {/* Floating Decorative Contact Visual */}
-                <div 
+                <motion.div 
+                  animate={{ y: [0, -15, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                   className="relative w-80 h-80 rounded-3xl bg-card/40 border border-white/10 backdrop-blur-2xl shadow-2xl flex items-center justify-center overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
@@ -323,12 +326,14 @@ export default function ContactPage() {
                   <Mail className="w-24 h-24 text-primary relative z-10 drop-shadow-xl" />
                   
                   {/* Floating elements */}
-                  <div 
+                  <motion.div 
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                     className="absolute top-12 right-12 w-12 h-12 rounded-xl bg-secondary/20 border border-secondary/30 backdrop-blur-md flex items-center justify-center"
                   >
                     <Send className="w-5 h-5 text-secondary" />
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
           </AnimateOnScroll>

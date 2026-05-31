@@ -4,6 +4,7 @@ import {
   Code2, ShoppingCart, Layers, Palette, Search, ShoppingBag, Gauge,
   ChevronRight, CheckCircle
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimateOnScroll } from "@/components/shared/AnimateOnScroll";
@@ -205,7 +206,9 @@ export default function ServicesPage() {
                         <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-secondary/5 rounded-3xl blur-2xl" />
                         
                         {/* Interactive Stack */}
-                        <div
+                        <motion.div
+                          animate={{ y: [0, -10, 0] }}
+                          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
                           className="relative w-48 h-48"
                           style={{ transformStyle: "preserve-3d" }}
                         >
@@ -234,7 +237,7 @@ export default function ServicesPage() {
                               <div className="h-1.5 w-1/2 mx-auto bg-primary/20 rounded-full" />
                             </div>
                           </div>
-                        </div>
+                        </motion.div>
                       </div>
                     </div>
                   </div>

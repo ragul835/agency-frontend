@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { ChevronRight, Search, PenTool, Code2, Rocket, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
@@ -134,7 +135,9 @@ export default function SolutionsPage() {
                         {step.step}
                       </span>
                       
-                      <div
+                      <motion.div
+                        animate={{ y: [0, isEven ? -10 : 10, 0] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
                         className="relative w-28 h-28 md:w-32 md:h-32 rounded-[2rem] bg-card/60 backdrop-blur-xl border border-border/50 shadow-2xl flex items-center justify-center overflow-hidden group"
                       >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -144,7 +147,7 @@ export default function SolutionsPage() {
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                           <div className="w-16 h-16 bg-primary/20 blur-xl rounded-full" />
                         </div>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
 
