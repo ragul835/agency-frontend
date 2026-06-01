@@ -85,7 +85,7 @@ export default function AboutPage() {
                   <span className="absolute -inset-x-4 -inset-y-2 bg-primary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed border-l-4 border-primary/30 pl-6 max-w-2xl">
+              <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed border-l-4 border-primary/40 pl-6 max-w-2xl">
                 An elite, focused engineering team that punches well above its weight class.
               </p>
             </div>
@@ -94,7 +94,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section */}
-      <section className="py-16">
+      <section id="mission" className="py-16 md:py-24 scroll-mt-24">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateOnScroll>
@@ -203,7 +203,7 @@ export default function AboutPage() {
       </section>
 
       {/* Engineering Philosophy */}
-      <section className="py-20 relative">
+      <section id="philosophy" className="py-20 md:py-24 relative scroll-mt-24">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent pointer-events-none" />
         <Container>
           <AnimateOnScroll>

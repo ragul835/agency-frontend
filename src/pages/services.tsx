@@ -165,7 +165,7 @@ export default function ServicesPage() {
       {/* Services Detail */}
       <section className="py-16">
         <Container>
-          <div className="space-y-20">
+          <div className="space-y-32 md:space-y-40">
             {servicesList.map((service, i) => {
               const Icon = service.icon;
               const isEven = i % 2 === 0;

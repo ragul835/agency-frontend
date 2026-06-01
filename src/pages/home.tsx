@@ -233,7 +233,7 @@ function HeroSection() {
         >
           <span className="relative">
             We Build <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary/90 to-secondary relative">
-              SaaS <br className="hidden md:block" />& Web Apps
+              SaaS <br className="hidden lg:block" />& Web Apps
               <span className="absolute -inset-x-4 -inset-y-2 bg-primary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
             </span>
           </span>
