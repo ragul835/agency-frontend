@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import {
   Mail, Phone, MapPin, Github, Linkedin, Twitter, ChevronRight, Send, Info, Plus, Minus
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -46,8 +45,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "ragulsiva@zohomail.in",
-    href: "mailto:ragulsiva@zohomail.in",
+    value: "contact@nexcore.com",
+    href: "mailto:contact@nexcore.com",
   },
   {
     icon: Phone,
@@ -280,20 +279,16 @@ export default function ContactPage() {
   return (
     <main>
       {/* Hero Banner */}
-      <section className="relative py-24 lg:py-32 overflow-hidden border-b border-border/30 px-4 sm:px-6">
+      <section className="relative py-32 overflow-hidden border-b border-border/30">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
         
         {/* Massive Glowing Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            animate={{ x: [0, -30, 30, 0], y: [0, 20, -20, 0] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          <div
             className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full opacity-20 blur-3xl"
             style={{ background: "radial-gradient(circle, hsl(217 91% 60%) 0%, transparent 70%)" }}
           />
-          <motion.div
-            animate={{ x: [0, 40, -40, 0], y: [0, -20, 20, 0] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+          <div
             className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl"
             style={{ background: "radial-gradient(circle, hsl(221 83% 53%) 0%, transparent 70%)" }}
           />
@@ -308,7 +303,7 @@ export default function ContactPage() {
                   We are currently taking new clients
                 </div>
                 
-                <h1 className="text-5xl sm:text-6xl md:text-8xl font-heading font-bold text-foreground tracking-tight leading-tight mb-6 md:mb-8">
+                <h1 className="text-6xl md:text-8xl font-heading font-bold text-foreground tracking-tight leading-tight mb-8">
                   Let's Build <br />
                   <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Together.</span>
                 </h1>
@@ -320,9 +315,7 @@ export default function ContactPage() {
               
               <div className="hidden lg:flex justify-end">
                 {/* Floating Decorative Contact Visual */}
-                <motion.div 
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                <div 
                   className="relative w-80 h-80 rounded-3xl bg-card/40 border border-white/10 backdrop-blur-2xl shadow-2xl flex items-center justify-center overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
@@ -330,14 +323,12 @@ export default function ContactPage() {
                   <Mail className="w-24 h-24 text-primary relative z-10 drop-shadow-xl" />
                   
                   {/* Floating elements */}
-                  <motion.div 
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  <div 
                     className="absolute top-12 right-12 w-12 h-12 rounded-xl bg-secondary/20 border border-secondary/30 backdrop-blur-md flex items-center justify-center"
                   >
                     <Send className="w-5 h-5 text-secondary" />
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </div>
             </div>
           </AnimateOnScroll>
@@ -345,7 +336,7 @@ export default function ContactPage() {
       </section>
 
       {/* Two-column */}
-      <section id="contact-form" className="relative py-16 lg:py-24 scroll-mt-24 overflow-hidden px-4 sm:px-6">
+      <section id="contact-form" className="relative py-24 scroll-mt-24 overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,hsl(var(--primary)/0.05),transparent_50%)] pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,hsl(var(--secondary)/0.05),transparent_50%)] pointer-events-none" />
@@ -354,15 +345,11 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24">
             {/* Contact Form */}
             <AnimateOnScroll className="lg:col-span-3">
-              <div className="relative p-6 sm:p-8 md:p-10 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-xl shadow-2xl overflow-hidden">
-                <motion.div 
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" 
-                />
+              <div className="relative p-8 md:p-10 rounded-3xl border border-border/40 bg-card/40 backdrop-blur-xl shadow-2xl overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
                 <div className="relative z-10">
-                  <h2 className="text-2xl sm:text-3xl font-heading font-extrabold text-foreground mb-3 tracking-tight">Send us a message</h2>
-                  <p className="text-muted-foreground text-sm sm:text-base mb-8 sm:mb-10 leading-relaxed max-w-md">
+                  <h2 className="text-3xl font-heading font-extrabold text-foreground mb-3 tracking-tight">Send us a message</h2>
+                  <p className="text-muted-foreground text-base mb-10 leading-relaxed max-w-md">
                     Fill out the form below and our team will get back to you within 24 hours to discuss your vision.
                   </p>
 

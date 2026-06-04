@@ -4,7 +4,6 @@ import {
   Code2, ShoppingCart, Layers, Palette, Search, ShoppingBag, Gauge,
   ChevronRight, CheckCircle
 } from "lucide-react";
-import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimateOnScroll } from "@/components/shared/AnimateOnScroll";
@@ -14,87 +13,59 @@ import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 const servicesList = [
   {
     icon: Code2,
-    title: "Full-Stack Development",
-    description: "We architect and build complete web applications — from pixel-perfect frontends to battle-tested APIs and cloud infrastructure. Our full-stack practice spans the entire delivery lifecycle, with no handoffs between siloed teams.",
-    features: [
-      "Frontend Development (React, Next.js, TypeScript)",
-      "Backend Architecture & REST APIs",
-      "Authentication Systems & Security",
-      "Cloud Deployment & Infrastructure",
-      "Performance Optimization",
-    ],
+    title: "Web Development",
+    whatItIs: "Custom business websites engineered for performance, security, and scalability.",
+    benefits: "Establishes a strong digital presence, improves user engagement, and drives conversions.",
+    technologiesUsed: "React, Next.js, HTML/CSS, TypeScript",
+    whoNeedsIt: "Businesses looking for a professional, high-performance website.",
   },
   {
     icon: ShoppingCart,
     title: "E-Commerce Development",
-    description: "We build online stores engineered for conversion. Every UX decision is backed by commerce best practices — from frictionless checkout flows to SEO-first architecture that drives organic discovery.",
-    features: [
-      "Custom E-Commerce Websites",
-      "Payment Gateway Integration (Stripe, PayPal)",
-      "Mobile-Responsive Storefronts",
-      "SEO-Friendly Architecture",
-      "Performance & Core Web Vitals",
-    ],
+    whatItIs: "High-converting online stores with seamless payment flows and mobile-first design.",
+    benefits: "Increases sales, provides a smooth shopping experience, and scales with your business.",
+    technologiesUsed: "Next.js, Node.js, Stripe, PostgreSQL",
+    whoNeedsIt: "Retailers and brands wanting to sell products online efficiently.",
   },
   {
     icon: Layers,
+    title: "Full Stack Development",
+    whatItIs: "End-to-end web applications built with modern frameworks and battle-tested architectures.",
+    benefits: "Provides a complete, robust solution with seamless frontend and backend integration.",
+    technologiesUsed: "React, Node.js, PostgreSQL, TypeScript",
+    whoNeedsIt: "Companies needing complex, custom web applications.",
+  },
+  {
+    icon: Gauge,
     title: "SaaS Development",
-    description: "Building a SaaS product is a long game. We set you up to win it — with multi-tenant architecture, scalable subscription billing, and dashboards your users will actually want to open.",
-    features: [
-      "SaaS Platform Architecture",
-      "Subscription & Billing Systems",
-      "Multi-Tenant Infrastructure",
-      "Dashboard Applications",
-      "Third-Party API Integrations",
-    ],
+    whatItIs: "Multi-tenant platforms and subscription systems built to scale from day one.",
+    benefits: "Creates reliable recurring revenue streams with scalable infrastructure.",
+    technologiesUsed: "Next.js, NestJS, AWS, MongoDB",
+    whoNeedsIt: "Startups and enterprises building subscription-based software.",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "We design interfaces that feel effortless — because the hard work happened before the user ever sees a pixel. We combine aesthetic precision with a deep understanding of how people actually use software.",
-    features: [
-      "Responsive Interface Design",
-      "Modern User Experience Flows",
-      "Accessibility Compliance (WCAG)",
-      "Conversion-Focused UI Patterns",
-      "Design System Creation",
-    ],
+    whatItIs: "Interfaces that are as beautiful as they are intuitive — designed to convert.",
+    benefits: "Enhances user satisfaction, reduces bounce rates, and strengthens brand identity.",
+    technologiesUsed: "Figma, Framer, Tailwind CSS",
+    whoNeedsIt: "Any product that needs a modern, user-friendly interface.",
   },
   {
     icon: Search,
-    title: "SEO Services",
-    description: "We approach SEO like engineers — systematic, measurable, and rooted in data. From Core Web Vitals to structured data, we make sure search engines find you and trust you.",
-    features: [
-      "Technical SEO Audits & Fixes",
-      "On-Page Content Optimization",
-      "Off-Page SEO & Link Strategy",
-      "Keyword Research & Mapping",
-      "Core Web Vitals Optimization",
-    ],
+    title: "SEO Optimization",
+    whatItIs: "Technical and on-page SEO that drives qualified traffic and measurable growth.",
+    benefits: "Improves search engine rankings, increases organic traffic, and lowers acquisition costs.",
+    technologiesUsed: "Google Search Console, Lighthouse, Next.js SEO",
+    whoNeedsIt: "Businesses wanting better visibility on Google.",
   },
   {
     icon: ShoppingBag,
     title: "Shopify Development",
-    description: "We build Shopify stores that convert at a higher rate than the generic out-of-the-box experience. Custom themes, optimized apps, and mobile-first design that turns visitors into customers.",
-    features: [
-      "Custom Shopify Store Setup",
-      "Theme Development & Customization",
-      "App Integrations & Marketplace",
-      "Mobile-First Storefronts",
-      "Shopify Plus Expertise",
-    ],
-  },
-  {
-    icon: Gauge,
-    title: "E-Commerce Optimization",
-    description: "Existing store underperforming? We audit, diagnose, and fix the bottlenecks — whether it's page speed, checkout friction, or mobile performance — turning your existing traffic into revenue.",
-    features: [
-      "Page Speed & Load Time Optimization",
-      "Conversion Rate Optimization (CRO)",
-      "Core Web Vitals Improvement",
-      "Image & Asset Optimization",
-      "Mobile Performance Audits",
-    ],
+    whatItIs: "Custom Shopify themes and apps that turn browsers into buyers.",
+    benefits: "Provides a tailored shopping experience on a robust e-commerce platform.",
+    technologiesUsed: "Shopify Liquid, React, Node.js",
+    whoNeedsIt: "Merchants looking for customized Shopify stores.",
   },
 ];
 
@@ -120,7 +91,7 @@ export default function ServicesPage() {
   return (
     <main>
       {/* Hero Banner */}
-      <section className="relative pt-24 lg:pt-36 pb-16 lg:pb-24 overflow-hidden border-b border-border/30 px-4 sm:px-6">
+      <section className="relative pt-32 pb-24 overflow-hidden border-b border-border/30">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
         
         {/* Premium Grid Overlay */}
@@ -148,7 +119,7 @@ export default function ServicesPage() {
               <span>Services</span>
             </div>
             <div className="max-w-4xl">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.1] mb-6 md:mb-8 text-foreground">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground">
                 Our <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary/80 to-secondary relative">
                   Services
                   <span className="absolute -inset-x-4 -inset-y-2 bg-primary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
@@ -165,7 +136,7 @@ export default function ServicesPage() {
       {/* Services Detail */}
       <section className="py-16">
         <Container>
-          <div className="space-y-32 md:space-y-40">
+          <div className="space-y-20">
             {servicesList.map((service, i) => {
               const Icon = service.icon;
               const isEven = i % 2 === 0;
@@ -183,20 +154,27 @@ export default function ServicesPage() {
                       <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
                         <Icon className="w-7 h-7 text-primary" />
                       </div>
-                      <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
+                      <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4 tracking-tight">
                         {service.title}
                       </h2>
-                      <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
-                        {service.description}
-                      </p>
-                      <ul className="space-y-3">
-                        {service.features.map((feature) => (
-                          <li key={feature} className="flex items-center gap-3">
-                            <CheckCircle className="w-5 h-5 text-primary shrink-0" />
-                            <span className="text-foreground text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="space-y-4">
+                        <div>
+                          <h3 className="font-semibold text-foreground mb-1">What It Is</h3>
+                          <p className="text-muted-foreground text-sm">{service.whatItIs}</p>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-foreground mb-1">Benefits</h3>
+                          <p className="text-muted-foreground text-sm">{service.benefits}</p>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-foreground mb-1">Technologies Used</h3>
+                          <p className="text-muted-foreground text-sm">{service.technologiesUsed}</p>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-foreground mb-1">Who Needs It</h3>
+                          <p className="text-muted-foreground text-sm">{service.whoNeedsIt}</p>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Decorative side */}
@@ -206,9 +184,7 @@ export default function ServicesPage() {
                         <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-secondary/5 rounded-3xl blur-2xl" />
                         
                         {/* Interactive Stack */}
-                        <motion.div
-                          animate={{ y: [0, -10, 0] }}
-                          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
+                        <div
                           className="relative w-48 h-48"
                           style={{ transformStyle: "preserve-3d" }}
                         >
@@ -237,7 +213,7 @@ export default function ServicesPage() {
                               <div className="h-1.5 w-1/2 mx-auto bg-primary/20 rounded-full" />
                             </div>
                           </div>
-                        </motion.div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -251,16 +227,10 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <section className="py-20 relative overflow-hidden border-t border-border/30">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10" />
-        <Container className="relative z-10 text-center px-4">
+        <Container className="relative z-10 text-center">
           <AnimateOnScroll>
-            <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
-              Let's get started
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
-              Ready to Build Something{" "}
-              <span className="block sm:inline bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Great?
-              </span>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-5 tracking-tight">
+              Have a project in mind?
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-lg mx-auto">
               Let's talk. We'll help you figure out the right approach and give you an honest estimate.
