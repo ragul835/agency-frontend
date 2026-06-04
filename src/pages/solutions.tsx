@@ -1,6 +1,5 @@
 import { Link } from "wouter";
-import { ChevronRight, Search, PenTool, Code2, Rocket, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { ChevronRight, Search, Map, PenTool, Code2, CheckCircle, Rocket, HeartHandshake, ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
@@ -17,22 +16,40 @@ const steps = [
     description: "We audit your requirements, constraints, and goals. No assumptions — just deep listening and sharp questions.",
   },
   {
-    icon: PenTool,
+    icon: Map,
     step: "02",
+    title: "Planning",
+    description: "Creating a detailed roadmap and project architecture to ensure smooth execution from start to finish.",
+  },
+  {
+    icon: PenTool,
+    step: "03",
     title: "Design",
     description: "Architecture, wireframes, and a clear technical spec. You approve before a single line of production code is written.",
   },
   {
     icon: Code2,
-    step: "03",
+    step: "04",
     title: "Development",
     description: "Iterative sprints with weekly demos. You see real progress, real software — not slide decks.",
   },
   {
+    icon: CheckCircle,
+    step: "05",
+    title: "Testing",
+    description: "Rigorous QA and automated testing to ensure everything works perfectly across all devices and scenarios.",
+  },
+  {
     icon: Rocket,
-    step: "04",
+    step: "06",
     title: "Deployment",
-    description: "Zero-downtime launches, monitoring setup, and a 30-day post-launch support window. We ship — and we stay.",
+    description: "Zero-downtime launches, monitoring setup, and a smooth transition to the live environment.",
+  },
+  {
+    icon: HeartHandshake,
+    step: "07",
+    title: "Support",
+    description: "Providing ongoing maintenance, monitoring, and updates. We ship — and we stay to support your growth.",
   },
 ];
 
@@ -45,7 +62,7 @@ export default function SolutionsPage() {
   return (
     <main>
       {/* Hero Banner */}
-      <section className="relative pt-24 lg:pt-32 pb-16 lg:pb-24 overflow-hidden border-b border-border/30 px-4 sm:px-6">
+      <section className="relative pt-32 pb-24 overflow-hidden border-b border-border/30">
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/5 via-transparent to-background" />
         
         {/* Premium Grid Overlay */}
@@ -59,10 +76,8 @@ export default function SolutionsPage() {
 
         {/* Animated Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[-20%] left-[10%] w-[500px] h-[500px] rounded-full blur-[100px]"
+          <div
+            className="absolute top-[-20%] left-[10%] w-[500px] h-[500px] rounded-full opacity-20 blur-[100px]"
             style={{ background: "radial-gradient(circle, hsl(270 81% 60%) 0%, transparent 70%)" }}
           />
         </div>
@@ -75,7 +90,7 @@ export default function SolutionsPage() {
               <span>Solutions</span>
             </div>
             <div className="max-w-4xl">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.1] mb-6 md:mb-8 text-foreground">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground">
                 Our <span className="text-transparent bg-clip-text bg-gradient-to-br from-secondary via-primary/80 to-primary relative">
                   Capabilities
                   <span className="absolute -inset-x-4 -inset-y-2 bg-secondary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
@@ -94,16 +109,8 @@ export default function SolutionsPage() {
       {/* Process Section - Premium Redesign */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
-        <motion.div 
-          animate={{ x: [0, 40, -40, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -left-40 top-40 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-60" 
-        />
-        <motion.div 
-          animate={{ x: [0, -40, 40, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -right-40 bottom-40 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none opacity-60" 
-        />
+        <div className="absolute -left-40 top-40 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-60" />
+        <div className="absolute -right-40 bottom-40 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none opacity-60" />
         
         {/* Subtle grid pattern */}
         <div 
@@ -141,13 +148,11 @@ export default function SolutionsPage() {
                   <div className={`w-full md:w-1/2 flex justify-center relative order-1 ${isEven ? 'md:justify-start md:order-2' : 'md:justify-end'}`}>
                     <div className="relative">
                       {/* Massive background number */}
-                      <span className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10rem] lg:text-[14rem] font-black text-primary/5 select-none pointer-events-none font-heading">
+                      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[12rem] md:text-[16rem] font-black text-primary/5 select-none pointer-events-none font-heading">
                         {step.step}
                       </span>
                       
-                      <motion.div
-                        animate={{ y: [0, isEven ? -10 : 10, 0] }}
-                        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                      <div
                         className="relative w-28 h-28 md:w-32 md:h-32 rounded-[2rem] bg-card/60 backdrop-blur-xl border border-border/50 shadow-2xl flex items-center justify-center overflow-hidden group"
                       >
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -157,7 +162,7 @@ export default function SolutionsPage() {
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                           <div className="w-16 h-16 bg-primary/20 blur-xl rounded-full" />
                         </div>
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
 
@@ -188,7 +193,7 @@ export default function SolutionsPage() {
               <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
                 Domain Expertise
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight">
                 Industries We Serve
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -217,17 +222,14 @@ export default function SolutionsPage() {
               }
             ].map((industry) => (
               <AnimateOnScroll key={industry.name}>
-                <motion.div 
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  className="p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-colors group h-full"
-                >
+                <div className="p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-colors group h-full">
                   <h3 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
                     {industry.name}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {industry.description}
                   </p>
-                </motion.div>
+                </div>
               </AnimateOnScroll>
             ))}
           </div>
@@ -244,10 +246,8 @@ export default function SolutionsPage() {
             backgroundSize: "40px 40px",
           }}
         />
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.3, 0.2] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full"
+        <div
+          className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full opacity-20"
           style={{ background: "radial-gradient(circle, hsl(217 91% 60%) 0%, transparent 70%)" }}
         />
 
@@ -256,9 +256,9 @@ export default function SolutionsPage() {
             <span className="inline-block px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
               Ready to start?
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight leading-[1.15]">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight">
               Let's Build Your Next{" "}
-              <span className="block sm:inline bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Success Story
               </span>
             </h2>
@@ -270,7 +270,7 @@ export default function SolutionsPage() {
                 Start a Conversation <ArrowRight className="w-5 h-5 ml-2 inline-block" />
               </GradientButton>
               <a
-                href="mailto:ragulsiva@zohomail.in"
+                href="mailto:contact@nexcore.com"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 or email us directly →
