@@ -1,5 +1,5 @@
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, LazyMotion, domAnimation } from "framer-motion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -52,30 +52,32 @@ function Router() {
   const [location] = useLocation();
   
   return (
-    <Layout>
-      <RouteLogger />
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={location}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="flex-1 flex flex-col"
-        >
-          <Suspense fallback={<LoadingFallback />}>
-            <Switch>
-              <Route path="/" component={HomePage} />
-              <Route path="/about" component={AboutPage} />
-              <Route path="/services" component={ServicesPage} />
-              <Route path="/solutions" component={SolutionsPage} />
-              <Route path="/contact" component={ContactPage} />
-              <Route component={NotFound} />
-            </Switch>
-          </Suspense>
-        </motion.div>
-      </AnimatePresence>
-    </Layout>
+    <LazyMotion features={domAnimation} strict>
+      <Layout>
+        <RouteLogger />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="flex-1 flex flex-col"
+          >
+            <Suspense fallback={<LoadingFallback />}>
+              <Switch>
+                <Route path="/" component={HomePage} />
+                <Route path="/about" component={AboutPage} />
+                <Route path="/services" component={ServicesPage} />
+                <Route path="/solutions" component={SolutionsPage} />
+                <Route path="/contact" component={ContactPage} />
+                <Route component={NotFound} />
+              </Switch>
+            </Suspense>
+          </motion.div>
+        </AnimatePresence>
+      </Layout>
+    </LazyMotion>
   );
 }
 

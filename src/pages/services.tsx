@@ -14,65 +14,73 @@ const servicesList = [
   {
     icon: Code2,
     title: "Web Development",
-    whatItIs: "Custom business websites engineered for performance, security, and scalability.",
+    whatItIs: "Custom websites engineered for performance, responsiveness, SEO, and business growth.",
     benefits: "Establishes a strong digital presence, improves user engagement, and drives conversions.",
-    technologiesUsed: "React, Next.js, HTML/CSS, TypeScript",
+    technologiesUsed: "React, Next.js, TypeScript, Tailwind CSS",
     whoNeedsIt: "Businesses looking for a professional, high-performance website.",
   },
   {
     icon: ShoppingCart,
     title: "E-Commerce Development",
-    whatItIs: "High-converting online stores with seamless payment flows and mobile-first design.",
+    whatItIs: "Scalable online stores designed to improve customer experience and increase conversions.",
     benefits: "Increases sales, provides a smooth shopping experience, and scales with your business.",
     technologiesUsed: "Next.js, Node.js, Stripe, PostgreSQL",
     whoNeedsIt: "Retailers and brands wanting to sell products online efficiently.",
   },
   {
     icon: Layers,
-    title: "Full Stack Development",
-    whatItIs: "End-to-end web applications built with modern frameworks and battle-tested architectures.",
+    title: "Full-Stack Development",
+    whatItIs: "Modern frontend and backend systems built for scalability, maintainability, and security.",
     benefits: "Provides a complete, robust solution with seamless frontend and backend integration.",
-    technologiesUsed: "React, Node.js, PostgreSQL, TypeScript",
+    technologiesUsed: "React, Node.js, NestJS, PostgreSQL, TypeScript",
     whoNeedsIt: "Companies needing complex, custom web applications.",
   },
   {
     icon: Gauge,
     title: "SaaS Development",
-    whatItIs: "Multi-tenant platforms and subscription systems built to scale from day one.",
+    whatItIs: "Subscription-based software platforms designed to support long-term growth and business operations.",
     benefits: "Creates reliable recurring revenue streams with scalable infrastructure.",
-    technologiesUsed: "Next.js, NestJS, AWS, MongoDB",
+    technologiesUsed: "Next.js, NestJS, PostgreSQL, Stripe",
     whoNeedsIt: "Startups and enterprises building subscription-based software.",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    whatItIs: "Interfaces that are as beautiful as they are intuitive — designed to convert.",
+    whatItIs: "User-focused digital experiences that improve engagement, usability, and conversions.",
     benefits: "Enhances user satisfaction, reduces bounce rates, and strengthens brand identity.",
-    technologiesUsed: "Figma, Framer, Tailwind CSS",
+    technologiesUsed: "Figma, Framer Motion, Tailwind CSS",
     whoNeedsIt: "Any product that needs a modern, user-friendly interface.",
   },
   {
     icon: Search,
-    title: "SEO Optimization",
-    whatItIs: "Technical and on-page SEO that drives qualified traffic and measurable growth.",
+    title: "SEO Services",
+    whatItIs: "Technical and on-page optimization strategies that improve visibility and search rankings.",
     benefits: "Improves search engine rankings, increases organic traffic, and lowers acquisition costs.",
     technologiesUsed: "Google Search Console, Lighthouse, Next.js SEO",
-    whoNeedsIt: "Businesses wanting better visibility on Google.",
+    whoNeedsIt: "Businesses wanting better visibility on search engines.",
   },
   {
     icon: ShoppingBag,
     title: "Shopify Development",
-    whatItIs: "Custom Shopify themes and apps that turn browsers into buyers.",
+    whatItIs: "Custom Shopify stores, theme customization, integrations, and performance optimization.",
     benefits: "Provides a tailored shopping experience on a robust e-commerce platform.",
     technologiesUsed: "Shopify Liquid, React, Node.js",
     whoNeedsIt: "Merchants looking for customized Shopify stores.",
+  },
+  {
+    icon: CheckCircle,
+    title: "E-Commerce Optimization",
+    whatItIs: "Performance improvements, Core Web Vitals optimization, conversion enhancements, and speed optimization.",
+    benefits: "Faster load times, better search rankings, and higher conversion rates.",
+    technologiesUsed: "Lighthouse, Next.js, Vercel, Analytics",
+    whoNeedsIt: "E-commerce businesses looking to improve performance and sales.",
   },
 ];
 
 export default function ServicesPage() {
   useDocumentTitle(
     "Services | NexCore",
-    "Full-stack development, SaaS platforms, e-commerce stores, UI/UX design, SEO services, and Shopify development — everything under one roof."
+    "Web development, e-commerce, SaaS platforms, UI/UX design, SEO services, Shopify development, and e-commerce optimization — solutions built around your business goals."
   );
 
   useEffect(() => {
@@ -126,7 +134,7 @@ export default function ServicesPage() {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed border-l-4 border-primary/30 pl-6 max-w-2xl">
-                Everything you need to build, launch, and scale a digital product — under one roof.
+                Everything you need to build, launch, and scale your digital product.
               </p>
             </div>
           </AnimateOnScroll>
@@ -230,13 +238,13 @@ export default function ServicesPage() {
         <Container className="relative z-10 text-center">
           <AnimateOnScroll>
             <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-5 tracking-tight">
-              Have a project in mind?
+              Ready to start your project?
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-lg mx-auto">
-              Let's talk. We'll help you figure out the right approach and give you an honest estimate.
+              Tell us about your requirements and we'll get back to you within 24 hours with a clear plan.
             </p>
             <GradientButton href="/contact#contact-form" className="px-12 py-4 text-base">
-              Start a Conversation
+              Start Your Project
             </GradientButton>
           </AnimateOnScroll>
         </Container>

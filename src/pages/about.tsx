@@ -8,35 +8,35 @@ import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScro
 import { GradientButton } from "@/components/shared/GradientButton";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
-import { TechStackSection } from "./home";
+
 
 const coreValues = [
-  "Quality in every line of code.",
+  "Performance and scalability in every solution.",
   "Transparency in communication.",
-  "Innovation in our solutions.",
-  "Reliability in delivery.",
+  "Modern technology and clean engineering.",
+  "Reliability and long-term support.",
 ];
 
 const valueCards = [
   {
     icon: Shield,
     title: "Quality",
-    description: "Code is read far more often than it's written. We optimize for clarity, consistency, and long-term team velocity.",
+    description: "Every solution is built with clean code, best practices, and a focus on long-term maintainability.",
   },
   {
     icon: Target,
     title: "Transparency",
-    description: "Clear communication, regular updates, and honest assessments without runaround.",
+    description: "Clear timelines, regular updates, and complete project visibility throughout the development process.",
   },
   {
     icon: Zap,
     title: "Innovation",
-    description: "We use modern tools and battle-tested architectures to build solutions that scale.",
+    description: "We use modern frameworks and industry-standard tools to build solutions designed for performance and growth.",
   },
   {
     icon: CheckCircle,
     title: "Reliability",
-    description: "We ship working products, handle DevOps efficiently, and provide ongoing support.",
+    description: "We deliver on time, provide ongoing support, and ensure your digital products run smoothly after launch.",
   },
 ];
 
@@ -45,7 +45,7 @@ const valueCards = [
 export default function AboutPage() {
   useDocumentTitle(
     "About Us | NexCore",
-    "An elite, focused engineering team that punches above its weight class. Learn about our mission, values, and engineering philosophy."
+    "NexCore is a technology partner for modern businesses. We help startups and growing organizations transform ideas into reliable digital products."
   );
 
   return (
@@ -86,7 +86,7 @@ export default function AboutPage() {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed border-l-4 border-primary/30 pl-6 max-w-2xl">
-                An elite, focused engineering team that punches well above its weight class.
+                Your technology partner for building reliable, scalable digital solutions.
               </p>
             </div>
           </AnimateOnScroll>
@@ -103,10 +103,10 @@ export default function AboutPage() {
                   Our Mission
                 </span>
                 <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground tracking-tight mb-6">
-                  Lean engineering for businesses that move fast
+                  Helping businesses build reliable digital products
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
-                  We believe great software is the result of clear thinking, disciplined execution, and an obsessive focus on what actually matters. We're not here to build monuments — we're here to ship products that work, products that scale, and products that your customers love.
+                  We combine modern technology, clean engineering, and business-focused thinking to deliver digital products that perform, scale, and last.
                 </p>
                 <ul className="space-y-4">
                   {coreValues.map((value) => (
@@ -205,10 +205,10 @@ export default function AboutPage() {
                 Our Vision
               </span>
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground tracking-tight mb-6">
-                To be the most trusted engineering partner globally
+                To be a trusted technology partner for modern businesses
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
-                We envision a future where businesses of all sizes can access premium software engineering without the overhead of building massive in-house teams. By focusing on scalable architectures, stunning designs, and modern performance standards, we empower companies to turn their visions into reality smoothly and efficiently.
+                We help businesses access reliable software engineering without the overhead of large in-house teams. Scalable architectures, modern designs, and performance-first development.
               </p>
             </div>
           </AnimateOnScroll>
@@ -254,11 +254,55 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Technologies Section */}
-      <TechStackSection />
+      {/* Approach Section */}
+      <section className="py-24 relative bg-card/5 border-y border-border/30">
+        <Container>
+          <AnimateOnScroll>
+            <div className="text-center mb-16">
+              <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
+                How We Work
+              </span>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight">
+                Our Approach
+              </h2>
+            </div>
+          </AnimateOnScroll>
 
-
-
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Discovery & Strategy",
+                description: "We start by deeply understanding your business goals, target audience, and technical requirements to build a solid foundation.",
+              },
+              {
+                step: "02",
+                title: "Engineering & Development",
+                description: "Using modern technologies and clean code practices, we build scalable, secure, and high-performing digital solutions.",
+              },
+              {
+                step: "03",
+                title: "Launch & Scale",
+                description: "We ensure a smooth deployment, provide comprehensive training, and offer ongoing support to help your product grow.",
+              },
+            ].map((item, i) => (
+              <AnimateOnScroll key={item.step} delay={i * 0.1}>
+                <div className="p-8 rounded-2xl bg-background border border-border/50 hover:border-primary/30 transition-colors h-full relative overflow-hidden group">
+                  <div className="text-5xl font-heading font-black text-primary/10 absolute -top-4 -right-4 group-hover:text-primary/20 transition-colors">
+                    {item.step}
+                  </div>
+                  <h3 className="text-xl font-heading font-bold text-foreground mb-4 mt-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </Container>
+      </section>
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden border-t border-border/20">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-primary/10 to-background pointer-events-none" />
@@ -277,13 +321,13 @@ export default function AboutPage() {
           <AnimateOnScroll>
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-foreground tracking-tight">
-                Ready to build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">extraordinary?</span>
+                Ready to build your next <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">digital product?</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-                Let's discuss how our engineering team can help bring your vision to life. No strings attached, just an honest conversation about your product.
+                Let’s discuss how we can help bring your vision to life.
               </p>
               <GradientButton href="/contact#contact-form" className="px-12 py-5 text-lg font-semibold shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] transition-all">
-                Work With Us
+                Start Your Project
               </GradientButton>
             </div>
           </AnimateOnScroll>

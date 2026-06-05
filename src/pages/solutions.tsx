@@ -185,19 +185,18 @@ export default function SolutionsPage() {
         </Container>
       </section>
 
-      {/* Industries Section */}
       <section className="py-24 relative bg-muted/30 border-y border-border/30">
         <Container>
           <AnimateOnScroll>
             <div className="text-center mb-16">
               <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
-                Domain Expertise
+                Who We Work With
               </span>
               <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight">
                 Industries We Serve
               </h2>
               <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                We apply core software engineering principles across diverse verticals, solving domain-specific challenges with universal technical excellence.
+                We build digital solutions for businesses across diverse industries, solving domain-specific challenges with modern technology and clean engineering.
               </p>
             </div>
           </AnimateOnScroll>
@@ -206,19 +205,19 @@ export default function SolutionsPage() {
             {[
               {
                 name: "SaaS & Startups",
-                description: "Rapid iteration, multi-tenant architectures, and scalable billing systems built for exponential user growth.",
+                description: "Scalable platforms, subscription models, and modern architectures built to support rapid user growth and long-term business operations.",
               },
               {
                 name: "E-Commerce & Retail",
-                description: "High-conversion, lightning-fast headless storefronts and custom inventory management platforms.",
+                description: "High-performance online stores, custom shopping experiences, and conversion-focused platforms that help businesses sell more effectively.",
               },
               {
-                name: "FinTech & Financial",
-                description: "Secure, high-throughput systems designed to handle financial data and transactions with zero margin for error.",
+                name: "Professional Services",
+                description: "Business websites, client portals, and custom software for agencies, consultants, and service-based organizations.",
               },
               {
-                name: "Healthcare & MedTech",
-                description: "Data-dense applications that prioritize patient privacy, complex provider workflows, and strict compliance.",
+                name: "Education & Training",
+                description: "Learning platforms, course management systems, and interactive digital experiences for educational institutions and training providers.",
               }
             ].map((industry) => (
               <AnimateOnScroll key={industry.name}>

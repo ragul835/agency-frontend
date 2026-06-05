@@ -3,10 +3,13 @@ import { useLocation } from "wouter";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
-interface GradientButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+import { HTMLMotionProps } from "framer-motion";
+
+interface GradientButtonProps extends Omit<HTMLMotionProps<"button">, "onClick" | "className" | "children"> {
   href?: string;
   children: React.ReactNode;
   className?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export function GradientButton({ href, children, className, onClick, ...props }: GradientButtonProps) {

@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { useRef, useState, useEffect } from "react";
 import {
   Code2, ShoppingCart, Layers, Palette, Search, ShoppingBag,
-  ArrowRight, CheckCircle, Shield, Cpu, Zap, Plus, Minus, Smartphone
+  ArrowRight, CheckCircle, Shield, Cpu, Zap, Plus, Minus, Smartphone, Target, TrendingUp, Globe, Users
 } from "lucide-react";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer,
@@ -23,37 +23,42 @@ const services = [
   {
     icon: Code2,
     title: "Web Development",
-    description: "High-performance, secure, and scalable custom websites engineered to establish a commanding digital presence and drive measurable business growth.",
-  },
-  {
-    icon: Layers,
-    title: "Full Stack Development",
-    description: "End-to-end architectures utilizing modern frameworks. We build robust frontends and resilient backend systems designed for complex, high-traffic environments.",
+    description: "Custom websites engineered for performance, responsiveness, SEO, and business growth.",
   },
   {
     icon: ShoppingCart,
     title: "E-Commerce Development",
-    description: "Conversion-optimized online storefronts and custom marketplaces featuring frictionless checkout, secure payment gateways, and advanced inventory management.",
+    description: "Scalable online stores designed to improve customer experience and increase conversions.",
+  },
+  {
+    icon: Layers,
+    title: "Full-Stack Development",
+    description: "Modern frontend and backend systems built for scalability, maintainability, and security.",
   },
   {
     icon: Zap,
     title: "SaaS Development",
-    description: "Scalable, multi-tenant software architectures built from the ground up to support subscription models, complex data structures, and rapid user acquisition.",
+    description: "Subscription-based software platforms designed to support long-term growth and business operations.",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Intuitive, research-backed interface designs that prioritize frictionless user journeys, stunning aesthetics, and maximum conversion rates.",
+    description: "User-focused digital experiences that improve engagement, usability, and conversions.",
   },
   {
     icon: Search,
-    title: "SEO Optimization",
-    description: "Data-driven technical SEO and performance optimizations designed to secure top-tier organic rankings and maximize your platform's search visibility.",
+    title: "SEO Services",
+    description: "Technical and on-page optimization strategies that improve visibility and search rankings.",
   },
   {
     icon: ShoppingBag,
     title: "Shopify Development",
-    description: "Tailored Shopify Plus solutions and custom theme architectures that deliver premium shopping experiences and turn browsers into loyal customers.",
+    description: "Custom Shopify stores, theme customization, integrations, and performance optimization.",
+  },
+  {
+    icon: Cpu,
+    title: "E-Commerce Optimization",
+    description: "Performance improvements, Core Web Vitals optimization, conversion enhancements, and speed optimization.",
   },
 ];
 
@@ -62,12 +67,12 @@ const techCategories = [
     id: "frontend",
     label: "Frontend",
     items: [
-      { name: "HTML5", Icon: SiHtml5 },
-      { name: "JavaScript", Icon: SiJavascript },
+      { name: "React.js", Icon: SiReact },
       { name: "Next.js", Icon: SiNextdotjs },
-      { name: "React", Icon: SiReact },
       { name: "TypeScript", Icon: SiTypescript },
+      { name: "JavaScript", Icon: SiJavascript },
       { name: "Tailwind CSS", Icon: SiTailwindcss },
+      { name: "shadcn/ui", Icon: Code2 },
       { name: "Framer Motion", Icon: SiFramer },
     ],
   },
@@ -77,9 +82,11 @@ const techCategories = [
     items: [
       { name: "Node.js", Icon: SiNodedotjs },
       { name: "NestJS", Icon: SiNestjs },
+      { name: "Java", Icon: FaJava },
       { name: "Spring Boot", Icon: SiSpringboot },
       { name: "Python", Icon: SiPython },
       { name: "FastAPI", Icon: SiFastapi },
+      { name: "REST APIs", Icon: Code2 },
     ],
   },
   {
@@ -95,9 +102,10 @@ const techCategories = [
     id: "cloud",
     label: "Cloud",
     items: [
-      { name: "AWS", Icon: FaAws },
-      { name: "GCP", Icon: SiGooglecloud },
       { name: "Vercel", Icon: SiVercel },
+      { name: "Render", Icon: SiGooglecloud },
+      { name: "Railway", Icon: SiDocker },
+      { name: "Neon", Icon: SiPostgresql },
     ],
   },
   {
@@ -106,8 +114,10 @@ const techCategories = [
     items: [
       { name: "Git", Icon: SiGit },
       { name: "GitHub", Icon: SiGithub },
+      { name: "Postman", Icon: Search },
+      { name: "Prisma ORM", Icon: Code2 },
+      { name: "VS Code", Icon: Code2 },
       { name: "Figma", Icon: SiFigma },
-      { name: "Docker", Icon: SiDocker },
     ],
   },
 ];
@@ -196,7 +206,7 @@ function HeroSection() {
           className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest backdrop-blur-sm shadow-[0_0_20px_hsl(var(--primary)/0.15)]"
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_8px_hsl(var(--primary))]" />
-          Elite Engineering
+          Digital Solutions Partner
         </div>
 
         {/* Headline */}
@@ -204,10 +214,10 @@ function HeroSection() {
           className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground text-center"
         >
           <span className="relative block">
-            Architecting Scalable
+            We Build SaaS & Web Apps
           </span>
           <span className="relative bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent block mt-2">
-            Web & SaaS Ecosystems
+            That Scale Without the Agency Runaround
             <span className="absolute -inset-x-4 -inset-y-2 bg-primary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
           </span>
         </h1>
@@ -216,15 +226,15 @@ function HeroSection() {
         <p
           className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto mb-12"
         >
-          We transform complex business challenges into elegant, high-performance digital products. From multi-tenant SaaS architectures to blazing-fast modern web applications, our elite engineering team delivers production-ready software designed to accelerate your growth and outpace the competition.
+          Modern websites, e-commerce platforms, SaaS products, and custom software — designed for performance, scalability, and growth.
         </p>
 
         {/* Action Buttons */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
+          className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8"
         >
           <GradientButton href="/contact#contact-form" className="px-10 py-4 text-base font-semibold shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] transition-all">
-            Get Free Consultation <ArrowRight className="w-5 h-5 ml-2 inline-block" />
+            Start Your Project <ArrowRight className="w-5 h-5 ml-2 inline-block" />
           </GradientButton>
           <Link href="/services">
             <span className="px-10 py-4 text-base font-semibold rounded-full border border-border/50 bg-card/40 hover:bg-card/80 transition-all cursor-pointer">
@@ -233,6 +243,14 @@ function HeroSection() {
           </Link>
         </div>
 
+        {/* Trust Indicators */}
+        <div className="flex flex-wrap justify-center gap-4 text-sm font-medium text-slate-500 max-w-4xl mx-auto mt-6">
+          <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-primary" /> Modern Technology Stack</span>
+          <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-primary" /> SEO & Performance Focused</span>
+          <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-primary" /> Mobile-First Development</span>
+          <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-primary" /> Scalable Architecture</span>
+          <span className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-primary" /> Long-Term Support</span>
+        </div>
 
       </Container>
     </section>
@@ -271,34 +289,34 @@ function TrustedTechnologiesSection() {
 
 const whyChooseUs = [
   {
-    icon: Zap,
-    title: "Fast Delivery",
-    description: "Production-ready solutions delivered efficiently.",
+    icon: Target,
+    title: "Business-Focused Development",
+    description: "Every solution is aligned with your business objectives and growth goals.",
   },
   {
     icon: Layers,
     title: "Scalable Architecture",
-    description: "Built for long-term growth.",
-  },
-  {
-    icon: Search,
-    title: "SEO Optimized",
-    description: "Better visibility on Google.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Responsive",
-    description: "Works perfectly on all devices.",
+    description: "Built using modern engineering principles for long-term scalability.",
   },
   {
     icon: Shield,
     title: "Transparent Communication",
-    description: "Regular updates during development.",
+    description: "Clear timelines, regular updates, and complete project visibility.",
+  },
+  {
+    icon: Cpu,
+    title: "Modern Technology",
+    description: "Using proven frameworks and industry best practices.",
+  },
+  {
+    icon: Zap,
+    title: "Performance First",
+    description: "Fast-loading, SEO-friendly, and optimized digital experiences.",
   },
   {
     icon: CheckCircle,
     title: "Long-Term Support",
-    description: "Support after launch.",
+    description: "Reliable support and continuous improvements after launch.",
   },
 ];
 
@@ -308,8 +326,8 @@ function WhyChooseSection() {
       <Container>
         <AnimateOnScroll>
           <SectionHeader
-            title="Why Choose NexCore"
-            subtitle="We don't just write code. We build solutions that drive business growth."
+            title="Why Businesses Choose Us"
+            subtitle=""
           />
         </AnimateOnScroll>
 
@@ -341,13 +359,13 @@ function WhyChooseSection() {
 }
 
 const processSteps = [
-  { step: "01", title: "Discovery", description: "Understanding your requirements and business goals." },
-  { step: "02", title: "Planning", description: "Creating a detailed roadmap and project architecture." },
-  { step: "03", title: "Design", description: "Crafting beautiful and intuitive user interfaces." },
-  { step: "04", title: "Development", description: "Building the solution using modern technologies." },
-  { step: "05", title: "Testing", description: "Ensuring everything works perfectly across devices." },
-  { step: "06", title: "Deployment", description: "Launching your project to the live environment." },
-  { step: "07", title: "Support", description: "Providing ongoing maintenance and updates." },
+  { step: "01", title: "Discovery", description: "Understanding your business goals, requirements, and project vision." },
+  { step: "02", title: "Planning", description: "Defining architecture, timelines, features, and roadmap." },
+  { step: "03", title: "Design", description: "Creating user-focused experiences and modern interfaces." },
+  { step: "04", title: "Development", description: "Building secure, scalable, and maintainable solutions." },
+  { step: "05", title: "Testing", description: "Ensuring reliability, performance, and quality." },
+  { step: "06", title: "Deployment", description: "Launching using modern cloud infrastructure." },
+  { step: "07", title: "Support", description: "Providing ongoing maintenance and improvements." },
 ];
 
 function DevelopmentProcessSection() {
@@ -356,8 +374,8 @@ function DevelopmentProcessSection() {
       <Container>
         <AnimateOnScroll>
           <SectionHeader
-            title="Development Process"
-            subtitle="A transparent, proven methodology for delivering successful projects."
+            title="Our Development Process"
+            subtitle=""
           />
         </AnimateOnScroll>
 
@@ -390,8 +408,8 @@ function ServicesSection() {
       <Container>
         <AnimateOnScroll>
           <SectionHeader
-            title="What We Do"
-            subtitle="Full-service digital engineering — from strategy to shipping, we own the entire stack."
+            title="Solutions Built Around Your Business Goals"
+            subtitle=""
           />
         </AnimateOnScroll>
 
@@ -434,8 +452,8 @@ export function TechStackSection() {
       <Container>
         <AnimateOnScroll>
           <SectionHeader
-            title="Technologies We Use"
-            subtitle="We pick the right tool for the job — no cargo culting, no unnecessary complexity."
+            title="Built With Industry Standard Technologies"
+            subtitle=""
           />
         </AnimateOnScroll>
 
@@ -564,17 +582,19 @@ function ContactCTASection() {
             Let's work together
           </span>
           <h2 className="text-4xl md:text-6xl font-heading font-bold text-foreground mb-6 tracking-tight">
-            Ready To Build Your{" "}
+            Ready to Build Your{" "}
             <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              Next Project?
+              Next Digital Product?
             </span>
           </h2>
           <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto">
-            Let's discuss your requirements and create a solution tailored to your business.
+            Let’s build something that works, scales, and drives results.
           </p>
-          <GradientButton href="/contact#contact-form" className="px-12 py-4 text-base">
-            Get Free Consultation
-          </GradientButton>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <GradientButton href="/contact#contact-form" className="px-12 py-4 text-base">
+              Start Your Project
+            </GradientButton>
+          </div>
           <p className="mt-6 text-sm text-muted-foreground">
             Or email us directly at{" "}
             <a href="mailto:ragulsiva@zohomail.in" className="text-primary hover:underline">
@@ -598,28 +618,48 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     category: "Pricing",
-    question: "How much does a custom project cost?",
-    answer: "Project costs vary based on complexity, required features, and the technology stack involved. We don't believe in one-size-fits-all pricing; instead, we conduct a thorough discovery phase to provide you with a transparent, itemized proposal tailored precisely to your business objectives and budget constraints.",
+    question: "How much does a website cost?",
+    answer: "Project pricing depends on requirements, features, and complexity.",
   },
   {
     category: "Process",
-    question: "How long does development typically take?",
-    answer: "A standard corporate website can take 2–4 weeks, while complex SaaS platforms or custom e-commerce solutions typically range from 8–16 weeks. We use agile methodologies, providing you with weekly updates and continuous access to a staging environment so you can track progress in real time.",
+    question: "How long does development take?",
+    answer: "Most projects are completed within 2–8 weeks depending on scope.",
+  },
+  {
+    category: "Support",
+    question: "Do you provide support after launch?",
+    answer: "Yes. We provide maintenance, updates, and technical support.",
+  },
+  {
+    category: "Services",
+    question: "Can you redesign an existing website?",
+    answer: "Absolutely. We modernize websites, improve performance, and enhance user experience.",
+  },
+  {
+    category: "Services",
+    question: "Do you provide SEO services?",
+    answer: "Yes. Technical SEO and performance optimization are included in our workflow.",
   },
   {
     category: "Process",
-    question: "Do you provide ongoing maintenance and support?",
-    answer: "Absolutely. We view launch day as the beginning of our partnership. We offer customized Service Level Agreements (SLAs) that include 24/7 uptime monitoring, security patching, continuous performance optimization, and dedicated hours for iterative feature development.",
+    question: "What technologies do you use?",
+    answer: "We specialize in modern stacks like React, Next.js, Node.js, TypeScript, and scalable cloud deployments to ensure top-tier performance and security.",
   },
   {
     category: "Services",
-    question: "Can you redesign or scale an existing application?",
-    answer: "Yes. Our engineering team specializes in auditing legacy codebases, refactoring outdated architectures into modern, scalable frameworks, and dramatically improving UI/UX. We ensure zero-downtime migrations while significantly boosting Core Web Vitals and conversion rates.",
+    question: "Do you build mobile apps?",
+    answer: "We focus heavily on responsive web applications and Progressive Web Apps (PWAs) that work seamlessly and feel like native apps across all mobile devices.",
   },
   {
-    category: "Services",
-    question: "Do you handle technical SEO and performance?",
-    answer: "Performance is a first-class metric in our development process. We implement advanced technical SEO strategies, server-side rendering (SSR), optimized asset delivery, and structured data schemas to ensure your platform passes Core Web Vitals and ranks highly on search engines.",
+    category: "Pricing",
+    question: "How are payments structured?",
+    answer: "We typically structure payments around project milestones, starting with an initial deposit to begin work, followed by payments tied to specific deliverables.",
+  },
+  {
+    category: "Support",
+    question: "Will I own the source code?",
+    answer: "Absolutely. Once the project is completed and fully paid, you retain 100% ownership of the custom source code and all related intellectual property.",
   }
 ];
 
@@ -709,13 +749,13 @@ function FAQSection() {
       : faqData.filter((f) => f.category === activeCategory);
 
   return (
-    <section className="py-24 relative">
+    <section id="faq" className="py-24 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent pointer-events-none" />
       <Container>
         <AnimateOnScroll>
           <SectionHeader
             title="Frequently Asked Questions"
-            subtitle="Everything you need to know about working with NexCore."
+            subtitle=""
           />
         </AnimateOnScroll>
 
@@ -771,10 +811,93 @@ function FAQSection() {
   );
 }
 
+function AboutSection() {
+  return (
+    <section className="py-24 bg-card/5">
+      <Container>
+        <AnimateOnScroll>
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
+              About Us
+            </span>
+            <SectionHeader
+              title="Your Technology Partner for Modern Business"
+              subtitle=""
+            />
+            <p className="text-lg text-muted-foreground leading-relaxed mt-6 max-w-3xl mx-auto">
+              We build websites, e-commerce platforms, SaaS products, and custom software designed for performance, scalability, and long-term success.
+            </p>
+          </div>
+        </AnimateOnScroll>
+      </Container>
+    </section>
+  );
+}
+
+const businessOutcomes = [
+  {
+    icon: Globe,
+    title: "Increase Online Visibility",
+    description: "SEO-friendly digital experiences that improve discoverability and search performance.",
+  },
+  {
+    icon: Users,
+    title: "Improve Customer Engagement",
+    description: "Modern user experiences that turn visitors into customers.",
+  },
+  {
+    icon: Zap,
+    title: "Streamline Operations",
+    description: "Custom systems that automate workflows and improve efficiency.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Support Future Growth",
+    description: "Scalable architecture designed to evolve with your business.",
+  },
+];
+
+function BusinessOutcomesSection() {
+  return (
+    <section className="py-24 border-y border-border/40 bg-card/10">
+      <Container>
+        <AnimateOnScroll>
+          <SectionHeader
+            title="Technology Built Around Business Results"
+            subtitle=""
+          />
+        </AnimateOnScroll>
+        <AnimateOnScroll stagger>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {businessOutcomes.map((outcome, i) => {
+              const Icon = outcome.icon;
+              return (
+                <AnimatedItem key={i}>
+                  <div className="p-8 rounded-2xl border border-border/40 bg-card/30 backdrop-blur-2xl h-full flex flex-col items-center text-center">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mb-6">
+                      <Icon className="w-8 h-8 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-heading font-semibold text-foreground mb-3">
+                      {outcome.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {outcome.description}
+                    </p>
+                  </div>
+                </AnimatedItem>
+              );
+            })}
+          </div>
+        </AnimateOnScroll>
+      </Container>
+    </section>
+  );
+}
+
 export default function HomePage() {
   useDocumentTitle(
-    "NexCore | Premium Software Engineering Agency",
-    "NexCore is a senior engineering team that builds scalable SaaS platforms, e-commerce stores, and custom web applications. Get a free project estimate."
+    "NexCore | Web Development & Software Solutions Agency",
+    "NexCore designs, develops, and scales modern websites, web applications, e-commerce platforms, SaaS products, and custom software solutions that help businesses grow."
   );
 
   return (
@@ -782,9 +905,11 @@ export default function HomePage() {
     >
       <HeroSection />
       <TrustedTechnologiesSection />
+      <AboutSection />
+      <ServicesSection />
+      <BusinessOutcomesSection />
       <WhyChooseSection />
       <DevelopmentProcessSection />
-      <ServicesSection />
       <TechStackSection />
 
       <FAQSection />
