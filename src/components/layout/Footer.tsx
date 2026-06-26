@@ -67,9 +67,10 @@ export function Footer() {
       <Container className="relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16">
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-4">
-              <span className="text-2xl font-heading font-bold tracking-tighter text-white">
-                NexCore<span className="text-primary">.</span>
+            <Link href="/" className="inline-flex items-center gap-3 mb-4">
+              <img src="/logo-icon.png" alt="Seichox Logo" className="h-12 w-auto" />
+              <span className="text-3xl font-heading font-black tracking-tighter text-white">
+                Seichox<span className="text-primary">.</span>
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
@@ -179,7 +180,7 @@ export function Footer() {
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between py-6 gap-4">
             <p className="text-xs text-slate-500">
-              &copy; {year} NexCore. All rights reserved.
+              &copy; {year} Seichox. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               {legalLinks.map((link) => (

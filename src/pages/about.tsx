@@ -44,8 +44,8 @@ const valueCards = [
 
 export default function AboutPage() {
   useDocumentTitle(
-    "About Us | NexCore",
-    "NexCore is a technology partner for modern businesses. We help startups and growing organizations transform ideas into reliable digital products."
+    "About Us | Seichox",
+    "Seichox is a technology partner for modern businesses. We help startups and growing organizations transform ideas into reliable digital products."
   );
 
   return (

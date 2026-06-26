@@ -79,7 +79,7 @@ const servicesList = [
 
 export default function ServicesPage() {
   useDocumentTitle(
-    "Services | NexCore",
+    "Services | Seichox",
     "Web development, e-commerce, SaaS platforms, UI/UX design, SEO services, Shopify development, and e-commerce optimization — solutions built around your business goals."
   );
 

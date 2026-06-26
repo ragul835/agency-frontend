@@ -896,8 +896,8 @@ function BusinessOutcomesSection() {
 
 export default function HomePage() {
   useDocumentTitle(
-    "NexCore | Web Development & Software Solutions Agency",
-    "NexCore designs, develops, and scales modern websites, web applications, e-commerce platforms, SaaS products, and custom software solutions that help businesses grow."
+    "Seichox | Web Development & Software Solutions Agency",
+    "Seichox designs, develops, and scales modern websites, web applications, e-commerce platforms, SaaS products, and custom software solutions that help businesses grow."
   );
 
   return (

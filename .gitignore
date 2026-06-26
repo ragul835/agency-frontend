@@ -4,3 +4,5 @@ dist/
 .env.*
 !.env.example
 .replit-artifact
+.frontend.pid
+frontend.log
