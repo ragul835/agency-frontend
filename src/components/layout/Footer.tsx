@@ -68,7 +68,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 mb-4">
-              <img src="/logo-icon.png" alt="Seichox Logo" className="h-12 w-auto" />
+              <img src="/logo-icon-v2.png" alt="Seichox Logo" className="h-12 w-auto" />
               <span className="text-3xl font-heading font-black tracking-tighter text-white">
                 Seichox<span className="text-primary">.</span>
               </span>
