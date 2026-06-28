@@ -9,12 +9,34 @@ import { ErrorBoundary } from "@/components/shared/ErrorBoundary";
 import { useEffect, lazy, Suspense } from "react";
 import logger from "@/lib/logger";
 
-const HomePage = lazy(() => import("@/pages/home"));
-const AboutPage = lazy(() => import("@/pages/about"));
-const ServicesPage = lazy(() => import("@/pages/services"));
-const SolutionsPage = lazy(() => import("@/pages/solutions"));
-const ContactPage = lazy(() => import("@/pages/contact"));
-const NotFound = lazy(() => import("@/pages/not-found"));
+// Helper to automatically retry loading a chunk if it fails due to a new deployment
+const lazyImport = (importFunc: () => Promise<any>) => {
+  return lazy(async () => {
+    try {
+      const module = await importFunc();
+      sessionStorage.removeItem('chunk-retry');
+      return module;
+    } catch (error) {
+      const isChunkError = error instanceof TypeError;
+      const hasRetried = sessionStorage.getItem('chunk-retry');
+      
+      if (isChunkError && !hasRetried) {
+        sessionStorage.setItem('chunk-retry', 'true');
+        window.location.reload();
+        // Keep suspense fallback active while reloading
+        return new Promise<{ default: React.ComponentType<any> }>(() => {});
+      }
+      throw error;
+    }
+  });
+};
+
+const HomePage = lazyImport(() => import("@/pages/home"));
+const AboutPage = lazyImport(() => import("@/pages/about"));
+const ServicesPage = lazyImport(() => import("@/pages/services"));
+const SolutionsPage = lazyImport(() => import("@/pages/solutions"));
+const ContactPage = lazyImport(() => import("@/pages/contact"));
+const NotFound = lazyImport(() => import("@/pages/not-found"));
 
 const queryClient = new QueryClient();
 
@@ -36,7 +58,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <div className="fixed inset-0 bg-noise mix-blend-overlay z-50 pointer-events-none opacity-[0.25]" />
       <div className="fixed inset-0 bg-dot-grid opacity-[0.15] pointer-events-none" />
       <Navbar />
-      <div className="flex-1 relative z-10">{children}</div>
+      <main id="main-content" className="flex-1 relative z-10">{children}</main>
       <Footer />
     </div>
   );
