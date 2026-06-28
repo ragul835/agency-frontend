@@ -46,10 +46,10 @@ export function Navbar() {
         )}
       >
         <Container>
-          <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center gap-3">
-              <img src="/logo-icon-v2.png" alt="Seichox Logo" className="h-12 w-auto" />
-              <span className="text-3xl font-heading font-black text-foreground tracking-tighter">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/" className="flex items-center gap-2.5">
+              <img src="/logo-icon-v2.png" alt="Seichox Logo" className="h-8 w-auto" />
+              <span className="text-xl font-heading font-black text-foreground tracking-tight">
                 Seichox<span className="text-primary">.</span>
               </span>
             </Link>

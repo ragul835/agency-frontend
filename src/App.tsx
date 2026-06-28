@@ -32,9 +32,11 @@ function RouteLogger() {
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-background text-foreground relative">
+      <div className="fixed inset-0 bg-noise mix-blend-overlay z-50 pointer-events-none opacity-[0.25]" />
+      <div className="fixed inset-0 bg-dot-grid opacity-[0.15] pointer-events-none" />
       <Navbar />
-      <div className="flex-1">{children}</div>
+      <div className="flex-1 relative z-10">{children}</div>
       <Footer />
     </div>
   );

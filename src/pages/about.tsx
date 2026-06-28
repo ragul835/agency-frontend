@@ -1,20 +1,15 @@
-import { useRef, useEffect } from "react";
-import { useInView, useSpring, useTransform, motion } from "framer-motion";
 import { Link } from "wouter";
-import { CheckCircle, ChevronRight, Shield, Zap, Target, Cpu } from "lucide-react";
+import { CheckCircle, ChevronRight, Shield, Zap, Target, Cpu, ArrowRight, Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
 import { GradientButton } from "@/components/shared/GradientButton";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
-
-
 const coreValues = [
   "Performance and scalability in every solution.",
-  "Transparency in communication.",
-  "Modern technology and clean engineering.",
-  "Reliability and long-term support.",
+  "Transparency in communication and timelines.",
+  "Modern technology and clean engineering practices.",
+  "Reliability and long-term post-launch support.",
 ];
 
 const valueCards = [
@@ -22,25 +17,49 @@ const valueCards = [
     icon: Shield,
     title: "Quality",
     description: "Every solution is built with clean code, best practices, and a focus on long-term maintainability.",
+    color: "from-blue-500/15 to-primary/15",
+    iconColor: "text-blue-400",
   },
   {
     icon: Target,
     title: "Transparency",
-    description: "Clear timelines, regular updates, and complete project visibility throughout the development process.",
+    description: "Clear timelines, regular updates, and complete project visibility throughout development.",
+    color: "from-green-500/15 to-emerald-500/15",
+    iconColor: "text-green-400",
   },
   {
     icon: Zap,
     title: "Innovation",
-    description: "We use modern frameworks and industry-standard tools to build solutions designed for performance and growth.",
+    description: "We use modern frameworks and industry-standard tools to build solutions for performance and growth.",
+    color: "from-orange-500/15 to-amber-500/15",
+    iconColor: "text-orange-400",
   },
   {
     icon: CheckCircle,
     title: "Reliability",
-    description: "We deliver on time, provide ongoing support, and ensure your digital products run smoothly after launch.",
+    description: "We deliver on time, provide ongoing support, and ensure your digital products run smoothly.",
+    color: "from-purple-500/15 to-violet-500/15",
+    iconColor: "text-purple-400",
   },
 ];
 
-
+const approachSteps = [
+  {
+    step: "01",
+    title: "Discovery & Strategy",
+    description: "We start by deeply understanding your business goals, target audience, and technical requirements to build a solid foundation.",
+  },
+  {
+    step: "02",
+    title: "Engineering & Development",
+    description: "Using modern technologies and clean code practices, we build scalable, secure, and high-performing digital solutions.",
+  },
+  {
+    step: "03",
+    title: "Launch & Scale",
+    description: "We ensure a smooth deployment, provide comprehensive training, and offer ongoing support to help your product grow.",
+  },
+];
 
 export default function AboutPage() {
   useDocumentTitle(
@@ -50,201 +69,144 @@ export default function AboutPage() {
 
   return (
     <main>
-      {/* Hero Banner */}
-      <section className="relative pt-32 pb-24 overflow-hidden border-b border-border/30">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-background" />
-        
-        {/* Premium Grid Overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: "linear-gradient(to right, hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        {/* Animated Orbs */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* ── Hero ── */}
+      <section className="relative pt-28 sm:pt-36 pb-20 overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_0%,hsl(var(--primary)/0.1),transparent)]" />
           <div
-            className="absolute top-[-20%] right-[10%] w-[500px] h-[500px] rounded-full opacity-20 blur-[100px]"
-            style={{ background: "radial-gradient(circle, hsl(217 91% 60%) 0%, transparent 70%)" }}
+            className="absolute inset-0 opacity-[0.025]"
+            style={{
+              backgroundImage: "linear-gradient(hsl(var(--foreground)) 1px,transparent 1px),linear-gradient(90deg,hsl(var(--foreground)) 1px,transparent 1px)",
+              backgroundSize: "64px 64px",
+            }}
           />
         </div>
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/8 blur-[120px] -z-10 animate-orb-drift" />
 
-        <Container className="relative z-10">
-          <AnimateOnScroll>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/10 backdrop-blur-sm text-primary text-sm font-medium mb-8">
-              <Link href="/" className="hover:text-primary transition-colors flex items-center gap-1">Home</Link>
-              <ChevronRight className="w-3.5 h-3.5" />
-              <span>About Us</span>
-            </div>
-            <div className="max-w-4xl">
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-8 text-foreground">
-                About <span className="text-transparent bg-clip-text bg-gradient-to-br from-primary via-primary/80 to-secondary relative">
-                  Us
-                  <span className="absolute -inset-x-4 -inset-y-2 bg-primary/20 blur-3xl opacity-0 animate-[pulse_4s_ease-in-out_infinite] mix-blend-screen -z-10" />
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed border-l-4 border-primary/30 pl-6 max-w-2xl">
-                Your technology partner for building reliable, scalable digital solutions.
-              </p>
-            </div>
-          </AnimateOnScroll>
-        </Container>
-      </section>
-
-      {/* Mission Section */}
-      <section className="py-16">
         <Container>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/40 bg-card/30 text-xs text-muted-foreground mb-10 backdrop-blur-sm">
+            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <ChevronRight className="w-3 h-3" />
+            <span className="text-foreground font-medium">About Us</span>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateOnScroll>
-              <div>
-                <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
-                  Our Mission
-                </span>
-                <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground tracking-tight mb-6">
-                  Helping businesses build reliable digital products
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
-                  We combine modern technology, clean engineering, and business-focused thinking to deliver digital products that perform, scale, and last.
-                </p>
-                <ul className="space-y-4">
-                  {coreValues.map((value) => (
-                    <li key={value} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">{value}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+                <Sparkles className="w-3.5 h-3.5" /> Our Story
               </div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-6 text-foreground">
+                Building the{" "}
+                <span className="bg-gradient-to-r from-primary via-blue-400 to-secondary bg-clip-text text-transparent animate-gradient">
+                  Digital Future
+                </span>
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
+                Your technology partner for building reliable, scalable digital solutions — from startups to growing enterprises.
+              </p>
+              <ul className="space-y-3">
+                {coreValues.map((v) => (
+                  <li key={v} className="flex items-start gap-3">
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                    <span className="text-sm text-muted-foreground">{v}</span>
+                  </li>
+                ))}
+              </ul>
             </AnimateOnScroll>
 
+            {/* Visual card */}
             <AnimateOnScroll delay={0.2}>
-              {/* Premium Floating Architecture Visual */}
-              <div className="relative h-96 lg:h-[500px] w-full flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-secondary/10 rounded-full blur-3xl opacity-50" />
-                
-                {/* Main Central Card */}
-                <div 
-                  className="relative z-20 w-64 h-80 rounded-2xl bg-card/80 backdrop-blur-xl border border-border/60 shadow-2xl p-6 flex flex-col justify-between overflow-hidden"
-                >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-2xl -mr-10 -mt-10" />
-                  
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex gap-1.5">
-                        <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                        <div className="w-3 h-3 rounded-full bg-amber-400/80" />
-                        <div className="w-3 h-3 rounded-full bg-green-400/80" />
-                      </div>
-                      <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center">
-                        <Cpu className="w-3.5 h-3.5 text-primary" />
-                      </div>
+              <div className="relative">
+                {/* Main card */}
+                <div className="relative rounded-3xl border border-border/40 bg-card/60 backdrop-blur-xl p-8 shadow-2xl overflow-hidden">
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-primary/10 rounded-bl-full blur-2xl pointer-events-none" />
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-3 h-3 rounded-full bg-red-400/80" />
+                      <div className="w-3 h-3 rounded-full bg-amber-400/80" />
+                      <div className="w-3 h-3 rounded-full bg-green-400/80" />
+                      <div className="ml-auto text-xs text-muted-foreground/60 font-mono">seichox.tsx</div>
                     </div>
-                    <div className="space-y-3">
-                      <div className="h-2 w-3/4 bg-primary/20 rounded-full" />
-                      <div className="h-2 w-full bg-border/50 rounded-full" />
-                      <div className="h-2 w-5/6 bg-border/50 rounded-full" />
-                      <div className="h-2 w-4/6 bg-border/50 rounded-full" />
-                    </div>
-                  </div>
-                  
-                  <div className="mt-auto space-y-4">
-                    <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Shield className="w-4 h-4 text-primary" />
-                        <span className="text-xs font-semibold text-primary">System Core</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-primary/20 rounded-full overflow-hidden">
-                        <div className="h-full w-3/4 bg-primary rounded-full" />
-                      </div>
+                    <div className="space-y-3 font-mono text-sm">
+                      <div className="text-muted-foreground/60"><span className="text-blue-400">const</span> <span className="text-green-400">agency</span> = {'{'}</div>
+                      <div className="pl-4 text-muted-foreground"><span className="text-orange-400">name</span>: <span className="text-green-300">"Seichox"</span>,</div>
+                      <div className="pl-4 text-muted-foreground"><span className="text-orange-400">focus</span>: <span className="text-green-300">"Digital Products"</span>,</div>
+                      <div className="pl-4 text-muted-foreground"><span className="text-orange-400">services</span>: [<span className="text-green-300">"Web"</span>, <span className="text-green-300">"SaaS"</span>, <span className="text-green-300">"E-Com"</span>],</div>
+                      <div className="pl-4 text-muted-foreground"><span className="text-orange-400">support</span>: <span className="text-green-300">"24/7"</span>,</div>
+                      <div className="text-muted-foreground/60">{'}'}</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Floating Left Card */}
-                <div 
-                  className="absolute left-0 lg:left-4 z-10 w-48 h-56 rounded-2xl bg-card/60 backdrop-blur-md border border-border/40 shadow-xl p-5"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
-                      <Zap className="w-4 h-4 text-secondary" />
-                    </div>
-                    <div className="h-2 w-16 bg-border/60 rounded-full" />
+                {/* Floating availability card */}
+                <div className="absolute -bottom-6 -left-6 w-40 bg-card/90 border border-border/60 rounded-2xl p-4 backdrop-blur-xl shadow-xl">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                    <span className="text-xs font-bold text-foreground">Available Now</span>
                   </div>
-                  <div className="space-y-2 mt-8">
-                    {[...Array(5)].map((_, i) => (
-                      <div key={i} className={`h-1.5 rounded-full ${i % 2 === 0 ? 'bg-secondary/40 w-full' : 'bg-border/40 w-4/5'}`} />
-                    ))}
-                  </div>
+                  <div className="text-xs text-muted-foreground">Taking new projects</div>
                 </div>
 
-                {/* Floating Right Card */}
-                <div 
-                  className="absolute right-0 lg:right-4 z-30 w-52 h-48 rounded-2xl bg-card/60 backdrop-blur-md border border-border/40 shadow-xl p-5"
-                >
-                  <div className="w-full h-24 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/10 mb-4 flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle, hsl(217 91% 60% / 0.4) 1px, transparent 1px)", backgroundSize: "10px 10px" }} />
-                    <Target className="w-8 h-8 text-primary relative z-10" />
+                <div className="absolute -top-6 -right-6 w-36 bg-card/90 border border-primary/20 rounded-2xl p-4 backdrop-blur-xl shadow-xl">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mb-2">
+                    <Zap className="w-4 h-4 text-primary" />
                   </div>
-                  <div className="h-2 w-24 bg-border/60 rounded-full mx-auto" />
+                  <div className="text-xs font-bold text-foreground">Fast Delivery</div>
+                  <div className="text-[10px] text-muted-foreground mt-0.5">2–8 weeks avg.</div>
                 </div>
-                
               </div>
             </AnimateOnScroll>
           </div>
         </Container>
       </section>
 
-      {/* Vision Section */}
-      <section className="py-20 relative bg-card/5">
+      {/* ── Mission ── */}
+      <section className="py-16 md:py-24 border-y border-border/30 bg-card/5">
         <Container>
           <AnimateOnScroll>
             <div className="max-w-4xl mx-auto text-center">
-              <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
-                Our Vision
-              </span>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground tracking-tight mb-6">
-                To be a trusted technology partner for modern businesses
+              <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3 block">Our Mission</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold tracking-tight text-foreground mb-6">
+                Helping Businesses Build Reliable Digital Products
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8 text-lg">
-                We help businesses access reliable software engineering without the overhead of large in-house teams. Scalable architectures, modern designs, and performance-first development.
+              <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+                We combine modern technology, clean engineering, and business-focused thinking to deliver digital products that perform, scale, and last for years to come.
               </p>
             </div>
           </AnimateOnScroll>
         </Container>
       </section>
 
-      {/* Values Section */}
-      <section className="py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent pointer-events-none" />
+      {/* ── Values ── */}
+      <section className="py-16 md:py-24">
         <Container>
           <AnimateOnScroll>
-            <SectionHeader
-              title="Our Values"
-              subtitle="The principles that guide every line of code we write."
-            />
+            <div className="text-center mb-14">
+              <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3 block">Core Values</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold tracking-tight text-foreground">
+                The Principles We Live By
+              </h2>
+            </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll stagger>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {valueCards.map((card) => {
                 const Icon = card.icon;
                 return (
                   <AnimatedItem key={card.title}>
                     <div
-                      data-testid={`card-value-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="p-8 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm h-full"
+                      data-testid={`card-value-${card.title.toLowerCase()}`}
+                      className="premium-card group h-full p-6"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5">
-                        <Icon className="w-6 h-6 text-primary" />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+                      <div className="relative z-10">
+                        <div className="w-11 h-11 rounded-xl bg-card/80 border border-border/60 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+                          <Icon className={`w-5 h-5 ${card.iconColor}`} />
+                        </div>
+                        <h3 className="text-base font-heading font-bold text-foreground mb-2">{card.title}</h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">{card.description}</p>
                       </div>
-                      <h3 className="text-lg font-heading font-semibold text-foreground mb-3">
-                        {card.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {card.description}
-                      </p>
                     </div>
                   </AnimatedItem>
                 );
@@ -254,80 +216,145 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      {/* Approach Section */}
-      <section className="py-24 relative bg-card/5 border-y border-border/30">
+      {/* ── Global Impact / Identity ── */}
+      <section className="py-20 relative overflow-hidden">
+        <Container>
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            {/* Left Content */}
+            <div className="lg:w-1/2">
+              <AnimateOnScroll>
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-bold uppercase tracking-[0.2em] mb-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> Global Reach
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold tracking-tight text-foreground mb-6 leading-[1.1]">
+                  Building digital solutions for a <span className="bg-gradient-to-r from-primary to-blue-500 bg-clip-text text-transparent">borderless world.</span>
+                </h2>
+                <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
+                  We are a remote-first collective of engineers and designers, crafting scalable technology products for businesses worldwide. No matter where you are, we bring the same level of engineering excellence and transparency.
+                </p>
+                
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <div className="text-4xl font-heading font-black text-foreground mb-1">100%</div>
+                    <div className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">Remote Ready</div>
+                  </div>
+                  <div>
+                    <div className="text-4xl font-heading font-black text-foreground mb-1">24/7</div>
+                    <div className="text-sm font-semibold text-muted-foreground uppercase tracking-widest">Infrastructure</div>
+                  </div>
+                </div>
+              </AnimateOnScroll>
+            </div>
+
+            {/* Right Map Graphic */}
+            <div className="lg:w-1/2 w-full relative">
+              <AnimateOnScroll delay={0.2}>
+                <div className="premium-card p-8 aspect-square sm:aspect-video lg:aspect-square flex flex-col items-center justify-center relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-dot-grid opacity-30" />
+                  {/* Glowing core */}
+                  <div className="absolute w-48 h-48 bg-primary/20 rounded-full blur-[60px] group-hover:scale-150 transition-transform duration-1000" />
+                  
+                  {/* Decorative map nodes */}
+                  <div className="relative w-full h-full">
+                    {/* Node 1 */}
+                    <div className="absolute top-[30%] left-[20%]">
+                      <div className="relative flex items-center justify-center">
+                        <div className="absolute w-6 h-6 rounded-full bg-blue-500/20 animate-ping" />
+                        <div className="w-2 h-2 rounded-full bg-blue-500" />
+                      </div>
+                    </div>
+                    {/* Node 2 */}
+                    <div className="absolute top-[40%] right-[30%]">
+                      <div className="relative flex items-center justify-center">
+                        <div className="absolute w-8 h-8 rounded-full bg-primary/20 animate-ping delay-300" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-primary" />
+                      </div>
+                    </div>
+                    {/* Node 3 */}
+                    <div className="absolute bottom-[30%] left-[40%]">
+                      <div className="relative flex items-center justify-center">
+                        <div className="absolute w-4 h-4 rounded-full bg-green-500/20 animate-ping delay-700" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
+                      </div>
+                    </div>
+                    {/* Connecting lines SVG */}
+                    <svg className="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="none">
+                      <path d="M 20% 30% Q 30% 20% 40% 70% T 70% 40%" stroke="currentColor" strokeWidth="1" fill="none" strokeDasharray="4 4" className="text-primary animate-pulse" />
+                    </svg>
+                  </div>
+                </div>
+              </AnimateOnScroll>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Vision ── */}
+      <section className="py-16 md:py-20 bg-card/5 border-y border-border/30">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <AnimateOnScroll className="lg:col-span-1">
+              <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3 block">Our Vision</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-extrabold tracking-tight text-foreground">
+                A Trusted Technology Partner for Modern Businesses
+              </h2>
+            </AnimateOnScroll>
+            <AnimateOnScroll delay={0.15} className="lg:col-span-2">
+              <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                We help businesses access reliable software engineering without the overhead of large in-house teams. Scalable architectures, modern designs, and performance-first development.
+              </p>
+            </AnimateOnScroll>
+          </div>
+        </Container>
+      </section>
+
+      {/* ── Approach ── */}
+      <section className="py-16 md:py-24">
         <Container>
           <AnimateOnScroll>
-            <div className="text-center mb-16">
-              <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
-                How We Work
-              </span>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6 tracking-tight">
-                Our Approach
-              </h2>
+            <div className="text-center mb-14">
+              <span className="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3 block">How We Work</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold tracking-tight text-foreground">Our Approach</h2>
             </div>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                step: "01",
-                title: "Discovery & Strategy",
-                description: "We start by deeply understanding your business goals, target audience, and technical requirements to build a solid foundation.",
-              },
-              {
-                step: "02",
-                title: "Engineering & Development",
-                description: "Using modern technologies and clean code practices, we build scalable, secure, and high-performing digital solutions.",
-              },
-              {
-                step: "03",
-                title: "Launch & Scale",
-                description: "We ensure a smooth deployment, provide comprehensive training, and offer ongoing support to help your product grow.",
-              },
-            ].map((item, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {approachSteps.map((item, i) => (
               <AnimateOnScroll key={item.step} delay={i * 0.1}>
-                <div className="p-8 rounded-2xl bg-background border border-border/50 hover:border-primary/30 transition-colors h-full relative overflow-hidden group">
-                  <div className="text-5xl font-heading font-black text-primary/10 absolute -top-4 -right-4 group-hover:text-primary/20 transition-colors">
+                <div className="premium-card p-7 group h-full overflow-hidden">
+                  <div className="text-[5rem] font-heading font-black text-primary/5 absolute -top-4 -right-2 select-none leading-none group-hover:text-primary/10 transition-colors">
                     {item.step}
                   </div>
-                  <h3 className="text-xl font-heading font-bold text-foreground mb-4 mt-4">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {item.description}
-                  </p>
+                  <div className="relative z-10">
+                    <div className="w-9 h-9 rounded-lg border border-primary/20 bg-primary/5 flex items-center justify-center mb-5">
+                      <span className="text-xs font-bold text-primary">{item.step}</span>
+                    </div>
+                    <h3 className="text-lg font-heading font-bold text-foreground mb-3">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                  </div>
                 </div>
               </AnimateOnScroll>
             ))}
           </div>
         </Container>
       </section>
-      {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden border-t border-border/20">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-primary/10 to-background pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none opacity-50" />
-        
-        {/* Subtle grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: "linear-gradient(to right, hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
 
+      {/* ── CTA ── */}
+      <section className="py-16 md:py-24 relative overflow-hidden border-t border-border/20">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-primary/8 to-transparent pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-[120px] pointer-events-none" />
         <Container className="relative z-10">
           <AnimateOnScroll>
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 text-foreground tracking-tight">
-                Ready to build your next <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">digital product?</span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold mb-6 text-foreground tracking-tight">
+                Ready to build your next{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">digital product?</span>
               </h2>
-              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-                Let’s discuss how we can help bring your vision to life.
+              <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
+                Let's discuss how we can help bring your vision to life.
               </p>
-              <GradientButton href="/contact#contact-form" className="px-12 py-5 text-lg font-semibold shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] transition-all">
-                Start Your Project
+              <GradientButton href="/contact#contact-form" className="px-12 py-4 text-base font-semibold">
+                Start Your Project <ArrowRight className="w-4 h-4 ml-2 inline" />
               </GradientButton>
             </div>
           </AnimateOnScroll>
