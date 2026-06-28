@@ -172,12 +172,12 @@ function HeroSection() {
 
       <Container className="relative z-10 flex flex-col items-center text-center">
         {/* Badge */}
-        <div className="mb-8 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border/50 bg-card/30 text-muted-foreground text-sm font-medium backdrop-blur-md shadow-sm hover:border-primary/30 hover:text-foreground transition-colors cursor-default">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          <span>Open for collaborations</span>
+        <div className="mb-8 relative inline-flex group cursor-default animate-fade-in">
+          <div className="absolute transition-all duration-1000 opacity-30 -inset-px bg-gradient-to-r from-primary via-blue-400 to-secondary rounded-full blur-md group-hover:opacity-60 group-hover:-inset-1 group-hover:duration-200"></div>
+          <div className="relative inline-flex items-center gap-2 px-5 py-2 text-xs sm:text-sm font-bold text-foreground transition-all duration-200 bg-card border border-border/50 rounded-full uppercase tracking-widest backdrop-blur-xl">
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
+            Next-Gen Digital Solutions
+          </div>
         </div>
 
         {/* Headline */}

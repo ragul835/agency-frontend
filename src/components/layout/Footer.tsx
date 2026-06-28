@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Container } from "./Container";
-import { Github, Linkedin, Twitter, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Phone, MapPin, ArrowRight, Sparkles } from "lucide-react";
 
 const services = [
   "Web Development",
@@ -166,12 +166,12 @@ export function Footer() {
                 <span>India</span>
               </li>
               <li className="pt-2">
-                <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-xs font-medium backdrop-blur-md shadow-sm hover:border-primary/40 hover:text-white transition-colors cursor-default">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                  </span>
-                  <span>Open for collaborations</span>
+                <div className="relative inline-flex group cursor-default mt-2">
+                  <div className="absolute transition-all duration-1000 opacity-20 -inset-px bg-gradient-to-r from-primary via-blue-400 to-secondary rounded-full blur-md group-hover:opacity-50 group-hover:-inset-1 group-hover:duration-200"></div>
+                  <div className="relative inline-flex items-center gap-2 px-4 py-1.5 text-[10px] sm:text-xs font-bold text-white transition-all duration-200 bg-[#0a0a0f] border border-white/10 rounded-full uppercase tracking-widest backdrop-blur-xl">
+                    <Sparkles className="w-3 h-3 text-primary" />
+                    Next-Gen Solutions
+                  </div>
                 </div>
               </li>
             </ul>
