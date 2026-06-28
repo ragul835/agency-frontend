@@ -172,9 +172,12 @@ function HeroSection() {
 
       <Container className="relative z-10 flex flex-col items-center text-center">
         {/* Badge */}
-        <div className="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-[0.15em] backdrop-blur-sm">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          Available for New Projects
+        <div className="mb-8 inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-border/50 bg-card/30 text-muted-foreground text-sm font-medium backdrop-blur-md shadow-sm hover:border-primary/30 hover:text-foreground transition-colors cursor-default">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          <span>Available for new projects</span>
         </div>
 
         {/* Headline */}
