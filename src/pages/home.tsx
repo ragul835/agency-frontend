@@ -537,7 +537,7 @@ export default function HomePage() {
   );
 
   return (
-    <main>
+    <div className="w-full flex flex-col">
       <HeroSection />
       <TechMarquee />
       <ServicesSection />
@@ -546,6 +546,6 @@ export default function HomePage() {
       <TechStackSection />
       <FAQSection />
       <CTASection />
-    </main>
+    </div>
   );
 }

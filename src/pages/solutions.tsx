@@ -78,7 +78,7 @@ export default function SolutionsPage() {
   );
 
   return (
-    <main>
+    <div className="w-full flex flex-col">
       {/* ── Hero ── */}
       <section className="relative pt-28 sm:pt-36 pb-20 overflow-hidden">
         {/* Animated background */}
@@ -131,7 +131,7 @@ export default function SolutionsPage() {
 
         <Container>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/40 bg-card/30 text-xs text-muted-foreground mb-10 backdrop-blur-sm animate-fade-in">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link id="solutions-breadcrumb-home" href="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-foreground font-medium">Solutions</span>
           </div>
@@ -351,7 +351,7 @@ export default function SolutionsPage() {
               Every great product starts with a conversation. Tell us about your project.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <GradientButton href="/contact#contact-form" className="px-10 py-4 text-base font-semibold animate-glow-pulse">
+              <GradientButton id="solutions-cta-start-project" href="/contact#contact-form" className="px-10 py-4 text-base font-semibold animate-glow-pulse">
                 Start a Conversation <ArrowRight className="w-4 h-4 ml-2 inline" />
               </GradientButton>
               <a href="mailto:ragulsiva@zohomail.in" className="text-sm text-muted-foreground hover:text-primary transition-colors">
@@ -361,6 +361,6 @@ export default function SolutionsPage() {
           </AnimateOnScroll>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

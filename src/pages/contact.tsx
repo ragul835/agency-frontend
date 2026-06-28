@@ -105,7 +105,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main>
+    <div className="w-full flex flex-col">
       {/* ── Hero ── */}
       <section className="relative pt-28 sm:pt-36 pb-16 overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -122,7 +122,7 @@ export default function ContactPage() {
 
         <Container>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/40 bg-card/30 text-xs text-muted-foreground mb-10 backdrop-blur-sm">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link id="contact-breadcrumb-home" href="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-foreground font-medium">Contact</span>
           </div>
@@ -318,7 +318,7 @@ export default function ContactPage() {
                       </button>
                       <div className={`grid transition-all duration-300 ${openFaq === i ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                         <div className="overflow-hidden">
-                          <p className="px-4 pb-4 text-xs text-muted-foreground leading-relaxed">{item.a}</p>
+                           <p className="px-4 pb-4 text-xs text-muted-foreground leading-relaxed">{item.a}</p>
                         </div>
                       </div>
                     </div>
@@ -329,6 +329,6 @@ export default function ContactPage() {
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

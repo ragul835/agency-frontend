@@ -118,7 +118,7 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <main>
+    <div className="w-full flex flex-col">
       {/* ── Hero ── */}
       <section className="relative pt-28 sm:pt-36 pb-20 overflow-hidden">
         {/* Background */}
@@ -169,7 +169,7 @@ export default function ServicesPage() {
         <Container>
           {/* Breadcrumb */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/40 bg-card/30 text-xs text-muted-foreground mb-10 backdrop-blur-sm">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link id="services-breadcrumb-home" href="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-foreground font-medium">Services</span>
           </div>
@@ -345,12 +345,12 @@ export default function ServicesPage() {
             <p className="text-muted-foreground text-base md:text-lg mb-10 max-w-lg mx-auto">
               Tell us about your requirements and we'll get back to you within 24 hours with a clear plan.
             </p>
-            <GradientButton href="/contact#contact-form" className="px-10 py-4 text-base font-semibold">
+            <GradientButton id="services-cta-start-project" href="/contact#contact-form" className="px-10 py-4 text-base font-semibold">
               Start Your Project <ArrowRight className="w-4 h-4 ml-2 inline" />
             </GradientButton>
           </AnimateOnScroll>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

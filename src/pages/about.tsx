@@ -68,7 +68,7 @@ export default function AboutPage() {
   );
 
   return (
-    <main>
+    <div className="w-full flex flex-col">
       {/* ── Hero ── */}
       <section className="relative pt-28 sm:pt-36 pb-20 overflow-hidden">
         <div className="absolute inset-0 -z-10">
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
         <Container>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/40 bg-card/30 text-xs text-muted-foreground mb-10 backdrop-blur-sm">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link id="about-breadcrumb-home" href="/" className="hover:text-primary transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-foreground font-medium">About Us</span>
           </div>
@@ -196,6 +196,7 @@ export default function AboutPage() {
                 return (
                   <AnimatedItem key={card.title}>
                     <div
+                      id={`about-value-card-${card.title.toLowerCase()}`}
                       data-testid={`card-value-${card.title.toLowerCase()}`}
                       className="premium-card group h-full p-6"
                     >
@@ -353,13 +354,13 @@ export default function AboutPage() {
               <p className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
                 Let's discuss how we can help bring your vision to life.
               </p>
-              <GradientButton href="/contact#contact-form" className="px-12 py-4 text-base font-semibold">
+              <GradientButton id="about-cta-start-project" href="/contact#contact-form" className="px-12 py-4 text-base font-semibold">
                 Start Your Project <ArrowRight className="w-4 h-4 ml-2 inline" />
               </GradientButton>
             </div>
           </AnimateOnScroll>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }
