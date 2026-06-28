@@ -166,9 +166,12 @@ export function Footer() {
                 <span>India</span>
               </li>
               <li className="pt-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-xs font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  Available for new projects
+                <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-slate-300 text-xs font-medium backdrop-blur-md shadow-sm hover:border-primary/40 hover:text-white transition-colors cursor-default">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                  </span>
+                  <span>Available for new projects</span>
                 </div>
               </li>
             </ul>
