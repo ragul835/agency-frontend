@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { CheckCircle, ChevronRight, Shield, Zap, Target, Cpu, ArrowRight, Sparkles } from "lucide-react";
+import { CheckCircle, ChevronRight, Shield, Zap, Target, Cpu, ArrowRight, Sparkles, Globe } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
 import { GradientButton } from "@/components/shared/GradientButton";
@@ -247,43 +247,54 @@ export default function AboutPage() {
               </AnimateOnScroll>
             </div>
 
-            {/* Right Map Graphic */}
-            <div className="lg:w-1/2 w-full relative">
-              <AnimateOnScroll delay={0.2}>
-                <div className="premium-card p-8 aspect-square sm:aspect-video lg:aspect-square flex flex-col items-center justify-center relative overflow-hidden group">
-                  <div className="absolute inset-0 bg-dot-grid opacity-30" />
-                  {/* Glowing core */}
-                  <div className="absolute w-48 h-48 bg-primary/20 rounded-full blur-[60px] group-hover:scale-150 transition-transform duration-1000" />
-                  
-                  {/* Decorative map nodes */}
-                  <div className="relative w-full h-full">
-                    {/* Node 1 */}
-                    <div className="absolute top-[30%] left-[20%]">
-                      <div className="relative flex items-center justify-center">
-                        <div className="absolute w-6 h-6 rounded-full bg-blue-500/20 animate-ping" />
-                        <div className="w-2 h-2 rounded-full bg-blue-500" />
-                      </div>
+            {/* Right Graphic - Cascading Core Pillars */}
+            <div className="lg:w-1/2 w-full mt-12 lg:mt-0 relative flex flex-col items-center justify-center min-h-[400px]">
+              <AnimateOnScroll delay={0.2} className="w-full max-w-md relative">
+                
+                {/* Background glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative space-y-4 w-full">
+                  {/* Card 1 */}
+                  <div className="bg-card border border-border/60 shadow-xl rounded-2xl p-5 flex items-start gap-4 transform transition-transform hover:-translate-y-2 hover:shadow-2xl z-30 relative ml-0 sm:ml-8">
+                    <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center shrink-0">
+                      <Cpu className="w-6 h-6 text-blue-600" />
                     </div>
-                    {/* Node 2 */}
-                    <div className="absolute top-[40%] right-[30%]">
-                      <div className="relative flex items-center justify-center">
-                        <div className="absolute w-8 h-8 rounded-full bg-primary/20 animate-ping delay-300" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-                      </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-foreground">Engineering Excellence</h4>
+                      <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                        Crafting highly scalable, performant technology products using modern frameworks.
+                      </p>
                     </div>
-                    {/* Node 3 */}
-                    <div className="absolute bottom-[30%] left-[40%]">
-                      <div className="relative flex items-center justify-center">
-                        <div className="absolute w-4 h-4 rounded-full bg-green-500/20 animate-ping delay-700" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-green-500" />
-                      </div>
+                  </div>
+
+                  {/* Card 2 */}
+                  <div className="bg-card border border-border/60 shadow-xl rounded-2xl p-5 flex items-start gap-4 transform transition-transform hover:-translate-y-2 hover:shadow-2xl z-20 relative mr-0 sm:mr-8 -mt-2">
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center shrink-0">
+                      <Globe className="w-6 h-6 text-emerald-600" />
                     </div>
-                    {/* Connecting lines SVG */}
-                    <svg className="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="none">
-                      <path d="M 20% 30% Q 30% 20% 40% 70% T 70% 40%" stroke="currentColor" strokeWidth="1" fill="none" strokeDasharray="4 4" className="text-primary animate-pulse" />
-                    </svg>
+                    <div>
+                      <h4 className="text-lg font-bold text-foreground">Borderless Delivery</h4>
+                      <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                        A remote-first collective operating worldwide without geographical limitations.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="bg-card border border-border/60 shadow-xl rounded-2xl p-5 flex items-start gap-4 transform transition-transform hover:-translate-y-2 hover:shadow-2xl z-10 relative ml-0 sm:ml-4 -mt-2">
+                    <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                      <Shield className="w-6 h-6 text-amber-600" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-bold text-foreground">Absolute Transparency</h4>
+                      <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                        Clear communication and visibility throughout the entire development lifecycle.
+                      </p>
+                    </div>
                   </div>
                 </div>
+
               </AnimateOnScroll>
             </div>
           </div>

@@ -519,6 +519,11 @@
   p {
     text-wrap: pretty;
   }
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -100;
+    }
+  }
 }
 
 /* ── Animation utility classes ── */
