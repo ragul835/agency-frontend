@@ -36,7 +36,7 @@ const contactInfo = [
   { icon: Mail, label: "Email", value: "ragulsiva@zohomail.in", href: "mailto:ragulsiva@zohomail.in" },
   { icon: Phone, label: "WhatsApp", value: "+91 9080163393", href: "tel:+919080163393" },
   { icon: MapPin, label: "Location", value: "India", href: null },
-  { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
+  { icon: Clock, label: "Response Time", value: "Within 4 hours", href: null },
 ];
 
 const socials = [
@@ -46,7 +46,7 @@ const socials = [
 ];
 
 const faqData = [
-  { q: "How quickly will I hear back?", a: "We guarantee a response within 24 hours on business days. Most inquiries get a reply within 4–6 hours." },
+  { q: "How quickly will I hear back?", a: "We guarantee a response within 4 hours on business days." },
   { q: "What happens after I submit the form?", a: "A senior team member reviews your inquiry and schedules a free 30-minute discovery call to discuss your project." },
   { q: "Is the initial consultation free?", a: "Yes. The discovery call and initial project estimate are completely free with no obligations." },
   { q: "Can I reach you outside of business hours?", a: "We monitor our inbox around the clock. Urgent inquiries get a prompt acknowledgment even on weekends." },
