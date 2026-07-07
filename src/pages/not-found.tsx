@@ -15,7 +15,7 @@ export default function NotFound() {
   useDocumentTitle("404 — Page Not Found | Seichox");
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative flex-1 w-full flex items-center justify-center overflow-hidden py-20">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_30%,hsl(var(--primary)/0.1),transparent)]" />

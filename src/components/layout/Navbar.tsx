@@ -3,23 +3,74 @@ import { Link, useLocation } from "wouter";
 import { Container } from "./Container";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Layers, ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag, Zap, Rocket, ArrowRight, Code, Info, Briefcase, Lightbulb, Grid } from "lucide-react";
 import { GradientButton } from "../shared/GradientButton";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/solutions", label: "Solutions" },
-  { href: "/contact", label: "Contact" },
+  { href: "/about", label: "About", icon: "Info" },
+  { href: "/services", label: "Services", icon: "Briefcase" },
+  { href: "/portfolio", label: "Portfolio", icon: "Grid" },
+  { href: "/solutions", label: "Solutions", icon: "Lightbulb" },
+];
+
+const SERVICES_MENU = [
+  {
+    title: "E-commerce Developers",
+    slug: "e-commerce",
+    description: "We build scalable, conversion-focused e-commerce platforms.",
+    icon: "ShoppingCart",
+  },
+  {
+    title: "Full-Stack Web Developers",
+    slug: "full-stack",
+    description: "Scalable web solutions using modern tech stacks.",
+    icon: "Layout",
+  },
+  {
+    title: "SEO Experts",
+    slug: "seo",
+    description: "Boost your visibility, traffic, and search rankings.",
+    icon: "Search",
+  },
+  {
+    title: "SaaS Development Experts",
+    slug: "saas",
+    description: "Build scalable, high-performance SaaS platforms.",
+    icon: "Cloud",
+  },
+  {
+    title: "UI/UX Designers",
+    slug: "ui-ux",
+    description: "Digital experiences that delight and convert users.",
+    icon: "PenTool",
+  },
+  {
+    title: "Shopify Development Experts",
+    slug: "shopify",
+    description: "We build fast, scalable, and custom Shopify stores.",
+    icon: "ShoppingBag",
+  },
+  {
+    title: "E-commerce Optimization",
+    slug: "ecommerce-optimization",
+    description: "We improve speed, performance, and conversion rates.",
+    icon: "Zap",
+  },
+  {
+    title: "Web Development",
+    slug: "web-development",
+    description: "Custom web applications and high-performance websites.",
+    icon: "Code",
+  }
 ];
 
 export function Navbar() {
   const [location] = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,79 +97,203 @@ export function Navbar() {
         )}
       >
         <Container>
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2.5">
-              <img src="/logo-icon-v2.png" alt="Seichox Logo" className="h-8 w-auto" />
-              <span className="text-xl font-heading font-black text-foreground tracking-tight">
-                Seichox<span className="text-primary">.</span>
-              </span>
-            </Link>
+          <div className="flex items-center justify-between w-full h-16 relative">
+            {/* Left Panel */}
+            <div className="flex items-center justify-start">
+              <Link href="/" className="flex items-center gap-2.5">
+                <img src="/logo-icon-v2.png" alt="Seichox Logo" className="h-8 w-auto" />
+                <span className="text-xl font-heading font-black text-foreground tracking-tight">
+                  Seichox<span className="text-primary">.</span>
+                </span>
+              </Link>
+            </div>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-8">
+            {/* Center Panel: Desktop Nav */}
+            <nav className="hidden lg:flex items-center justify-center gap-8 flex-none">
               {NAV_LINKS.map((link) => {
                 const isActive = location === link.href;
+
+                const NavIconMap: any = { Info, Briefcase, Lightbulb, Grid };
+                const NavIcon = NavIconMap[link.icon as string];
+
+                if (link.label === "Services") {
+                  return (
+                    <div key={link.href} className="relative group">
+                      <button className={cn(
+                        "flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary py-4",
+                        isActive ? "text-foreground" : "text-muted-foreground"
+                      )}>
+                        {NavIcon && <NavIcon className="h-4 w-4" />}
+                        {link.label}
+                        <ChevronDown className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
+                      </button>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                        <div className="w-[850px] bg-background border border-border/50 rounded-2xl shadow-2xl flex overflow-hidden">
+                          {/* Left Panel */}
+                          <div className="w-[320px] bg-[#0F172A] p-8 text-white flex flex-col">
+                            <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-6">
+                              <Layers className="h-6 w-6" />
+                            </div>
+                            <h3 className="text-2xl font-bold font-heading mb-4 leading-tight">Everything your business needs</h3>
+                            <p className="text-slate-400 text-sm mb-auto leading-relaxed">
+                              End-to-end technology solutions built for scale, speed, and results.
+                            </p>
+                            <Link href="/services" className="mt-8 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium">
+                              Browse all services <ArrowRight className="h-4 w-4" />
+                            </Link>
+                            <p className="text-slate-500 text-xs mt-2">8 services available</p>
+                          </div>
+                          
+                          {/* Right Panel */}
+                          <div className="flex-1 p-6 grid grid-cols-2 gap-x-4 gap-y-2 bg-background">
+                            {SERVICES_MENU.map((service, idx) => {
+                              const IconMap: any = {
+                                ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag, Zap, Rocket, Code
+                              };
+                              const Icon = IconMap[service.icon];
+                              return (
+                                <Link 
+                                  key={idx} 
+                                  href={`/services/${service.slug}`}
+                                  className="flex items-start gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors group/item"
+                                >
+                                  <div className="mt-0.5 p-2 rounded-md bg-muted text-muted-foreground group-hover/item:text-primary group-hover/item:bg-primary/10 transition-colors">
+                                    <Icon className="h-4 w-4" />
+                                  </div>
+                                  <div>
+                                    <h4 className="text-sm font-semibold text-foreground mb-1">{service.title}</h4>
+                                    <p className="text-xs text-muted-foreground line-clamp-2">{service.description}</p>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-primary relative group",
+                      "flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary relative group py-4",
                       isActive ? "text-foreground" : "text-muted-foreground"
                     )}
                   >
+                    {NavIcon && <NavIcon className="h-4 w-4" />}
                     {link.label}
                     <div
                       className={cn(
-                        "absolute -bottom-1.5 left-0 right-0 h-0.5 bg-primary transition-transform origin-left duration-300 ease-out",
+                        "absolute bottom-2 left-0 right-0 h-0.5 bg-primary transition-transform origin-left duration-300 ease-out",
                         isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       )}
                     />
                   </Link>
                 );
               })}
-            <GradientButton href="/contact#contact-form" className="ml-4 px-6 py-2">
-              Get Started
-            </GradientButton>
-          </nav>
+            </nav>
 
-          {/* Mobile Nav */}
-          <div className="lg:hidden">
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-foreground">
-                  <Menu className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] bg-background/95 backdrop-blur-xl border-l-border/50 flex flex-col pt-20">
-                <nav className="flex flex-col gap-6">
-                  {NAV_LINKS.map((link) => {
-                    const isActive = location === link.href;
-                    return (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={cn(
-                          "text-xl sm:text-2xl font-heading font-semibold transition-colors",
-                          isActive ? "text-primary" : "text-foreground hover:text-primary"
-                        )}
-                      >
-                        {link.label}
+            {/* Right Panel: CTA & Mobile Nav */}
+            <div className="flex items-center justify-end">
+              {/* Desktop CTA */}
+              <div className="hidden lg:flex items-center gap-6">
+                <Link href="/contact" className="text-sm font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-1 whitespace-nowrap">
+                  Book a Free Call <ArrowRight className="h-4 w-4" />
+                </Link>
+                <GradientButton href="/contact#contact-form" className="px-6 py-2 flex items-center gap-1 whitespace-nowrap">
+                  Get a Free Estimate <ArrowRight className="h-4 w-4" />
+                </GradientButton>
+              </div>
+
+              {/* Mobile Nav Trigger */}
+              <div className="lg:hidden">
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                  <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-foreground">
+                      <Menu className="h-6 w-6" />
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="w-[85vw] sm:w-[400px] bg-background/95 backdrop-blur-3xl border-l-0 shadow-2xl flex flex-col pt-16 px-8">
+                    <div className="flex flex-col flex-1 overflow-y-auto [&::-webkit-scrollbar]:hidden gap-12 pb-8">
+                      {/* Brand Header */}
+                      <Link href="/" className="flex items-center gap-2 mb-2">
+                        <img src="/logo-icon-v2.png" alt="Seichox Logo" className="h-8 w-auto" />
+                        <span className="text-3xl font-heading font-black text-foreground tracking-tight">
+                          Seichox<span className="text-primary">.</span>
+                        </span>
                       </Link>
-                    );
-                  })}
-                  <div className="mt-8">
-                    <GradientButton href="/contact#contact-form" className="w-full text-center">
-                      Get Started
-                    </GradientButton>
-                  </div>
-                </nav>
-              </SheetContent>
-            </Sheet>
+
+                      {/* Navigation Links */}
+                      <nav className="flex flex-col gap-6">
+                        {NAV_LINKS.map((link) => {
+                          const isActive = location === link.href || (link.href === '/services' && location.startsWith('/services'));
+                          
+                          if (link.label === "Services") {
+                             return (
+                               <div key={link.href} className="flex flex-col">
+                                 <button
+                                   onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                                   className={cn(
+                                     "flex items-center justify-between text-2xl font-heading font-bold transition-colors text-left",
+                                     isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                                   )}
+                                 >
+                                   {link.label}
+                                   <ChevronDown className={cn("w-6 h-6 transition-transform duration-300", isMobileServicesOpen ? "rotate-180" : "")} />
+                                 </button>
+                                 
+                                 {/* Expanded Services Sub-menu */}
+                                 <div className={cn(
+                                   "grid transition-all duration-300 ease-in-out",
+                                   isMobileServicesOpen ? "grid-rows-[1fr] mt-6 opacity-100" : "grid-rows-[0fr] opacity-0"
+                                 )}>
+                                   <div className="overflow-hidden flex flex-col gap-5 pl-4 border-l-2 border-border/50">
+                                      {SERVICES_MENU.map((srv, idx) => (
+                                        <Link key={idx} href={`/services/${srv.slug}`} className="text-base text-muted-foreground hover:text-foreground transition-colors font-medium">
+                                          {srv.title}
+                                        </Link>
+                                      ))}
+                                      <Link href="/services" className="text-base text-primary font-bold hover:underline mt-2 flex items-center gap-2">
+                                        View All Services <ArrowRight className="w-4 h-4" />
+                                      </Link>
+                                   </div>
+                                 </div>
+                               </div>
+                             );
+                          }
+
+                          return (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              className={cn(
+                                "text-2xl font-heading font-bold transition-colors",
+                                isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                              )}
+                            >
+                              {link.label}
+                            </Link>
+                          );
+                        })}
+                      </nav>
+                      
+                      {/* Footer Actions */}
+                      <div className="mt-auto pt-8 flex flex-col gap-5 border-t border-border/20">
+                        <GradientButton href="/contact#contact-form" className="w-full text-center py-6 text-lg font-bold shadow-xl shadow-primary/20 rounded-2xl">
+                          Start Your Project
+                        </GradientButton>
+                      </div>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
+            </div>
           </div>
-        </div>
-      </Container>
-    </motion.header>
+        </Container>
+      </motion.header>
     </>
   );
 }

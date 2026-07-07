@@ -34,8 +34,11 @@ const lazyImport = (importFunc: () => Promise<any>) => {
 const HomePage = lazyImport(() => import("@/pages/home"));
 const AboutPage = lazyImport(() => import("@/pages/about"));
 const ServicesPage = lazyImport(() => import("@/pages/services"));
+const ServiceDetailPage = lazyImport(() => import("@/pages/service-detail"));
 const SolutionsPage = lazyImport(() => import("@/pages/solutions"));
 const ContactPage = lazyImport(() => import("@/pages/contact"));
+const PrivacyPage = lazyImport(() => import("@/pages/privacy"));
+const TermsPage = lazyImport(() => import("@/pages/terms"));
 const NotFound = lazyImport(() => import("@/pages/not-found"));
 
 const queryClient = new QueryClient();
@@ -93,8 +96,11 @@ function Router() {
                 <Route path="/" component={HomePage} />
                 <Route path="/about" component={AboutPage} />
                 <Route path="/services" component={ServicesPage} />
+                <Route path="/services/:slug" component={ServiceDetailPage} />
                 <Route path="/solutions" component={SolutionsPage} />
                 <Route path="/contact" component={ContactPage} />
+                <Route path="/privacy" component={PrivacyPage} />
+                <Route path="/terms" component={TermsPage} />
                 <Route component={NotFound} />
               </Switch>
             </Suspense>
