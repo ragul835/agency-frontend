@@ -2,15 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Container } from "./Container";
 import { Github, Linkedin, Mail, Phone, MapPin, ArrowRight, Sparkles, Instagram, Facebook } from "lucide-react";
 
-const services = [
-  "Web Development",
-  "Full Stack Development",
-  "E-Commerce",
-  "SaaS",
-  "UI/UX Design",
-  "SEO",
-  "Shopify",
-];
+import { SERVICES } from "@/data/services";
 
 const companyLinks = [
   { href: "/about", label: "About" },
@@ -155,22 +147,18 @@ export function Footer() {
               Services
             </h3>
             <ul className="space-y-3">
-              {services.map((service) => {
-                const href = `/services#${service.toLowerCase().replace(/\s+/g, "-")}`;
-                return (
-                  <li key={service}>
-                    <a
-                      href={href}
-                      onClick={(e) => handleHashLink(e, href)}
-                      data-testid={`link-footer-service-${service.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="text-slate-400 hover:text-primary text-sm transition-colors flex items-center gap-2 group cursor-pointer"
-                    >
-                      <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      {service}
-                    </a>
-                  </li>
-                );
-              })}
+              {SERVICES.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    data-testid={`link-footer-service-${service.slug}`}
+                    className="text-slate-400 hover:text-primary text-sm transition-colors flex items-center gap-2 group cursor-pointer"
+                  >
+                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
