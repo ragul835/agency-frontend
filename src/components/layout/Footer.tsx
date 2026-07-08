@@ -23,6 +23,20 @@ const legalLinks = [
   { href: "/terms", label: "Terms & Conditions" },
 ];
 
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
+const footerSocials = [
+  { icon: Github, label: "GitHub", href: "https://github.com", hoverClass: "hover:text-primary hover:border-primary/50 hover:bg-primary/10" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", hoverClass: "hover:text-primary hover:border-primary/50 hover:bg-primary/10" },
+  { icon: Facebook, label: "Facebook", href: "https://facebook.com", hoverClass: "hover:text-[#1877F2] hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com", hoverClass: "hover:text-[#E4405F] hover:border-[#E4405F]/50 hover:bg-[#E4405F]/10" },
+  { icon: XIcon, label: "X", href: "https://twitter.com", hoverClass: "hover:text-white hover:border-white/50 hover:bg-white/10" },
+];
+
 export function Footer() {
   const year = new Date().getFullYear();
   const [, setLocation] = useLocation();
@@ -69,56 +83,22 @@ export function Footer() {
               Building reliable digital solutions with modern technology, clean engineering practices, and a commitment to long-term success.
             </p>
             <div className="flex items-center gap-3">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit our GitHub profile"
-                data-testid="link-github-footer"
-                className="w-9 h-9 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all"
-              >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit our LinkedIn profile"
-                data-testid="link-linkedin-footer"
-                className="w-9 h-9 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-all"
-              >
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit our Facebook profile"
-                data-testid="link-facebook-footer"
-                className="w-9 h-9 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center text-slate-400 hover:text-[#1877F2] hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 transition-all"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit our Instagram profile"
-                data-testid="link-instagram-footer"
-                className="w-9 h-9 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center text-slate-400 hover:text-[#E4405F] hover:border-[#E4405F]/50 hover:bg-[#E4405F]/10 transition-all"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit our X profile"
-                data-testid="link-twitter-footer"
-                className="w-9 h-9 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/50 hover:bg-white/10 transition-all"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="w-4 h-4 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-              </a>
+              {footerSocials.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit our ${s.label} profile`}
+                    data-testid={`link-${s.label.toLowerCase()}-footer`}
+                    className={`w-9 h-9 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center text-slate-400 transition-all ${s.hoverClass}`}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
