@@ -6,7 +6,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import {
   Mail, Phone, MapPin, Github, Linkedin, Twitter,
-  ChevronRight, Send, Info, Plus, Minus, Sparkles, ArrowRight, Clock, MessageSquare
+  ChevronRight, Send, Info, Plus, Minus, Sparkles, ArrowRight, Clock, MessageSquare, Facebook, Instagram
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,6 +43,8 @@ const socials = [
   { icon: Github, label: "GitHub", href: "https://github.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
   { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
+  { icon: Facebook, label: "Facebook", href: "https://facebook.com" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
 ];
 
 const faqData = [
