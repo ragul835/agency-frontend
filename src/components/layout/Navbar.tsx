@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Container } from "./Container";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, ChevronDown, ChevronRight, Layers, ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag, Zap, Rocket, ArrowRight, Code, Info, Briefcase, Lightbulb, Grid } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Layers, ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag, Zap, Rocket, ArrowRight, Code, Info, Briefcase, Lightbulb, Grid, FileText } from "lucide-react";
 import { GradientButton } from "../shared/GradientButton";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { href: "/services", label: "Services", icon: "Briefcase" },
   { href: "/portfolio", label: "Portfolio", icon: "Grid" },
   { href: "/solutions", label: "Solutions", icon: "Lightbulb" },
+  { href: "/blog", label: "Blog", icon: "FileText" },
 ];
 
 const SERVICES_MENU = [
@@ -113,7 +114,7 @@ export function Navbar() {
               {NAV_LINKS.map((link) => {
                 const isActive = location === link.href;
 
-                const NavIconMap: any = { Info, Briefcase, Lightbulb, Grid };
+                const NavIconMap: any = { Info, Briefcase, Lightbulb, Grid, FileText };
                 const NavIcon = NavIconMap[link.icon as string];
 
                 if (link.label === "Services") {
