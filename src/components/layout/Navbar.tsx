@@ -114,9 +114,6 @@ export function Navbar() {
               {NAV_LINKS.map((link) => {
                 const isActive = location === link.href;
 
-                const NavIconMap: any = { Info, Briefcase, Lightbulb, Grid, FileText };
-                const NavIcon = NavIconMap[link.icon as string];
-
                 if (link.label === "Services") {
                   return (
                     <div key={link.href} className="relative group">
@@ -124,7 +121,6 @@ export function Navbar() {
                         "flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary py-4",
                         isActive ? "text-foreground" : "text-muted-foreground"
                       )}>
-                        {NavIcon && <NavIcon className="h-4 w-4" />}
                         {link.label}
                         <ChevronDown className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
                       </button>
@@ -184,7 +180,6 @@ export function Navbar() {
                       isActive ? "text-foreground" : "text-muted-foreground"
                     )}
                   >
-                    {NavIcon && <NavIcon className="h-4 w-4" />}
                     {link.label}
                     <div
                       className={cn(

@@ -36,7 +36,7 @@ const contactInfo = [
   { icon: Mail, label: "Email", value: "ragulsiva@zohomail.in", href: "mailto:ragulsiva@zohomail.in" },
   { icon: Phone, label: "WhatsApp", value: "+91 9080163393", href: "tel:+919080163393" },
   { icon: MapPin, label: "Location", value: "India", href: null },
-  { icon: Clock, label: "Response Time", value: "As soon as possible", href: null },
+  { icon: Clock, label: "Response Time", value: "Within 24 hours", href: null },
 ];
 
 const XIcon = ({ className }: { className?: string }) => (
@@ -48,9 +48,9 @@ const XIcon = ({ className }: { className?: string }) => (
 const socials = [
   { icon: Github, label: "GitHub", href: "https://github.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: XIcon, label: "X", href: "https://twitter.com" },
   { icon: Facebook, label: "Facebook", href: "https://facebook.com" },
   { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
+  { icon: XIcon, label: "X", href: "https://twitter.com" },
 ];
 
 const faqData = [
