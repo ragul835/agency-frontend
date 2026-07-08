@@ -6,8 +6,10 @@ import { SERVICES } from "@/data/services";
 
 const companyLinks = [
   { href: "/about", label: "About" },
+  { href: "/portfolio", label: "Portfolio" },
   { href: "/services", label: "Services" },
   { href: "/solutions", label: "Solutions" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 

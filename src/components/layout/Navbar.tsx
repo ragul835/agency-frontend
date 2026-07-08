@@ -72,6 +72,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isMobileCompanyOpen, setIsMobileCompanyOpen] = useState(false);
+  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,9 +82,12 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
+  // Close mobile menu and dropdowns on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setIsMobileServicesOpen(false);
+    setIsMobileCompanyOpen(false);
+    setHoveredMenu(null);
   }, [location]);
 
   return (
@@ -116,15 +120,26 @@ export function Navbar() {
 
                 if (link.label === "Company") {
                   return (
-                    <div key={link.href} className="relative group">
-                      <button className={cn(
-                        "flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary py-4",
-                        (location === "/about" || location === "/blog") ? "text-foreground" : "text-muted-foreground"
-                      )}>
+                    <div 
+                      key={link.href} 
+                      className="relative"
+                      onMouseEnter={() => setHoveredMenu(link.label)}
+                      onMouseLeave={() => setHoveredMenu(null)}
+                    >
+                      <button 
+                        onClick={() => setHoveredMenu(hoveredMenu === link.label ? null : link.label)}
+                        className={cn(
+                          "flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary py-4",
+                          (location === "/about" || location === "/blog") ? "text-foreground" : "text-muted-foreground"
+                        )}
+                      >
                         {link.label}
-                        <ChevronDown className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
+                        <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", hoveredMenu === link.label && "rotate-180")} />
                       </button>
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                      <div className={cn(
+                        "absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-300 transform",
+                        hoveredMenu === link.label ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
+                      )}>
                         <div className="w-48 bg-background border border-border/50 rounded-xl shadow-2xl flex flex-col p-2">
                           <Link href="/about" className="px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors flex items-center justify-between group/link">
                             About Us <ArrowRight className="h-3 w-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
@@ -140,15 +155,26 @@ export function Navbar() {
 
                 if (link.label === "Services") {
                   return (
-                    <div key={link.href} className="relative group">
-                      <button className={cn(
-                        "flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary py-4",
-                        isActive ? "text-foreground" : "text-muted-foreground"
-                      )}>
+                    <div 
+                      key={link.href} 
+                      className="relative"
+                      onMouseEnter={() => setHoveredMenu(link.label)}
+                      onMouseLeave={() => setHoveredMenu(null)}
+                    >
+                      <button 
+                        onClick={() => setHoveredMenu(hoveredMenu === link.label ? null : link.label)}
+                        className={cn(
+                          "flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary py-4",
+                          isActive ? "text-foreground" : "text-muted-foreground"
+                        )}
+                      >
                         {link.label}
-                        <ChevronDown className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
+                        <ChevronDown className={cn("h-3 w-3 transition-transform duration-200", hoveredMenu === link.label && "rotate-180")} />
                       </button>
-                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                      <div className={cn(
+                        "absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-300 transform",
+                        hoveredMenu === link.label ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
+                      )}>
                         <div className="w-[850px] bg-background border border-border/50 rounded-2xl shadow-2xl flex overflow-hidden">
                           {/* Left Panel */}
                           <div className="w-[320px] bg-[#0F172A] p-8 text-white flex flex-col">
