@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import {
-  Mail, Phone, MapPin, Github, Linkedin, Twitter,
+  Mail, Phone, MapPin, Github, Linkedin,
   ChevronRight, Send, Info, Plus, Minus, Sparkles, ArrowRight, Clock, MessageSquare, Facebook, Instagram
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,10 +39,16 @@ const contactInfo = [
   { icon: Clock, label: "Response Time", value: "As soon as possible", href: null },
 ];
 
+const XIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
+
 const socials = [
   { icon: Github, label: "GitHub", href: "https://github.com" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com" },
+  { icon: XIcon, label: "X", href: "https://twitter.com" },
   { icon: Facebook, label: "Facebook", href: "https://facebook.com" },
   { icon: Instagram, label: "Instagram", href: "https://instagram.com" },
 ];
