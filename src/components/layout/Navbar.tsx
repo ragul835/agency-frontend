@@ -9,11 +9,10 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const NAV_LINKS = [
-  { href: "/about", label: "About", icon: "Info" },
+  { href: "#company", label: "Company", icon: "Building" },
   { href: "/services", label: "Services", icon: "Briefcase" },
   { href: "/portfolio", label: "Portfolio", icon: "Grid" },
   { href: "/solutions", label: "Solutions", icon: "Lightbulb" },
-  { href: "/blog", label: "Blog", icon: "FileText" },
 ];
 
 const SERVICES_MENU = [
@@ -72,6 +71,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const [isMobileCompanyOpen, setIsMobileCompanyOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -113,6 +113,30 @@ export function Navbar() {
             <nav className="hidden lg:flex items-center justify-center gap-8 flex-none">
               {NAV_LINKS.map((link) => {
                 const isActive = location === link.href;
+
+                if (link.label === "Company") {
+                  return (
+                    <div key={link.href} className="relative group">
+                      <button className={cn(
+                        "flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary py-4",
+                        (location === "/about" || location === "/blog") ? "text-foreground" : "text-muted-foreground"
+                      )}>
+                        {link.label}
+                        <ChevronDown className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
+                      </button>
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
+                        <div className="w-48 bg-background border border-border/50 rounded-xl shadow-2xl flex flex-col p-2">
+                          <Link href="/about" className="px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors flex items-center justify-between group/link">
+                            About Us <ArrowRight className="h-3 w-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                          </Link>
+                          <Link href="/blog" className="px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-primary hover:bg-muted/50 rounded-lg transition-colors flex items-center justify-between group/link">
+                            Our Blog <ArrowRight className="h-3 w-3 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
 
                 if (link.label === "Services") {
                   return (
@@ -227,6 +251,33 @@ export function Navbar() {
                         {NAV_LINKS.map((link) => {
                           const isActive = location === link.href || (link.href === '/services' && location.startsWith('/services'));
                           
+                          if (link.label === "Company") {
+                             return (
+                               <div key={link.href} className="flex flex-col">
+                                 <button
+                                   onClick={() => setIsMobileCompanyOpen(!isMobileCompanyOpen)}
+                                   className={cn(
+                                     "flex items-center justify-between text-2xl font-heading font-bold transition-colors text-left",
+                                     (location === "/about" || location === "/blog") ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                                   )}
+                                 >
+                                   {link.label}
+                                   <ChevronDown className={cn("w-6 h-6 transition-transform duration-300", isMobileCompanyOpen ? "rotate-180" : "")} />
+                                 </button>
+                                 
+                                 <div className={cn(
+                                   "grid transition-all duration-300 ease-in-out",
+                                   isMobileCompanyOpen ? "grid-rows-[1fr] mt-6 opacity-100" : "grid-rows-[0fr] opacity-0"
+                                 )}>
+                                   <div className="overflow-hidden flex flex-col gap-5 pl-4 border-l-2 border-border/50">
+                                      <Link href="/about" className="text-base text-muted-foreground hover:text-foreground transition-colors font-medium">About Us</Link>
+                                      <Link href="/blog" className="text-base text-muted-foreground hover:text-foreground transition-colors font-medium">Our Blog</Link>
+                                   </div>
+                                 </div>
+                               </div>
+                             );
+                          }
+
                           if (link.label === "Services") {
                              return (
                                <div key={link.href} className="flex flex-col">
