@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Container } from "./Container";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, ChevronDown, ChevronRight, Layers, ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag, Zap, Rocket, ArrowRight, Code, Info, Briefcase, Lightbulb, Grid, FileText } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, Layers, ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag, Zap, Rocket, ArrowRight, Code, Info, Briefcase, Lightbulb, Grid, FileText, Settings, Smartphone, Terminal } from "lucide-react";
 import { GradientButton } from "../shared/GradientButton";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -63,6 +63,24 @@ const SERVICES_MENU = [
     slug: "web-development",
     description: "Custom web applications and high-performance websites.",
     icon: "Code",
+  },
+  {
+    title: "Website Maintenance & Support",
+    slug: "maintenance-support",
+    description: "Keep your website secure, fast, and up-to-date.",
+    icon: "Settings",
+  },
+  {
+    title: "Mobile App Development",
+    slug: "mobile-app-development",
+    description: "High-performance iOS and Android applications.",
+    icon: "Smartphone",
+  },
+  {
+    title: "Custom Software Development",
+    slug: "custom-software-development",
+    description: "Tailor-made software solutions to solve complex business problems.",
+    icon: "Terminal",
   }
 ];
 
@@ -175,7 +193,7 @@ export function Navbar() {
                         "absolute top-full left-1/2 -translate-x-1/2 pt-2 transition-all duration-300 transform",
                         hoveredMenu === link.label ? "opacity-100 visible translate-y-0" : "opacity-0 invisible translate-y-2"
                       )}>
-                        <div className="w-[850px] bg-background border border-border/50 rounded-2xl shadow-2xl flex overflow-hidden">
+                        <div className="w-[850px] max-h-[450px] bg-background border border-border/50 rounded-2xl shadow-2xl flex overflow-hidden">
                           {/* Left Panel */}
                           <div className="w-[320px] bg-[#0F172A] p-8 text-white flex flex-col">
                             <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-6">
@@ -188,14 +206,14 @@ export function Navbar() {
                             <Link href="/services" className="mt-8 flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium">
                               Browse all services <ArrowRight className="h-4 w-4" />
                             </Link>
-                            <p className="text-slate-500 text-xs mt-2">8 services available</p>
+                            <p className="text-slate-500 text-xs mt-2">{SERVICES_MENU.length} services available</p>
                           </div>
                           
                           {/* Right Panel */}
-                          <div className="flex-1 p-6 grid grid-cols-2 gap-x-4 gap-y-2 bg-background">
+                          <div className="flex-1 p-6 grid grid-cols-2 gap-x-4 gap-y-2 bg-background overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-border [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-transparent">
                             {SERVICES_MENU.map((service, idx) => {
                               const IconMap: any = {
-                                ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag, Zap, Rocket, Code
+                                ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag, Zap, Rocket, Code, Settings, Smartphone, Terminal
                               };
                               const Icon = IconMap[service.icon];
                               return (

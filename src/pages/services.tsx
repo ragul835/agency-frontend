@@ -2,12 +2,15 @@ import { Link } from "wouter";
 import { useEffect } from "react";
 import {
   Code2, ShoppingCart, Layers, Palette, Search, ShoppingBag, Gauge,
-  ChevronRight, CheckCircle, ArrowRight, ArrowUpRight, Sparkles, Zap
+  ChevronRight, CheckCircle, ArrowRight, ArrowUpRight, Sparkles, Zap,
+  Settings, Smartphone, Terminal
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
 import { GradientButton } from "@/components/shared/GradientButton";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { PAGE_SEO, breadcrumbJsonLd, itemListJsonLd } from "@/lib/seo";
+import { SERVICES } from "@/data/services";
 
 const servicesList = [
   {
@@ -98,13 +101,70 @@ const servicesList = [
     technologiesUsed: "Lighthouse, Next.js, Vercel, Analytics",
     whoNeedsIt: "E-commerce businesses looking to improve performance and sales.",
   },
+  {
+    icon: Settings,
+    title: "Website Maintenance & Support",
+    tag: "",
+    color: "from-slate-500/20 to-zinc-500/20",
+    iconColor: "text-slate-400",
+    whatItIs: "Ongoing security monitoring, updates, backups, and performance care so your site stays reliable.",
+    benefits: "Reduced downtime, stronger security, and consistent performance without in-house overhead.",
+    technologiesUsed: "Uptime monitoring, Cloudflare, ManageWP, AWS Backup, Sentry",
+    whoNeedsIt: "Businesses that want peace of mind knowing their website is actively maintained.",
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile App Development",
+    tag: "New",
+    color: "from-violet-500/20 to-fuchsia-500/20",
+    iconColor: "text-violet-400",
+    whatItIs: "Native and cross-platform iOS and Android apps designed for speed, usability, and long-term growth.",
+    benefits: "Reach users on their primary devices, increase engagement, and build lasting brand loyalty.",
+    technologiesUsed: "React Native, Flutter, Swift, Kotlin, Firebase",
+    whoNeedsIt: "Startups and enterprises launching mobile-first products or customer apps.",
+  },
+  {
+    icon: Terminal,
+    title: "Custom Software Development",
+    tag: "",
+    color: "from-amber-500/20 to-yellow-500/20",
+    iconColor: "text-amber-400",
+    whatItIs: "Bespoke software built around your workflows — automation, integrations, and enterprise tools.",
+    benefits: "Perfect fit for unique processes, higher efficiency, and full ownership of the source code.",
+    technologiesUsed: "Node.js, Python, Java, PostgreSQL, Docker, AWS, Kubernetes",
+    whoNeedsIt: "Organizations with unique operations that off-the-shelf tools cannot fully support.",
+  },
 ];
 
 export default function ServicesPage() {
-  useDocumentTitle(
-    "Services | Seichox",
-    "Web development, e-commerce, SaaS platforms, UI/UX design, SEO services, Shopify development, and e-commerce optimization — solutions built around your business goals."
-  );
+  useSEO({
+    title: PAGE_SEO.services.title,
+    description: PAGE_SEO.services.description,
+    path: PAGE_SEO.services.path,
+    brandTitle: false,
+    keywords: [
+      "software development services",
+      "web development services",
+      "mobile app development",
+      "SaaS development",
+      "custom software",
+      "website maintenance",
+    ],
+    jsonLd: [
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Services", path: "/services" },
+      ]),
+      itemListJsonLd(
+        "Seichox Software Development Services",
+        SERVICES.map((s) => ({
+          name: s.title,
+          path: `/services/${s.slug}`,
+          description: s.description,
+        }))
+      ),
+    ],
+  });
 
   useEffect(() => {
     const timeout = setTimeout(() => {

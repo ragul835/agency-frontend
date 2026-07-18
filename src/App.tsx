@@ -64,7 +64,9 @@ function Layout({ children }: { children: React.ReactNode }) {
       <div className="fixed inset-0 bg-noise mix-blend-overlay z-50 pointer-events-none opacity-[0.25]" />
       <div className="fixed inset-0 bg-dot-grid opacity-[0.15] pointer-events-none" />
       <Navbar />
-      <main id="main-content" className="flex-1 relative z-10">{children}</main>
+      <main id="main-content" className="flex-1 relative z-10 outline-none" tabIndex={-1} role="main">
+        {children}
+      </main>
       <Footer />
     </div>
   );

@@ -3,7 +3,8 @@ import { CheckCircle, ChevronRight, Shield, Zap, Target, Cpu, ArrowRight, Sparkl
 import { Container } from "@/components/layout/Container";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
 import { GradientButton } from "@/components/shared/GradientButton";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { PAGE_SEO, breadcrumbJsonLd, organizationJsonLd } from "@/lib/seo";
 
 const coreValues = [
   "Performance and scalability in every solution.",
@@ -62,10 +63,19 @@ const approachSteps = [
 ];
 
 export default function AboutPage() {
-  useDocumentTitle(
-    "About Us | Seichox",
-    "Seichox is a technology partner for modern businesses. We help startups and growing organizations transform ideas into reliable digital products."
-  );
+  useSEO({
+    title: PAGE_SEO.about.title,
+    description: PAGE_SEO.about.description,
+    path: PAGE_SEO.about.path,
+    brandTitle: false,
+    jsonLd: [
+      organizationJsonLd(),
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "About", path: "/about" },
+      ]),
+    ],
+  });
 
   return (
     <div className="w-full flex flex-col">
@@ -131,7 +141,7 @@ export default function AboutPage() {
                       <div className="text-muted-foreground/60"><span className="text-blue-400">const</span> <span className="text-green-400">agency</span> = {'{'}</div>
                       <div className="pl-4 text-muted-foreground"><span className="text-orange-400">name</span>: <span className="text-green-300">"Seichox"</span>,</div>
                       <div className="pl-4 text-muted-foreground"><span className="text-orange-400">focus</span>: <span className="text-green-300">"Digital Products"</span>,</div>
-                      <div className="pl-4 text-muted-foreground"><span className="text-orange-400">services</span>: [<span className="text-green-300">"Web"</span>, <span className="text-green-300">"SaaS"</span>, <span className="text-green-300">"E-Com"</span>],</div>
+                      <div className="pl-4 text-muted-foreground"><span className="text-orange-400">services</span>: [<span className="text-green-300">"Web"</span>, <span className="text-green-300">"Mobile"</span>, <span className="text-green-300">"Custom"</span>, <span className="text-green-300">"Support"</span>],</div>
                       <div className="pl-4 text-muted-foreground"><span className="text-orange-400">support</span>: <span className="text-green-300">"24/7"</span>,</div>
                       <div className="text-muted-foreground/60">{'}'}</div>
                     </div>

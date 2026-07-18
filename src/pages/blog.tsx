@@ -4,7 +4,8 @@ import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimateOnScroll } from "@/components/shared/AnimateOnScroll";
 import { GradientButton } from "@/components/shared/GradientButton";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { PAGE_SEO, breadcrumbJsonLd, itemListJsonLd } from "@/lib/seo";
 import { Calendar, Clock, ArrowRight, Tag, Search, CheckCircle, TrendingUp, Users } from "lucide-react";
 
 interface BlogPost {
@@ -19,6 +20,7 @@ interface BlogPost {
   image: string;
 }
 
+/** One unique article per service offering */
 const blogPosts: BlogPost[] = [
   {
     slug: "top-web-development-trends-2026",
@@ -28,19 +30,19 @@ const blogPosts: BlogPost[] = [
     readTime: "12 min",
     category: "Web Development",
     tags: ["web development", "trends 2026", "IT company"],
-    metaDescription: "Explore the top web development trends in 2026 including AI integration, edge computing, and performance optimization. Expert insights from Seichox, a premier IT company.",
+    metaDescription: "Explore the top web development trends in 2026 including AI integration, edge computing, and performance optimization. Expert insights from Seichox.",
     image: "web-development-trends-2026.jpg",
   },
   {
-    slug: "scalable-saas-development-guide",
-    title: "Scalable SaaS Development Guide: Build Products That Grow With Your Business",
-    excerpt: "A comprehensive guide to building scalable SaaS applications. Learn architecture patterns, multi-tenancy strategies, and tech stacks used by successful IT companies.",
-    date: "July 5, 2026",
-    readTime: "15 min",
-    category: "SaaS Development",
-    tags: ["SaaS", "scalability", "software development"],
-    metaDescription: "Learn how to build scalable SaaS applications with proven strategies from an experienced IT company. Multi-tenancy, architecture, and growth tips included.",
-    image: "scalable-saas-development.jpg",
+    slug: "full-stack-development-playbook",
+    title: "Full-Stack Development Playbook: Frontend, Backend, and Everything Between",
+    excerpt: "How modern full-stack teams ship reliable products — architecture choices, API design, databases, and delivery practices that scale.",
+    date: "July 10, 2026",
+    readTime: "14 min",
+    category: "Full-Stack Development",
+    tags: ["full-stack", "React", "Node.js", "APIs"],
+    metaDescription: "Full-stack development playbook from Seichox. Frontend, backend, databases, APIs, and engineering practices for production systems.",
+    image: "full-stack-development.jpg",
   },
   {
     slug: "ecommerce-development-best-practices",
@@ -49,9 +51,20 @@ const blogPosts: BlogPost[] = [
     date: "July 3, 2026",
     readTime: "11 min",
     category: "E-Commerce",
-    tags: ["ecommerce", "conversion optimization", "shopify"],
-    metaDescription: "Master ecommerce development best practices for 2026. Discover how an IT company optimizes stores for speed, SEO, and conversions that drive real revenue.",
+    tags: ["ecommerce", "conversion optimization", "online store"],
+    metaDescription: "Master ecommerce development best practices for 2026. Speed, SEO, checkout, and conversion tactics from Seichox.",
     image: "ecommerce-development.jpg",
+  },
+  {
+    slug: "scalable-saas-development-guide",
+    title: "Scalable SaaS Development Guide: Build Products That Grow With Your Business",
+    excerpt: "A comprehensive guide to building scalable SaaS applications. Learn architecture patterns, multi-tenancy strategies, and tech stacks used by successful product teams.",
+    date: "July 5, 2026",
+    readTime: "15 min",
+    category: "SaaS Development",
+    tags: ["SaaS", "scalability", "multi-tenancy"],
+    metaDescription: "Learn how to build scalable SaaS applications with multi-tenancy, architecture, and growth strategies from Seichox.",
+    image: "scalable-saas-development.jpg",
   },
   {
     slug: "technical-seo-guide-for-it-companies",
@@ -60,179 +73,235 @@ const blogPosts: BlogPost[] = [
     date: "July 1, 2026",
     readTime: "14 min",
     category: "SEO",
-    tags: ["technical SEO", "web performance", "IT services"],
-    metaDescription: "Technical SEO guide from a leading IT company. Improve rankings with Core Web Vitals, schema, mobile-first indexing, and modern optimization techniques.",
+    tags: ["technical SEO", "web performance", "Core Web Vitals"],
+    metaDescription: "Technical SEO guide from Seichox. Core Web Vitals, schema, mobile-first indexing, and modern optimization techniques.",
     image: "technical-seo.jpg",
   },
   {
     slug: "ui-ux-design-for-business-growth",
     title: "How Professional UI/UX Design Drives 3x Business Growth and Conversions",
-    excerpt: "Great design isn't just pretty pixels. Learn the measurable business impact of professional UI/UX design and how top IT companies turn interfaces into growth engines.",
+    excerpt: "Great design isn't just pretty pixels. Learn the measurable business impact of professional UI/UX design and how product teams turn interfaces into growth engines.",
     date: "June 28, 2026",
     readTime: "10 min",
     category: "UI/UX Design",
     tags: ["UI/UX", "conversion rate", "user experience"],
-    metaDescription: "See how professional UI/UX design from an IT company can dramatically increase conversions, reduce bounce rates, and fuel sustainable business growth.",
+    metaDescription: "See how professional UI/UX design can increase conversions, reduce bounce rates, and fuel sustainable business growth.",
     image: "ui-ux-design.jpg",
   },
   {
     slug: "shopify-development-vs-custom-solutions",
     title: "Shopify Development vs Custom Ecommerce: Choosing the Right Solution",
-    excerpt: "Confused between Shopify and custom development? We break down the pros, cons, costs, and when to choose each option for your business from an expert IT company.",
+    excerpt: "Confused between Shopify and custom development? We break down the pros, cons, costs, and when to choose each option for your store from an expert agency.",
     date: "June 25, 2026",
     readTime: "13 min",
-    category: "E-Commerce",
-    tags: ["shopify", "custom development", "ecommerce platform"],
-    metaDescription: "Shopify vs custom ecommerce development: detailed comparison by a top IT company. Find the best fit for your budget, scale, and unique business requirements.",
+    category: "Shopify Development",
+    tags: ["shopify", "shopify plus", "ecommerce platform"],
+    metaDescription: "Shopify vs custom ecommerce development: detailed comparison by Seichox. Find the best fit for budget, scale, and requirements.",
     image: "shopify-vs-custom.jpg",
+  },
+  {
+    slug: "ecommerce-optimization-cro-guide",
+    title: "E-Commerce Optimization Guide: CRO, Speed, and Revenue Experiments",
+    excerpt: "Stop guessing why sales stall. Learn how conversion rate optimization, performance tuning, and experiment design lift revenue from existing traffic.",
+    date: "July 11, 2026",
+    readTime: "12 min",
+    category: "E-Commerce Optimization",
+    tags: ["CRO", "conversion rate", "page speed", "A/B testing"],
+    metaDescription: "E-commerce optimization and CRO guide from Seichox. Speed, experiments, funnels, and tactics that increase online revenue.",
+    image: "ecommerce-optimization.jpg",
+  },
+  {
+    slug: "website-maintenance-support-guide",
+    title: "Website Maintenance & Support: Why Ongoing Care Protects Revenue",
+    excerpt: "Launches are only the start. Learn how proactive website maintenance, security patches, and support keep your site fast, secure, and converting.",
+    date: "July 12, 2026",
+    readTime: "11 min",
+    category: "Website Maintenance",
+    tags: ["website maintenance", "support", "security", "uptime"],
+    metaDescription: "Why website maintenance and support matter after launch. Security, speed, backups, and response plans from Seichox.",
+    image: "website-maintenance-support.jpg",
+  },
+  {
+    slug: "mobile-app-development-guide-2026",
+    title: "Mobile App Development in 2026: Native vs Cross-Platform Decisions",
+    excerpt: "Build the right mobile product for iOS and Android. Compare native and cross-platform approaches, costs, and when each path makes business sense.",
+    date: "July 14, 2026",
+    readTime: "13 min",
+    category: "Mobile App Development",
+    tags: ["mobile app", "React Native", "Flutter", "iOS", "Android"],
+    metaDescription: "Mobile app development guide for 2026. Native vs cross-platform, stacks, timelines, and launch strategy from Seichox.",
+    image: "mobile-app-development.jpg",
+  },
+  {
+    slug: "custom-software-development-when-to-build",
+    title: "Custom Software Development: When Off-the-Shelf Tools Stop Working",
+    excerpt: "Know when to invest in custom software. We cover ROI signals, architecture choices, and how bespoke systems automate unique business workflows.",
+    date: "July 16, 2026",
+    readTime: "12 min",
+    category: "Custom Software",
+    tags: ["custom software", "enterprise", "automation", "integrations"],
+    metaDescription: "When custom software development beats SaaS tools. ROI, process automation, integrations, and ownership insights from Seichox.",
+    image: "custom-software-development.jpg",
   },
 ];
 
-const categories = ["All", "Web Development", "SaaS Development", "E-Commerce", "SEO", "UI/UX Design"];
+const categories = [
+  "All",
+  "Web Development",
+  "Full-Stack Development",
+  "E-Commerce",
+  "SaaS Development",
+  "SEO",
+  "UI/UX Design",
+  "Shopify Development",
+  "E-Commerce Optimization",
+  "Website Maintenance",
+  "Mobile App Development",
+  "Custom Software",
+];
 
 export default function BlogPage() {
-  useDocumentTitle(
-    "Blog | Seichox — IT Company Insights on Web Development, SaaS & SEO",
-    "Expert articles from Seichox, a leading IT company. Read in-depth guides on web development, SaaS architecture, ecommerce, technical SEO, and modern software engineering."
-  );
+  useSEO({
+    title: PAGE_SEO.blog.title,
+    description: PAGE_SEO.blog.description,
+    path: PAGE_SEO.blog.path,
+    brandTitle: false,
+    keywords: [
+      "software development blog",
+      "web development insights",
+      "SaaS architecture",
+      "mobile app development guide",
+      "technical SEO",
+    ],
+    jsonLd: [
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Blog", path: "/blog" },
+      ]),
+      itemListJsonLd(
+        "Seichox Blog Articles",
+        blogPosts.map((p) => ({
+          name: p.title,
+          path: `/blog/${p.slug}`,
+          description: p.metaDescription,
+        }))
+      ),
+    ],
+  });
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts = blogPosts
-    .filter((post) => {
-      const matchesCategory = activeCategory === "All" || post.category === activeCategory;
-      const matchesSearch =
-        searchQuery === "" ||
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
-    })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesCategory = activeCategory === "All" || post.category === activeCategory;
+    const q = searchQuery.toLowerCase();
+    const matchesSearch =
+      !q ||
+      post.title.toLowerCase().includes(q) ||
+      post.excerpt.toLowerCase().includes(q) ||
+      post.tags.some((t) => t.toLowerCase().includes(q)) ||
+      post.category.toLowerCase().includes(q);
+    return matchesCategory && matchesSearch;
+  });
 
   return (
-    <main className="pt-20">
-      {/* Hero Section */}
-      <section className="relative pt-16 pb-20 overflow-hidden border-b border-border/30 bg-gradient-to-b from-background via-background to-muted/20">
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff10_0.8px,transparent_1px)] bg-[length:5px_5px]" />
-        <Container className="relative z-10">
+    <div className="w-full flex flex-col">
+      <section className="relative pt-28 sm:pt-36 pb-16 overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_40%_at_50%_0%,hsl(var(--primary)/0.12),transparent)]" />
+        </div>
+        <Container>
           <AnimateOnScroll>
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary text-xs font-semibold tracking-[0.5px] mb-5">
-                EXPERT GUIDES • 2026
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+                Insights · One article per service
               </div>
-              <h1 className="text-5xl md:text-[56px] font-heading font-black tracking-[-1.8px] leading-[1.05] mb-5">
-                Insights from the<br />engineering team
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold tracking-tighter leading-[1.05] mb-6">
+                Blog{" "}
+                <span className="bg-gradient-to-r from-primary via-blue-400 to-secondary bg-clip-text text-transparent">
+                  by Service
+                </span>
               </h1>
-              <p className="text-[17px] text-muted-foreground max-w-xl mx-auto leading-relaxed">
-                Practical, in-depth articles on modern web development, SaaS architecture, ecommerce, technical SEO, and building products that actually scale.
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Unique deep-dives for every offering — web, full-stack, ecommerce, SaaS, SEO, design, Shopify, optimization, maintenance, mobile, and custom software.
               </p>
             </div>
           </AnimateOnScroll>
-        </Container>
-      </section>
 
-      {/* Filters */}
-      <section className="sticky top-20 z-40 bg-background/95 backdrop-blur-lg border-b border-border/40 py-4">
-        <Container>
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            {/* Categories */}
-            <div className="flex flex-wrap gap-2">
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+            <div className="flex flex-wrap gap-2 max-w-4xl">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 py-2 text-sm font-medium rounded-full transition-all ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all border ${
                     activeCategory === category
-                      ? "bg-primary text-primary-foreground shadow"
-                      : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground"
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "border-border/50 text-muted-foreground hover:border-primary/40 hover:text-primary"
                   }`}
                 >
                   {category}
                 </button>
               ))}
             </div>
-
-            {/* Search */}
-            <div className="relative w-full md:w-72">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <div className="relative w-full sm:w-64">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
-                type="text"
+                type="search"
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-muted/60 border border-border/50 rounded-full text-sm focus:outline-none focus:border-primary/60"
+                className="w-full pl-9 pr-3 py-2 rounded-xl border border-border/50 bg-card/40 text-sm focus:outline-none focus:border-primary/50"
               />
             </div>
           </div>
         </Container>
       </section>
 
-      {/* Blog Grid */}
-      <section className="py-16">
+      <section className="pb-24">
         <Container>
           {filteredPosts.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">No articles found matching your criteria.</p>
-              <button
-                onClick={() => {
-                  setActiveCategory("All");
-                  setSearchQuery("");
-                }}
-                className="mt-4 text-primary hover:underline"
-              >
-                Clear filters
-              </button>
-            </div>
+            <p className="text-center text-muted-foreground py-16">No articles match your filters.</p>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post, index) => (
-                <AnimateOnScroll key={post.slug} delay={index * 0.03}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredPosts.map((post) => (
+                <AnimateOnScroll key={post.slug}>
                   <Link href={`/blog/${post.slug}`} className="group block h-full">
-                    <article className="bg-card border border-border/60 rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:border-primary/40 hover:shadow-xl hover:-translate-y-0.5">
-                      {/* Card Header Image - optimized visibility */}
-                      <div className="relative h-48 md:h-52 overflow-hidden bg-muted rounded-t-2xl">
-                        <img 
-                          src={`/blog/${post.image}`} 
-                          alt={post.title} 
-                          className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out transform-gpu will-change-transform"
+                    <article className="premium-card h-full overflow-hidden flex flex-col">
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <img
+                          src={`/blog/${post.image}`}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"
-                          decoding="async"
-                          width="400"
-                          height="208"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/5 to-black/65" />
-                        <div className="absolute top-3 right-3 text-[10px] font-semibold px-3 py-0.5 bg-white/95 text-foreground rounded-full shadow-sm tracking-wide">
+                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-black/70 text-white border border-white/10">
                           {post.category}
                         </div>
-                        <div className="absolute bottom-3 right-3 flex items-center gap-1 text-[11px] text-white/95 font-medium bg-black/30 px-2 py-0.5 rounded">
-                          <Clock className="h-3 w-3" /> {post.readTime}
-                        </div>
                       </div>
-                      
-                      <div className="p-6 md:p-7 flex-1 flex flex-col">
-                        <div className="flex items-center gap-2 text-[12px] text-muted-foreground mb-3">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            <span>{post.date}</span>
-                          </div>
+                      <div className="p-5 flex flex-col flex-1">
+                        <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
+                          <span className="inline-flex items-center gap-1">
+                            <Calendar className="w-3.5 h-3.5" /> {post.date}
+                          </span>
+                          <span className="inline-flex items-center gap-1">
+                            <Clock className="w-3.5 h-3.5" /> {post.readTime}
+                          </span>
                         </div>
-
-                        <h2 className="text-[21px] leading-[1.25] font-heading font-semibold tracking-[-0.3px] mb-3 group-hover:text-primary transition-colors line-clamp-3">
+                        <h2 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors mb-2 line-clamp-2">
                           {post.title}
                         </h2>
-
-                        <p className="text-[14.5px] text-muted-foreground leading-[1.55] flex-1 line-clamp-3 mb-5">
-                          {post.excerpt}
-                        </p>
-
-                        <div className="mt-auto pt-3 border-t border-border/40">
-                          <div className="inline-flex items-center text-sm font-semibold text-primary group-hover:gap-2 gap-1.5 transition-all">
-                            Read full article 
-                            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                          </div>
+                        <p className="text-sm text-muted-foreground line-clamp-3 flex-1">{post.excerpt}</p>
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {post.tags.slice(0, 3).map((tag) => (
+                            <span key={tag} className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-muted/50 text-muted-foreground">
+                              <Tag className="w-2.5 h-2.5" /> {tag}
+                            </span>
+                          ))}
                         </div>
+                        <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
+                          Read article <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </span>
                       </div>
                     </article>
                   </Link>
@@ -241,54 +310,37 @@ export default function BlogPage() {
             </div>
           )}
 
-          {/* Professional "What makes our content different" section - fills space meaningfully */}
-          <div className="mt-16 border-t border-border/40 pt-16">
-            <div className="text-center mb-10">
-              <div className="inline text-xs font-semibold tracking-[1.5px] text-primary bg-primary/10 px-3 py-1 rounded-full">FROM THE BUILDERS</div>
-              <h2 className="mt-3 text-3xl md:text-4xl font-heading font-bold tracking-tight">What makes our insights different</h2>
-              <p className="mt-2 text-muted-foreground max-w-md mx-auto">We don’t write theory. We share patterns that actually work in production.</p>
+          <div className="mt-20 premium-card p-8 md:p-10 text-center">
+            <SectionHeader
+              title="Explore the service behind each article"
+              subtitle="Every post maps to a real Seichox capability — from maintenance retainers to mobile apps and custom platforms."
+            />
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Link href="/services">
+                <GradientButton>View all services</GradientButton>
+              </Link>
+              <Link href="/contact" className="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-border text-sm font-medium hover:bg-muted transition">
+                Talk to our team
+              </Link>
             </div>
-
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              <div className="bg-card border border-border/60 rounded-2xl p-6">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <CheckCircle className="h-5 w-5 text-primary" />
+            <div className="mt-8 grid sm:grid-cols-3 gap-4 text-left max-w-3xl mx-auto">
+              {[
+                { icon: CheckCircle, label: "11 services", sub: "One unique article each" },
+                { icon: TrendingUp, label: "Practical playbooks", sub: "Built from delivery work" },
+                { icon: Users, label: "For founders & teams", sub: "Clear next steps" },
+              ].map((item) => (
+                <div key={item.label} className="flex gap-3 p-3 rounded-xl border border-border/40 bg-card/30">
+                  <item.icon className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-sm font-semibold">{item.label}</div>
+                    <div className="text-xs text-muted-foreground">{item.sub}</div>
+                  </div>
                 </div>
-                <h4 className="font-semibold text-lg mb-2">Built by practitioners</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">Every article is written by engineers who are actively shipping scalable web apps, SaaS platforms, and high-converting ecommerce experiences for real clients.</p>
-              </div>
-
-              <div className="bg-card border border-border/60 rounded-2xl p-6">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <TrendingUp className="h-5 w-5 text-primary" />
-                </div>
-                <h4 className="font-semibold text-lg mb-2">Focused on what scales</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">We skip the hype. You’ll find battle-tested approaches that work from early traction to thousands of users and enterprise requirements.</p>
-              </div>
-
-              <div className="bg-card border border-border/60 rounded-2xl p-6">
-                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <Users className="h-5 w-5 text-primary" />
-                </div>
-                <h4 className="font-semibold text-lg mb-2">2026 realities, not 2023 advice</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">AI integration, edge performance, composable architecture, and modern SEO — we cover what actually moves the needle for ambitious companies right now.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA Section - more prominent */}
-          <div className="mt-16 text-center bg-muted/30 border border-border/40 rounded-3xl py-14 px-6">
-            <h3 className="text-3xl md:text-4xl font-heading font-bold mb-3 tracking-tight">Ready to build something that lasts?</h3>
-            <p className="text-muted-foreground max-w-md mx-auto mb-8 text-[15px]">
-              Let’s discuss how Seichox can help you apply these patterns to your next web, SaaS, or ecommerce project.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <GradientButton href="/contact#contact-form">Start a conversation</GradientButton>
-              <Link href="/services" className="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-border text-sm font-medium hover:bg-muted transition">Explore our services</Link>
+              ))}
             </div>
           </div>
         </Container>
       </section>
-    </main>
+    </div>
   );
 }

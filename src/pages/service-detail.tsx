@@ -5,14 +5,20 @@ import {
   Shield, Layers, Target, Users, Clock, Globe,
   Database, MonitorSmartphone, LineChart,
   Wrench, Sparkles, TrendingUp, X, Lock, Check,
-  Building2, Stethoscope, Briefcase, Factory, Banknote
+  Building2, Stethoscope, Briefcase, Factory, Banknote,
+  Settings, Smartphone, Terminal, ShieldCheck, Activity, Bell, Heart
 } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { AnimateOnScroll } from "@/components/shared/AnimateOnScroll";
 import { GradientButton } from "@/components/shared/GradientButton";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
 import { cn } from "@/lib/utils";
 import { SERVICES } from "@/data/services";
+import {
+  breadcrumbJsonLd,
+  serviceJsonLd,
+  faqJsonLd,
+} from "@/lib/seo";
 import {
   Accordion,
   AccordionContent,
@@ -23,7 +29,8 @@ import {
 const IconMap: Record<string, any> = {
   ShoppingCart, Layout, Search, Cloud, PenTool, ShoppingBag,
   TrendingUp, Code, Shield, Layers, Target, Users, Clock,
-  Globe, Database, MonitorSmartphone, LineChart, Wrench, Sparkles, Zap, Rocket
+  Globe, Database, MonitorSmartphone, LineChart, Wrench, Sparkles, Zap, Rocket,
+  Settings, Smartphone, Terminal, ShieldCheck, Activity, Bell, Heart, CheckCircle, Lock
 };
 
 export default function ServiceDetailPage() {
@@ -32,9 +39,45 @@ export default function ServiceDetailPage() {
 
   const service = SERVICES.find(s => s.slug === slug);
 
-  useDocumentTitle(
-    service ? `${service.title} | Seichox Services` : "Service Not Found | Seichox",
-    service ? service.description : "Service details"
+  useSEO(
+    service
+      ? {
+          title: `${service.title} | Seichox Services`,
+          description: `${service.description} ${service.longDescription.slice(0, 120).trim()}…`.slice(0, 160),
+          path: `/services/${service.slug}`,
+          brandTitle: false,
+          keywords: [
+            service.title,
+            service.slug.replace(/-/g, " "),
+            ...service.technologies.slice(0, 5),
+            "Seichox",
+          ],
+          jsonLd: [
+            breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "Services", path: "/services" },
+              { name: service.title, path: `/services/${service.slug}` },
+            ]),
+            serviceJsonLd({
+              name: service.title,
+              description: service.description,
+              path: `/services/${service.slug}`,
+            }),
+            faqJsonLd(
+              (service.faqs || []).map((f) => ({
+                question: f.question,
+                answer: f.answer,
+              }))
+            ),
+          ],
+        }
+      : {
+          title: "Service Not Found | Seichox",
+          description: "The requested service page does not exist. Browse all Seichox software development services.",
+          path: slug ? `/services/${slug}` : "/services",
+          brandTitle: false,
+          noindex: true,
+        }
   );
 
   if (!service) {

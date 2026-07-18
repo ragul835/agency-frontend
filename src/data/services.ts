@@ -455,5 +455,182 @@ export const SERVICES = [
       { question: "Do you offer website maintenance?", answer: "Yes, we offer ongoing support and maintenance packages to ensure your website remains secure." },
       { question: "Are your websites optimized for mobile?", answer: "Absolutely. We follow a mobile-first design philosophy, ensuring perfect display on all screen sizes." }
     ]
+  },
+  {
+    title: "Website Maintenance & Support",
+    slug: "maintenance-support",
+    description: "Keep your website secure, fast, and up-to-date.",
+    longDescription: "A website is never truly 'finished'. To maintain peak performance, security, and relevance, continuous maintenance is crucial. We offer comprehensive support packages tailored to your needs, handling everything from routine updates and security patches to content changes and feature enhancements, so you can focus on running your business.",
+    icon: "Settings",
+    targetAudience: "Businesses of all sizes that want peace of mind knowing their digital assets are actively monitored and maintained.",
+    hurdles: [
+      "Security vulnerabilities from outdated plugins",
+      "Slow performance over time",
+      "Broken links and layout issues",
+      "Lack of technical support for urgent fixes",
+      "Content becoming stale or outdated"
+    ],
+    benefits: [
+      { title: "Peace of Mind", description: "Knowing experts are proactively monitoring your site.", icon: "ShieldCheck" },
+      { title: "Optimized Performance", description: "Regular tuning to keep load times fast.", icon: "Zap" },
+      { title: "Reduced Downtime", description: "Immediate action on critical issues to keep your site online.", icon: "Activity" }
+    ],
+    features: [
+      {
+        title: "Security Monitoring",
+        description: "24/7 scanning for vulnerabilities and malware.",
+        details: ["Automated backups", "Malware removal", "Firewall management", "Uptime monitoring"]
+      },
+      {
+        title: "Regular Updates",
+        description: "Keeping CMS, themes, and plugins up-to-date.",
+        details: ["Core software updates", "Plugin compatibility checks", "PHP version upgrades", "Bug fixes"]
+      },
+      {
+        title: "Performance Optimization",
+        description: "Continuous tweaks for better speed and UX.",
+        details: ["Database optimization", "Image compression", "Cache management", "Broken link fixing"]
+      },
+      {
+        title: "Dedicated Support",
+        description: "Direct access to our developer team for tasks.",
+        details: ["Priority ticketing system", "Content updates", "Minor design tweaks", "Monthly reporting"]
+      }
+    ],
+    security: [
+      { title: "Proactive Patching", description: "Applying critical security updates as soon as they are released." },
+      { title: "Automated Backups", description: "Daily off-site backups with easy restoration options." },
+      { title: "Malware Scanning", description: "Continuous scanning to detect and remove malicious code." }
+    ],
+    process: [
+      { step: "01", title: "Audit", description: "Initial assessment of your current website health and security." },
+      { step: "02", title: "Onboarding", description: "Setting up monitoring tools, backups, and staging environments." },
+      { step: "03", title: "Maintenance", description: "Performing scheduled updates and continuous monitoring." },
+      { step: "04", title: "Reporting", description: "Delivering detailed monthly reports on site performance and tasks completed." }
+    ],
+    technologies: ["UptimeRobot", "ManageWP", "Cloudflare", "New Relic", "Sentry", "AWS Backup"],
+    faqs: [
+      { question: "What happens if my site goes down?", answer: "Our uptime monitors notify us immediately, and our team begins troubleshooting right away." },
+      { question: "Can I request new features under a maintenance plan?", answer: "Yes! Most of our plans include dedicated monthly development hours that can be used for new features." },
+      { question: "Do you support platforms other than WordPress?", answer: "Absolutely, we support custom web apps, Next.js sites, Shopify, and various other platforms." }
+    ]
+  },
+  {
+    title: "Mobile App Development",
+    slug: "mobile-app-development",
+    description: "High-performance iOS and Android applications.",
+    longDescription: "Reach your users wherever they are with a custom-built mobile application. We design and develop native and cross-platform apps that provide seamless, engaging experiences on iOS and Android devices. From initial concept to App Store launch, we handle the entire lifecycle, ensuring your app is fast, intuitive, and scalable.",
+    icon: "Smartphone",
+    targetAudience: "Startups launching mobile-first products and enterprises looking to enhance customer engagement through dedicated apps.",
+    hurdles: [
+      "Fragmented user experiences across platforms",
+      "High development costs for separate codebases",
+      "Poor app performance and battery drain",
+      "Complex App Store approval processes",
+      "Difficulty retaining users post-download"
+    ],
+    benefits: [
+      { title: "Wider Reach", description: "Connect with customers directly on their most-used devices.", icon: "Users" },
+      { title: "Enhanced Engagement", description: "Utilize push notifications and device features to keep users active.", icon: "Bell" },
+      { title: "Brand Loyalty", description: "A dedicated app presence reinforces brand value and trust.", icon: "Heart" }
+    ],
+    features: [
+      {
+        title: "Cross-Platform Development",
+        description: "Building once, deploying everywhere with modern frameworks.",
+        details: ["React Native / Flutter", "Shared business logic", "Native-like performance", "Faster time-to-market"]
+      },
+      {
+        title: "Native App Development",
+        description: "Platform-specific apps for maximum performance.",
+        details: ["Swift for iOS", "Kotlin for Android", "Deep hardware integration", "Optimized UI/UX"]
+      },
+      {
+        title: "UI/UX Design for Mobile",
+        description: "Interfaces tailored for touch and smaller screens.",
+        details: ["Human Interface Guidelines", "Material Design", "Gesture-based navigation", "Accessibility optimization"]
+      },
+      {
+        title: "API & Backend Integration",
+        description: "Connecting your app to robust cloud services.",
+        details: ["REST/GraphQL APIs", "Real-time data sync", "Offline mode support", "Push notification systems"]
+      }
+    ],
+    security: [
+      { title: "Secure Storage", description: "Encrypted local storage for sensitive user data (Keychain/Keystore)." },
+      { title: "API Security", description: "Robust authentication and encrypted communication with backend services." },
+      { title: "App Hardening", description: "Techniques to prevent reverse engineering and tampering." }
+    ],
+    process: [
+      { step: "01", title: "Discovery", description: "Defining the app's core features, target audience, and platform strategy." },
+      { step: "02", title: "Design", description: "Creating mobile-specific wireframes and interactive prototypes." },
+      { step: "03", title: "Development", description: "Agile sprints to build frontend interfaces and connect backend APIs." },
+      { step: "04", title: "Launch", description: "Thorough device testing and managing the App Store / Google Play submission process." }
+    ],
+    technologies: ["React Native", "Flutter", "Swift", "Kotlin", "Firebase", "App Store Connect"],
+    faqs: [
+      { question: "Should I build a native or cross-platform app?", answer: "It depends on your needs. Cross-platform is faster and more cost-effective, while native is best for highly complex, graphics-intensive apps." },
+      { question: "Do you help with App Store submissions?", answer: "Yes, we handle the entire submission and approval process for both Apple and Google stores." },
+      { question: "Can the app work offline?", answer: "Yes, we can implement local databases and sync strategies so the app functions even without an internet connection." }
+    ]
+  },
+  {
+    title: "Custom Software Development",
+    slug: "custom-software-development",
+    description: "Tailor-made software solutions to solve complex business problems.",
+    longDescription: "Off-the-shelf software doesn't always fit. When your business processes are unique, you need technology built specifically for you. We engineer bespoke software solutions designed to automate workflows, integrate disparate systems, and scale alongside your enterprise. Our custom development focuses on efficiency, security, and long-term value.",
+    icon: "Terminal",
+    targetAudience: "Mid-to-large enterprises with unique operational challenges that cannot be solved by standard SaaS products.",
+    hurdles: [
+      "Inefficient, manual workflows",
+      "Data silos across multiple disjointed systems",
+      "High licensing costs for enterprise software",
+      "Lack of competitive advantage with generic tools",
+      "Inability to scale operations smoothly"
+    ],
+    benefits: [
+      { title: "Perfect Fit", description: "Software built exactly to your specifications and workflows.", icon: "CheckCircle" },
+      { title: "Increased Efficiency", description: "Automating manual tasks to save time and reduce errors.", icon: "TrendingUp" },
+      { title: "IP Ownership", description: "You own the code and the intellectual property completely.", icon: "Lock" }
+    ],
+    features: [
+      {
+        title: "Enterprise Web Apps",
+        description: "Complex, data-heavy applications for internal use.",
+        details: ["Custom CRMs", "ERP integrations", "Inventory management systems", "HR portals"]
+      },
+      {
+        title: "System Integration",
+        description: "Connecting legacy systems with modern tools.",
+        details: ["API development", "Middleware creation", "Data synchronization", "Legacy modernization"]
+      },
+      {
+        title: "Workflow Automation",
+        description: "Streamlining business processes with custom logic.",
+        details: ["Business Process Management", "Task scheduling", "Automated reporting", "Approval workflows"]
+      },
+      {
+        title: "Cloud Architecture",
+        description: "Designing robust, scalable infrastructure.",
+        details: ["AWS/Azure/GCP setup", "Microservices", "Containerization (Docker)", "Serverless computing"]
+      }
+    ],
+    security: [
+      { title: "Role-Based Access Control", description: "Granular permissions to ensure users only see what they need to." },
+      { title: "Data Encryption", description: "Protecting sensitive corporate data both in transit and at rest." },
+      { title: "Audit Logging", description: "Comprehensive tracking of all system changes and user actions." }
+    ],
+    process: [
+      { step: "01", title: "Analysis", description: "Deep dive into your business processes and technical requirements." },
+      { step: "02", title: "Architecture", description: "Designing the system topology, database schema, and technology stack." },
+      { step: "03", title: "Development", description: "Iterative building with regular demonstrations and feedback loops." },
+      { step: "04", title: "Deployment", description: "Phased rollout, user training, and ongoing technical support." }
+    ],
+    technologies: ["Node.js", "Python", "Java", "PostgreSQL", "Docker", "AWS", "Kubernetes"],
+    faqs: [
+      { question: "How much does custom software cost?", answer: "Cost varies widely based on complexity. We provide detailed estimates after the initial discovery phase." },
+      { question: "Will we own the source code?", answer: "Absolutely. Once the project is fully paid for, all intellectual property rights are transferred to you." },
+      { question: "How do you ensure the software will grow with us?", answer: "We use scalable, cloud-native architectures and write modular, well-documented code designed for future expansion." }
+    ]
   }
 ];

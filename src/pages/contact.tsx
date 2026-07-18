@@ -16,7 +16,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Container } from "@/components/layout/Container";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
 import logger from "@/lib/logger";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { PAGE_SEO, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -29,7 +30,8 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 const services = [
   "Full-Stack Development", "E-Commerce Development", "SaaS Development",
-  "UI/UX Design", "SEO Services", "Shopify Development", "E-Commerce Optimization", "Other",
+  "UI/UX Design", "SEO Services", "Shopify Development", "E-Commerce Optimization",
+  "Website Maintenance & Support", "Mobile App Development", "Custom Software Development", "Other",
 ];
 
 const contactInfo = [
@@ -66,10 +68,20 @@ export default function ContactPage() {
   const [serviceValue, setServiceValue] = useState("");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useDocumentTitle(
-    "Contact Us | Seichox",
-    "Get in touch with Seichox. Tell us about your project and we'll respond within 24 hours."
-  );
+  useSEO({
+    title: PAGE_SEO.contact.title,
+    description: PAGE_SEO.contact.description,
+    path: PAGE_SEO.contact.path,
+    brandTitle: false,
+    keywords: ["contact Seichox", "hire web developers", "software development consultation"],
+    jsonLd: [
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Contact", path: "/contact" },
+      ]),
+      faqJsonLd(faqData.map((f) => ({ question: f.q, answer: f.a }))),
+    ],
+  });
 
   useEffect(() => {
     const timeout = setTimeout(() => {

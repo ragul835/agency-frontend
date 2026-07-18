@@ -1,7 +1,8 @@
 import { Link } from "wouter";
 import { ChevronRight, Scale, Mail, Globe, FileText, Calendar, AlertTriangle, Users } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { PAGE_SEO, breadcrumbJsonLd } from "@/lib/seo";
 
 const lastUpdated = "July 8, 2026";
 
@@ -13,7 +14,7 @@ const sections = [
 
 These Terms constitute a legally binding agreement between you (the "Client") and Seichox ("we," "us," or "our"). They govern your use of our website and all professional services we provide, including but not limited to:
 
-Web Development, Full-Stack Development, E-Commerce Solutions, SaaS Platform Development, UI/UX Design, SEO Services, Shopify Development, and related consulting.`
+Web Development, Full-Stack Development, E-Commerce Solutions, SaaS Platform Development, UI/UX Design, SEO Services, Shopify Development, Website Maintenance & Support, Mobile App Development, Custom Software Development, and related consulting.`
   },
   {
     id: "services",
@@ -26,7 +27,9 @@ Web Development, Full-Stack Development, E-Commerce Solutions, SaaS Platform Dev
 • SaaS product development with subscription billing, multi-tenancy, and admin tools
 • Professional UI/UX design, research, wireframing, and prototyping
 • Technical SEO audits, on-page optimization, and content strategy
-• Ongoing maintenance, support, and performance optimization
+• Ongoing website maintenance, support, and performance optimization
+• Mobile app development for iOS and Android (native and cross-platform)
+• Custom software development, system integrations, and workflow automation
 
 All services are delivered on a project basis or via retainer agreements as outlined in separate statements of work (SOWs), proposals, or contracts. Estimates and timelines provided are good-faith projections and may be adjusted based on scope changes or unforeseen technical challenges.`
   },
@@ -169,10 +172,18 @@ We are committed to clear communication and fair dealings with all our clients, 
 ];
 
 export default function TermsAndConditions() {
-  useDocumentTitle(
-    "Terms & Conditions | Seichox",
-    "Read the Terms & Conditions for Seichox IT services — web development, full-stack, e-commerce, SaaS, UI/UX, SEO, and Shopify development."
-  );
+  useSEO({
+    title: PAGE_SEO.terms.title,
+    description: PAGE_SEO.terms.description,
+    path: PAGE_SEO.terms.path,
+    brandTitle: false,
+    jsonLd: [
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Terms & Conditions", path: "/terms" },
+      ]),
+    ],
+  });
 
   return (
     <div className="w-full flex flex-col bg-background">

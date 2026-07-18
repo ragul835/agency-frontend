@@ -1,7 +1,8 @@
 import { Link, useParams } from "wouter";
 import { Container } from "@/components/layout/Container";
 import { GradientButton } from "@/components/shared/GradientButton";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { ArrowLeft, Calendar, Clock, Tag, ArrowRight, CheckCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -112,9 +113,9 @@ const postMetas: Record<string, PostMeta> = {
     title: "Shopify Development vs Custom Ecommerce: Choosing the Right Solution",
     date: "June 25, 2026",
     readTime: "13 min",
-    category: "E-Commerce",
-    metaDescription: "Shopify vs custom ecommerce development: detailed comparison by a top IT company. Find the best fit for your budget, scale, and unique business requirements.",
-    tags: ["shopify", "custom development", "ecommerce"],
+    category: "Shopify Development",
+    metaDescription: "Shopify vs custom ecommerce development: detailed comparison by Seichox. Find the best fit for budget, scale, and requirements.",
+    tags: ["shopify", "shopify plus", "ecommerce platform"],
     image: "shopify-vs-custom.jpg",
     intro: "The “Shopify vs custom” debate is usually framed the wrong way. The right question is: what does your business actually need in the next 18–36 months?",
     author: { name: "Seichox Engineering", role: "Team" },
@@ -123,6 +124,91 @@ const postMetas: Record<string, PostMeta> = {
       { id: "custom", label: "When Custom Development Makes Sense" },
       { id: "cost", label: "Cost Reality Check" },
       { id: "decide", label: "How We Help Clients Decide" },
+    ],
+  },
+  "full-stack-development-playbook": {
+    title: "Full-Stack Development Playbook: Frontend, Backend, and Everything Between",
+    date: "July 10, 2026",
+    readTime: "14 min",
+    category: "Full-Stack Development",
+    metaDescription: "Full-stack development playbook from Seichox. Frontend, backend, databases, APIs, and engineering practices for production systems.",
+    tags: ["full-stack", "React", "Node.js", "APIs"],
+    image: "full-stack-development.jpg",
+    intro: "Full-stack is not “one person who does everything poorly.” It is the discipline of connecting interface, API, data, and infrastructure into one coherent product.",
+    author: { name: "Seichox Engineering", role: "Team" },
+    toc: [
+      { id: "scope", label: "What Full-Stack Really Means" },
+      { id: "architecture", label: "Architecture That Survives Growth" },
+      { id: "delivery", label: "Delivery Habits That Matter" },
+      { id: "stack", label: "A Practical 2026 Stack" },
+    ],
+  },
+  "ecommerce-optimization-cro-guide": {
+    title: "E-Commerce Optimization Guide: CRO, Speed, and Revenue Experiments",
+    date: "July 11, 2026",
+    readTime: "12 min",
+    category: "E-Commerce Optimization",
+    metaDescription: "E-commerce optimization and CRO guide from Seichox. Speed, experiments, funnels, and tactics that increase online revenue.",
+    tags: ["CRO", "conversion rate", "page speed", "A/B testing"],
+    image: "ecommerce-optimization.jpg",
+    intro: "More traffic will not fix a broken funnel. E-commerce optimization is about extracting more revenue from the visitors you already have — with evidence, not opinions.",
+    author: { name: "Seichox Engineering", role: "Team" },
+    toc: [
+      { id: "diagnose", label: "Diagnose Before You Redesign" },
+      { id: "speed", label: "Speed Is a Conversion Feature" },
+      { id: "experiments", label: "Run Experiments That Prove Lift" },
+      { id: "playbook", label: "A 90-Day Optimization Playbook" },
+    ],
+  },
+  "website-maintenance-support-guide": {
+    title: "Website Maintenance & Support: Why Ongoing Care Protects Revenue",
+    date: "July 12, 2026",
+    readTime: "11 min",
+    category: "Website Maintenance",
+    metaDescription: "Why website maintenance and support matter after launch. Security, speed, backups, and response plans from Seichox.",
+    tags: ["website maintenance", "support", "security", "uptime"],
+    image: "website-maintenance-support.jpg",
+    intro: "Shipping a website is not the finish line. Without maintenance, even a great launch slowly becomes a liability — slower pages, security gaps, and quiet revenue leaks.",
+    author: { name: "Seichox Engineering", role: "Team" },
+    toc: [
+      { id: "why-maintenance", label: "Why Maintenance Is a Revenue Decision" },
+      { id: "what-included", label: "What Good Support Actually Includes" },
+      { id: "risks", label: "Risks of Going Without a Plan" },
+      { id: "choose", label: "How to Choose a Maintenance Partner" },
+    ],
+  },
+  "mobile-app-development-guide-2026": {
+    title: "Mobile App Development in 2026: Native vs Cross-Platform Decisions",
+    date: "July 14, 2026",
+    readTime: "13 min",
+    category: "Mobile App Development",
+    metaDescription: "Mobile app development guide for 2026. Native vs cross-platform, stacks, timelines, and launch strategy from Seichox.",
+    tags: ["mobile app", "React Native", "Flutter", "iOS", "Android"],
+    image: "mobile-app-development.jpg",
+    intro: "Mobile is still where most users spend their time. The hard part is not “should we build an app?” — it is choosing the right approach, stack, and launch plan for your budget and goals.",
+    author: { name: "Seichox Engineering", role: "Team" },
+    toc: [
+      { id: "when-mobile", label: "When a Mobile App Makes Sense" },
+      { id: "native-vs-cross", label: "Native vs Cross-Platform" },
+      { id: "stack", label: "Stacks That Work in Production" },
+      { id: "launch", label: "From MVP to App Store Launch" },
+    ],
+  },
+  "custom-software-development-when-to-build": {
+    title: "Custom Software Development: When Off-the-Shelf Tools Stop Working",
+    date: "July 16, 2026",
+    readTime: "12 min",
+    category: "Custom Software",
+    metaDescription: "When custom software development beats SaaS tools. ROI, process automation, integrations, and ownership insights from Seichox.",
+    tags: ["custom software", "enterprise", "automation", "integrations"],
+    image: "custom-software-development.jpg",
+    intro: "SaaS products are excellent until your process no longer fits their product. That is the moment custom software stops being a luxury and starts being an operational advantage.",
+    author: { name: "Seichox Engineering", role: "Team" },
+    toc: [
+      { id: "signals", label: "Signals You Need Custom Software" },
+      { id: "roi", label: "How to Think About ROI" },
+      { id: "architecture", label: "Architecture Choices That Matter" },
+      { id: "partnership", label: "How We Deliver Custom Systems" },
     ],
   },
 };
@@ -146,7 +232,52 @@ export default function BlogPostPage() {
   const slug = params.slug || "";
   const meta = postMetas[slug] || defaultMeta;
 
-  useDocumentTitle(`${meta.title} | Seichox`, meta.metaDescription);
+  const isKnownPost = Boolean(postMetas[slug]);
+  const articlePath = `/blog/${slug}`;
+  const articleImage = meta.image ? `/blog/${meta.image}` : undefined;
+
+  // Best-effort ISO date from display dates like "July 8, 2026"
+  const publishedIso = (() => {
+    try {
+      const d = new Date(meta.date);
+      return Number.isNaN(d.getTime()) ? undefined : d.toISOString();
+    } catch {
+      return undefined;
+    }
+  })();
+
+  useSEO({
+    title: `${meta.title} | Seichox`,
+    description: meta.metaDescription,
+    path: articlePath,
+    image: articleImage,
+    type: "article",
+    brandTitle: false,
+    noindex: !isKnownPost,
+    keywords: meta.tags,
+    author: meta.author?.name || "Seichox Engineering",
+    publishedTime: publishedIso,
+    modifiedTime: publishedIso,
+    jsonLd: isKnownPost
+      ? [
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: meta.title, path: articlePath },
+          ]),
+          articleJsonLd({
+            title: meta.title,
+            description: meta.metaDescription,
+            path: articlePath,
+            image: articleImage,
+            datePublished: publishedIso,
+            dateModified: publishedIso,
+            authorName: meta.author?.name || "Seichox Engineering",
+            keywords: meta.tags,
+          }),
+        ]
+      : undefined,
+  });
 
   // Scroll to top on mount
   useEffect(() => {
@@ -441,6 +572,163 @@ export default function BlogPostPage() {
             <p>Many of our clients start on Shopify and migrate when growth or requirements justify the move. Others go custom from the beginning because their business model demands it.</p>
 
             <p>There is no universally correct answer. There is only the right answer for your specific situation.</p>
+          </div>
+        );
+
+      case "full-stack-development-playbook":
+        return (
+          <div>
+            <p className="lead text-[17px] text-foreground/90">
+              Full-stack is not “one person who does everything poorly.” It is the discipline of connecting interface, API, data, and infrastructure into one coherent product.
+            </p>
+
+            <h2 id="scope">What Full-Stack Really Means</h2>
+            <p>On modern teams, full-stack means owning outcomes across the request path: UI state, API contracts, auth, persistence, background jobs, and observability. Specialists still exist — but the system has to be designed as a whole.</p>
+            <ul>
+              <li>Frontend that is accessible, fast, and intentional about data loading</li>
+              <li>Backend services with clear boundaries and predictable failure modes</li>
+              <li>Data models that match real business rules, not just CRUD screens</li>
+            </ul>
+
+            <h2 id="architecture">Architecture That Survives Growth</h2>
+            <p>Start simple, keep seams clean. Most products fail from tangled modules, not from choosing the “wrong” framework. We prefer modular monoliths early, then extract services when scale or team topology demands it.</p>
+            <ul>
+              <li>Typed contracts between client and server</li>
+              <li>Idempotent APIs and careful migration strategies</li>
+              <li>Caching and queues where latency or load requires them</li>
+            </ul>
+
+            <h2 id="delivery">Delivery Habits That Matter</h2>
+            <p>Weekly demos, automated tests on critical paths, staging environments that mirror production, and monitoring from day one. Full-stack quality is a process, not a final checklist.</p>
+
+            <h2 id="stack">A Practical 2026 Stack</h2>
+            <p>Common Seichox full-stack builds use React or Next.js on the front, Node.js/NestJS or Python on the API layer, PostgreSQL for relational truth, and cloud hosting with CI/CD. The stack is secondary to clarity of domain and ownership of the full path.</p>
+          </div>
+        );
+
+      case "ecommerce-optimization-cro-guide":
+        return (
+          <div>
+            <p className="lead text-[17px] text-foreground/90">
+              More traffic will not fix a broken funnel. E-commerce optimization is about extracting more revenue from the visitors you already have — with evidence, not opinions.
+            </p>
+
+            <h2 id="diagnose">Diagnose Before You Redesign</h2>
+            <p>Start with analytics, session recordings, and funnel drop-offs. Identify whether the problem is discovery, product page trust, cart friction, payment failure, or post-purchase confusion.</p>
+            <ul>
+              <li>Segment mobile vs desktop conversion rates</li>
+              <li>Map add-to-cart → checkout → purchase leakage</li>
+              <li>Review form fields, shipping surprises, and payment errors</li>
+            </ul>
+
+            <h2 id="speed">Speed Is a Conversion Feature</h2>
+            <p>Slow product pages kill intent. We prioritize image strategy, script budgets, caching, and Core Web Vitals because milliseconds translate into completed checkouts.</p>
+
+            <h2 id="experiments">Run Experiments That Prove Lift</h2>
+            <p>Hypothesis → variant → measurement → ship or kill. A/B tests on CTAs, trust signals, shipping messaging, and checkout steps beat endless redesign debates.</p>
+
+            <h2 id="playbook">A 90-Day Optimization Playbook</h2>
+            <p>Weeks 1–2: instrumentation and audit. Weeks 3–6: quick wins on speed and friction. Weeks 7–12: structured experiments and iteration. Report revenue impact, not vanity metrics.</p>
+            <p>When optimization is treated as a continuous product practice, stores grow without paying for every additional visitor.</p>
+          </div>
+        );
+
+      case "website-maintenance-support-guide":
+        return (
+          <div>
+            <p className="lead text-[17px] text-foreground/90">
+              Shipping a website is not the finish line. Without maintenance, even a great launch slowly becomes a liability — slower pages, security gaps, and quiet revenue leaks.
+            </p>
+
+            <h2 id="why-maintenance">Why Maintenance Is a Revenue Decision</h2>
+            <p>Every hour of downtime, every unpatched dependency, and every broken form has a cost. Maintenance is not “extra admin work.” It is how you protect the digital channel you already paid to build.</p>
+            <ul>
+              <li>Security updates reduce the chance of malware, defacement, or data exposure</li>
+              <li>Performance care keeps Core Web Vitals healthy and conversion rates stable</li>
+              <li>Content and minor feature support keep marketing and sales unblocked</li>
+            </ul>
+
+            <h2 id="what-included">What Good Support Actually Includes</h2>
+            <p>A real maintenance plan is more than occasional plugin updates. At Seichox, effective support packages usually cover:</p>
+            <ul>
+              <li><strong>Uptime monitoring</strong> with alerts and rapid incident response</li>
+              <li><strong>Automated backups</strong> and tested restore procedures</li>
+              <li><strong>Dependency and CMS updates</strong> on staging before production</li>
+              <li><strong>Performance checks</strong> for images, cache, and third-party scripts</li>
+              <li><strong>Monthly reporting</strong> so stakeholders know what changed and why</li>
+            </ul>
+
+            <h2 id="risks">Risks of Going Without a Plan</h2>
+            <p>Teams that “will fix it when something breaks” often discover problems at the worst time — during campaigns, product launches, or peak traffic. Common outcomes include outdated SSL, abandoned forms, plugin conflicts, and ranking drops after technical regressions.</p>
+
+            <h2 id="choose">How to Choose a Maintenance Partner</h2>
+            <p>Look for clear SLAs, staging workflows, ownership of backups, and the ability to ship small product improvements — not only emergency fixes. Maintenance should feel like an extension of your team, not a ticket black hole.</p>
+            <p>If your site powers leads or sales, treat support as a core operating expense. That is how digital assets stay secure, fast, and commercially useful year after year.</p>
+          </div>
+        );
+
+      case "mobile-app-development-guide-2026":
+        return (
+          <div>
+            <p className="lead text-[17px] text-foreground/90">
+              Mobile is still where most users spend their time. The hard part is not “should we build an app?” — it is choosing the right approach, stack, and launch plan for your budget and goals.
+            </p>
+
+            <h2 id="when-mobile">When a Mobile App Makes Sense</h2>
+            <p>Not every business needs a native app on day one. Strong signals include repeated workflows, offline use, push notifications as a growth lever, or experiences that feel constrained inside a mobile browser.</p>
+            <ul>
+              <li>High-frequency engagement (orders, bookings, messaging, field ops)</li>
+              <li>Need for device capabilities: camera, biometrics, GPS, background sync</li>
+              <li>Brand experience that benefits from a dedicated home screen presence</li>
+            </ul>
+
+            <h2 id="native-vs-cross">Native vs Cross-Platform</h2>
+            <p><strong>Native</strong> (Swift/Kotlin) remains the best fit for graphics-heavy, hardware-deep, or platform-specific products. <strong>Cross-platform</strong> (React Native, Flutter) is usually the right default for product teams that need one codebase, faster iteration, and shared business logic across iOS and Android.</p>
+            <p>In 2026, cross-platform quality is production-ready for most SaaS, commerce, and internal tools. Choose native when platform excellence is the product differentiator itself.</p>
+
+            <h2 id="stack">Stacks That Work in Production</h2>
+            <ul>
+              <li>React Native or Flutter for shared UI and shipping velocity</li>
+              <li>Type-safe APIs (REST or GraphQL) with strong auth and offline strategies</li>
+              <li>Firebase or custom backends for push, analytics, and real-time features</li>
+              <li>CI pipelines for store builds, crash reporting, and staged rollouts</li>
+            </ul>
+
+            <h2 id="launch">From MVP to App Store Launch</h2>
+            <p>Successful teams define a thin MVP, validate with real users, then expand features. We handle design, engineering, QA on real devices, and App Store / Google Play submission so launch is planned — not improvised.</p>
+            <p>If you are evaluating mobile app development, start with outcomes: retention loops, must-have platform features, and the 90-day roadmap after v1. That clarity saves months of rebuilds later.</p>
+          </div>
+        );
+
+      case "custom-software-development-when-to-build":
+        return (
+          <div>
+            <p className="lead text-[17px] text-foreground/90">
+              SaaS products are excellent until your process no longer fits their product. That is the moment custom software stops being a luxury and starts being an operational advantage.
+            </p>
+
+            <h2 id="signals">Signals You Need Custom Software</h2>
+            <ul>
+              <li>Teams maintain the same workflow across three or more disconnected tools</li>
+              <li>Manual exports, re-keying, or spreadsheet “glue” keep the business running</li>
+              <li>Licensing costs for enterprise suites exceed the value of features you actually use</li>
+              <li>Competitors can move faster because your systems cannot encode your unique process</li>
+            </ul>
+
+            <h2 id="roi">How to Think About ROI</h2>
+            <p>Custom software pays off when it reduces labor, errors, cycle time, or customer wait times — not when it simply recreates a generic CRM. We estimate ROI using hours saved, error rates avoided, and revenue unlocked by faster operations.</p>
+
+            <h2 id="architecture">Architecture Choices That Matter</h2>
+            <p>Durable systems share a few traits: clear domain boundaries, modular APIs, auditable access control, and cloud infrastructure that can scale with usage. We typically combine modern web frontends with solid backends (Node.js, Python, or Java) and databases chosen for the workload — not for fashion.</p>
+            <ul>
+              <li>Integrations with ERP, CRM, payments, and messaging systems</li>
+              <li>Role-based permissions and full audit logging for enterprise use</li>
+              <li>Observability from day one so operations teams trust the system</li>
+            </ul>
+
+            <h2 id="partnership">How We Deliver Custom Systems</h2>
+            <p>Discovery first, architecture second, then iterative delivery with demos you can actually use. You own the source code. We design for change so the product can grow without a rewrite every two years.</p>
+            <p>If off-the-shelf tools force workarounds every week, custom software development is not vanity — it is infrastructure for how your company uniquely creates value.</p>
           </div>
         );
 

@@ -7,7 +7,8 @@ import {
 import { Container } from "@/components/layout/Container";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
 import { GradientButton } from "@/components/shared/GradientButton";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { PAGE_SEO, breadcrumbJsonLd } from "@/lib/seo";
 
 /* ─── Data ─── */
 const steps = [
@@ -72,10 +73,18 @@ const industries = [
 ];
 
 export default function SolutionsPage() {
-  useDocumentTitle(
-    "Solutions & Capabilities | Seichox",
-    "Custom digital solutions engineered for scale and performance. Discover our process: Discovery, Design, Development, and Deployment."
-  );
+  useSEO({
+    title: PAGE_SEO.solutions.title,
+    description: PAGE_SEO.solutions.description,
+    path: PAGE_SEO.solutions.path,
+    brandTitle: false,
+    jsonLd: [
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Solutions", path: "/solutions" },
+      ]),
+    ],
+  });
 
   return (
     <div className="w-full flex flex-col">

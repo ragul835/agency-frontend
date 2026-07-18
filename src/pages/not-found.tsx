@@ -2,7 +2,8 @@ import { Link } from "wouter";
 import { ArrowLeft, Home, Search, ArrowRight } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { GradientButton } from "@/components/shared/GradientButton";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { PAGE_SEO } from "@/lib/seo";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -12,7 +13,13 @@ const quickLinks = [
 ];
 
 export default function NotFound() {
-  useDocumentTitle("404 — Page Not Found | Seichox");
+  useSEO({
+    title: PAGE_SEO.notFound.title,
+    description: PAGE_SEO.notFound.description,
+    path: typeof window !== "undefined" ? window.location.pathname : "/404",
+    brandTitle: false,
+    noindex: true,
+  });
 
   return (
     <section className="relative flex-1 w-full flex items-center justify-center overflow-hidden py-20">

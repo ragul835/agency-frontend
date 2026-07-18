@@ -4,7 +4,7 @@ import {
   Code2, ShoppingCart, Layers, Palette, Search, ShoppingBag,
   ArrowRight, CheckCircle, Shield, Cpu, Zap, Plus, Minus,
   Smartphone, Target, TrendingUp, Globe, Users, Star,
-  ArrowUpRight, Sparkles, MousePointer2, BarChart3
+  ArrowUpRight, Sparkles, MousePointer2, BarChart3, Settings, Terminal
 } from "lucide-react";
 import {
   SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiFramer,
@@ -19,7 +19,14 @@ import { Container } from "@/components/layout/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { AnimateOnScroll, AnimatedItem } from "@/components/shared/AnimateOnScroll";
 import { GradientButton } from "@/components/shared/GradientButton";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import {
+  PAGE_SEO,
+  organizationJsonLd,
+  websiteJsonLd,
+  professionalServiceJsonLd,
+  faqJsonLd,
+} from "@/lib/seo";
 
 /* ─── Data ─── */
 const services = [
@@ -29,6 +36,9 @@ const services = [
   { icon: Zap, title: "SaaS Platforms", description: "Subscription-based software platforms designed to support long-term growth and business operations.", tag: "Hot" },
   { icon: Palette, title: "UI/UX Design", description: "User-focused digital experiences that improve engagement, usability, and conversions.", tag: "" },
   { icon: Search, title: "SEO Services", description: "Technical and on-page optimization strategies that improve visibility and search rankings.", tag: "" },
+  { icon: Settings, title: "Website Maintenance & Support", description: "Keep your website secure, fast, and up-to-date with proactive monitoring and expert support.", tag: "" },
+  { icon: Smartphone, title: "Mobile App Development", description: "High-performance iOS and Android applications built for engagement and scale.", tag: "New" },
+  { icon: Terminal, title: "Custom Software Development", description: "Tailor-made software solutions that automate workflows and solve complex business problems.", tag: "" },
 ];
 
 const techCategories = [
@@ -598,10 +608,21 @@ function CTASection() {
 
 /* ─── Page ─── */
 export default function HomePage() {
-  useDocumentTitle(
-    "Seichox | Web Development & Software Solutions Agency",
-    "Seichox designs, develops, and scales modern websites, web applications, e-commerce platforms, SaaS products, and custom software solutions that help businesses grow."
-  );
+  useSEO({
+    title: PAGE_SEO.home.title,
+    description: PAGE_SEO.home.description,
+    path: PAGE_SEO.home.path,
+    keywords: [...PAGE_SEO.home.keywords],
+    brandTitle: false,
+    jsonLd: [
+      organizationJsonLd(),
+      websiteJsonLd(),
+      professionalServiceJsonLd(),
+      faqJsonLd(
+        faqData.map((f) => ({ question: f.question, answer: f.answer }))
+      ),
+    ],
+  });
 
   return (
     <div className="w-full flex flex-col">

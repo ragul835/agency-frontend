@@ -76,13 +76,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16">
           <div className="lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2.5 mb-4">
-              <img src="/logo-icon-v2.png" alt="Seichox Logo" className="h-8 w-auto" />
+              <img src="/logo-icon-v2.png" alt="Seichox — software engineering agency logo" className="h-8 w-auto" width={32} height={32} />
               <span className="text-xl font-heading font-black tracking-tight text-white">
                 Seichox<span className="text-primary">.</span>
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
-              Building reliable digital solutions with modern technology, clean engineering practices, and a commitment to long-term success.
+              Seichox is a software engineering agency for web development, mobile apps, SaaS, e-commerce, custom software, SEO, UI/UX, and website maintenance.
             </p>
             <div className="flex items-center gap-3">
               {footerSocials.map((s) => {
@@ -148,21 +148,22 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-white uppercase tracking-widest mb-5">
               Contact Us
             </h3>
+            <address className="not-italic">
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                <Mail className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                 <a href="mailto:ragulsiva@zohomail.in" className="hover:text-primary transition-colors">
                   ragulsiva@zohomail.in
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                <Phone className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                 <a href="tel:+919080163393" className="hover:text-primary transition-colors">
                   +91 9080163393
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                 <span>India</span>
               </li>
               <li className="pt-2">
@@ -175,6 +176,7 @@ export function Footer() {
                 </div>
               </li>
             </ul>
+            </address>
           </div>
         </div>
       </Container>

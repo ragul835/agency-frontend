@@ -1,7 +1,8 @@
 import { Link } from "wouter";
 import { ChevronRight, Shield, Mail, Globe, Lock, Users, FileText, Calendar } from "lucide-react";
 import { Container } from "@/components/layout/Container";
-import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { useSEO } from "@/hooks/useDocumentTitle";
+import { PAGE_SEO, breadcrumbJsonLd } from "@/lib/seo";
 
 const lastUpdated = "July 8, 2026";
 
@@ -144,10 +145,18 @@ We take privacy seriously and will respond promptly to all legitimate inquiries.
 ];
 
 export default function PrivacyPolicy() {
-  useDocumentTitle(
-    "Privacy Policy | Seichox",
-    "Learn how Seichox collects, uses, and protects your personal data. Privacy Policy for our web development, SaaS, e-commerce, and digital services."
-  );
+  useSEO({
+    title: PAGE_SEO.privacy.title,
+    description: PAGE_SEO.privacy.description,
+    path: PAGE_SEO.privacy.path,
+    brandTitle: false,
+    jsonLd: [
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Privacy Policy", path: "/privacy" },
+      ]),
+    ],
+  });
 
   return (
     <div className="w-full flex flex-col bg-background">
